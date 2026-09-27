@@ -483,3 +483,7 @@ id_ed25519
 *.bundle
 /github-upload/
 /inference/run/
+
+!/models/qwen38-27b/rc3-source-review-v15/adapter/adapter_model.safetensors
+
+!/models/qwen38-27b/rc3-source-review-v15/adapter/adapter_config.json
