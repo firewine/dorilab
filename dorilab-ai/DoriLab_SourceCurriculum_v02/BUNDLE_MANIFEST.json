@@ -1,0 +1,58 @@
+{
+  "README_KO.md": {
+    "bytes": 2539,
+    "sha256": "0939a87986806a3c32551ec6dace3f39a876e2ceef2c2efa5e2b9ebca73b28bb"
+  },
+  "archive_position_e2.py": {
+    "bytes": 8790,
+    "sha256": "a5c0898a25de8490832d71d5b197dd1265906383f5ded9fc4f4d9b0bac6ae6c2"
+  },
+  "comparison_e1_vs_e2.json": {
+    "bytes": 25826,
+    "sha256": "9331902e515b139ecddf655c49de0a70e08aa40bcb52c6089b8a05fe065c51d5"
+  },
+  "comparison_e1_vs_e2_cases.jsonl": {
+    "bytes": 126142,
+    "sha256": "a433e898a9c523c8f3f2bb30290b8315abb2ffbf184d61cc8a708375ed26cdc3"
+  },
+  "input_snapshots/evidence_training_v05_position_e2_after.jsonl": {
+    "bytes": 35300,
+    "sha256": "3139b9bb824a15f59e785b821a24e9a5f7ebccacc56f340ee3205230789fd942"
+  },
+  "input_snapshots/evidence_training_v05_position_e2_after.summary.json": {
+    "bytes": 1394,
+    "sha256": "d3cca90ec8d5e6fdf756b092a17aa6663e856d46879871618ba1b331999fee53"
+  },
+  "input_snapshots/evidence_training_v05_position_e2_before.jsonl": {
+    "bytes": 35395,
+    "sha256": "0287dee5ff5c6285deb4c0d6700591bbc2e79ae4e6b93c875981ea04f353a9c8"
+  },
+  "input_snapshots/evidence_training_v05_position_e2_before.summary.json": {
+    "bytes": 1394,
+    "sha256": "494d0ce94591516f3bb20540dbafb4828af7342e090425ba7e86fd5b245e1a7d"
+  },
+  "input_snapshots/evidence_training_v05_position_e2_control.jsonl": {
+    "bytes": 35272,
+    "sha256": "f4606f55204a84d9e0277942c82c4ca96138f856e7ce83645fc60af957d544b2"
+  },
+  "input_snapshots/evidence_training_v05_position_e2_control.summary.json": {
+    "bytes": 1394,
+    "sha256": "7bebd878cc396d269ca4841a839d2d66c93d17aaf6de80437099ba9c3c366bed"
+  },
+  "input_snapshots/position_e1_comparison.json": {
+    "bytes": 51691,
+    "sha256": "f0cb629a6cc88a8cd37c0a93b480c275f9cc8ba372cb01632e0f5e30f56245ca"
+  },
+  "input_snapshots/position_e1_comparison_cases.jsonl": {
+    "bytes": 553249,
+    "sha256": "45c939c1b87ba994a95369ed6e1be9ed29ba3011054acc21510ba9ab603d943b"
+  },
+  "position_e1_e2_review_KO.md": {
+    "bytes": 16058,
+    "sha256": "f2601d7097422e87fb4a1e05eb175d37e65a893a4ac73228284db9322465d900"
+  },
+  "snapshot_test_results.txt": {
+    "bytes": 822,
+    "sha256": "778951f511e372f46f1ff047eccd9384980f895e5b1658efcb471478aec1e92a"
+  }
+}

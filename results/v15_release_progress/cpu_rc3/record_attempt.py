@@ -1,0 +1,3 @@
+from common import *
+put('CPU_PREFLIGHT_ATTEMPT01_FAILURE.json',{'created_at_utc':now(),'status':'FAILED_BEFORE_PAYLOAD_WRITES','error':'native direct tokenization mismatch','location':'tokenization.inference direct apply_chat_template result shape comparison','remediation':'Request return_dict=True, extract input_ids and assert a single batch before comparing actual native token IDs. No token/text/data change or truncation.','model_loaded':False,'gpu_execution':False})
+status('RC3_PREFLIGHT_RETURN_SHAPE_FIX',['계약206행 검증 및 native tokenizer 로드'],['첫 CPU 비교가 processor 반환 형태 처리에서 실패; 수정 후 재검증 예정'],['CPU_PREFLIGHT_ATTEMPT01_FAILURE.json'],['native token IDs 재대조','승인 묶음과 실행 설정안'],['CPU_PREFLIGHT_RECHECK','B03'])

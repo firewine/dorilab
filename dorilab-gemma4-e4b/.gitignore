@@ -1,0 +1,13 @@
+.venv/
+.bootstrap/
+.python/
+.uv-cache/
+.environment_ready
+snapshot/
+data/
+assets/
+runs/
+reports/
+logs/
+state/
+__pycache__/

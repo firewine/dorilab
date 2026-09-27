@@ -1,0 +1,257 @@
+{
+  "scope": "OUTPUT_FIELD_VALUE_IDENTITY_ONLY_NOT_A_SCORE",
+  "old_file_sha256": "c0be480c5b772ba3df09ceb9ead8b9e5f9023591d29aea2d2c9c14700c56585c",
+  "new_file_sha256": "c7945aa970aa327524538286ded154be1e760e3dc2e79b98ba00787af03f6a7e",
+  "v13_reason_semantics_rescored": false,
+  "gold_read": false,
+  "scorer_called": false,
+  "raw_output_changed": false,
+  "cases": [
+    {
+      "case_id": "CASE-8261f9621f",
+      "action_v13": "NO_ACTION_REQUIRED",
+      "action_v14": "NO_ACTION_REQUIRED",
+      "action_identical": true,
+      "claim_id_v13": "CLM-13500f3f1d",
+      "claim_id_v14": "CLM-13500f3f1d",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-10eaf600a5"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "OBS-10eaf600a5"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": null,
+      "reason_v14": null,
+      "reason_string_identical": null,
+      "requested_evidence_v13_present": false,
+      "requested_evidence_v14_present": false,
+      "requested_evidence_v13": null,
+      "requested_evidence_v14": null,
+      "request_list_identical_for_request_action": null,
+      "keys_removed_from_v13": [],
+      "keys_added_in_v14": []
+    },
+    {
+      "case_id": "CASE-ec0f24fd6c",
+      "action_v13": "CHALLENGE",
+      "action_v14": "CHALLENGE",
+      "action_identical": true,
+      "claim_id_v13": "CLM-03d61f56b6",
+      "claim_id_v14": "CLM-03d61f56b6",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-5ad19b8542",
+        "REF-7443d87285"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "OBS-5ad19b8542",
+        "REF-7443d87285"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": "EVIDENCE_INTERPRETATION_ERROR",
+      "reason_v14": "EVIDENCE_INTERPRETATION_ERROR",
+      "reason_string_identical": true,
+      "requested_evidence_v13_present": true,
+      "requested_evidence_v14_present": false,
+      "requested_evidence_v13": [],
+      "requested_evidence_v14": null,
+      "request_list_identical_for_request_action": null,
+      "keys_removed_from_v13": [
+        "reason_code",
+        "requested_evidence"
+      ],
+      "keys_added_in_v14": [
+        "reason"
+      ]
+    },
+    {
+      "case_id": "CASE-f49f3d339e",
+      "action_v13": "REQUEST_EVIDENCE",
+      "action_v14": "REQUEST_EVIDENCE",
+      "action_identical": true,
+      "claim_id_v13": "CLM-a7fe2f7f10",
+      "claim_id_v14": "CLM-a7fe2f7f10",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-8b847ae6ae"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "OBS-8b847ae6ae"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": "SUPPORTING_EVIDENCE_MISSING",
+      "reason_v14": "SUPPORTING_EVIDENCE_MISSING",
+      "reason_string_identical": true,
+      "requested_evidence_v13_present": true,
+      "requested_evidence_v14_present": true,
+      "requested_evidence_v13": [
+        "LOW_TEMPERATURE_RESPONSE"
+      ],
+      "requested_evidence_v14": [
+        "LOW_TEMPERATURE_RESPONSE"
+      ],
+      "request_list_identical_for_request_action": true,
+      "keys_removed_from_v13": [
+        "reason_code"
+      ],
+      "keys_added_in_v14": [
+        "reason"
+      ]
+    },
+    {
+      "case_id": "CASE-18d7b891b1",
+      "action_v13": "CHALLENGE",
+      "action_v14": "CHALLENGE",
+      "action_identical": true,
+      "claim_id_v13": "CLM-6e78fe53a3",
+      "claim_id_v14": "CLM-6e78fe53a3",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-583e28d330",
+        "REF-a33a228d37"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "REF-a33a228d37",
+        "OBS-583e28d330"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": "EVIDENCE_INTERPRETATION_ERROR",
+      "reason_v14": "EVIDENCE_INTERPRETATION_ERROR",
+      "reason_string_identical": true,
+      "requested_evidence_v13_present": true,
+      "requested_evidence_v14_present": false,
+      "requested_evidence_v13": [],
+      "requested_evidence_v14": null,
+      "request_list_identical_for_request_action": null,
+      "keys_removed_from_v13": [
+        "reason_code",
+        "requested_evidence"
+      ],
+      "keys_added_in_v14": [
+        "reason"
+      ]
+    },
+    {
+      "case_id": "CASE-5bf8af5346",
+      "action_v13": "NO_ACTION_REQUIRED",
+      "action_v14": "NO_ACTION_REQUIRED",
+      "action_identical": true,
+      "claim_id_v13": "CLM-fa475769a1",
+      "claim_id_v14": "CLM-fa475769a1",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-d9c218291e",
+        "REF-3f39265aaf"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "OBS-d9c218291e",
+        "REF-3f39265aaf"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": null,
+      "reason_v14": null,
+      "reason_string_identical": null,
+      "requested_evidence_v13_present": false,
+      "requested_evidence_v14_present": false,
+      "requested_evidence_v13": null,
+      "requested_evidence_v14": null,
+      "request_list_identical_for_request_action": null,
+      "keys_removed_from_v13": [],
+      "keys_added_in_v14": []
+    },
+    {
+      "case_id": "CASE-d48966c293",
+      "action_v13": "NO_ACTION_REQUIRED",
+      "action_v14": "NO_ACTION_REQUIRED",
+      "action_identical": true,
+      "claim_id_v13": "CLM-aba36cdafa",
+      "claim_id_v14": "CLM-aba36cdafa",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-5e4d764bd3",
+        "REF-74972362d4"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "OBS-5e4d764bd3",
+        "REF-74972362d4"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": null,
+      "reason_v14": null,
+      "reason_string_identical": null,
+      "requested_evidence_v13_present": false,
+      "requested_evidence_v14_present": false,
+      "requested_evidence_v13": null,
+      "requested_evidence_v14": null,
+      "request_list_identical_for_request_action": null,
+      "keys_removed_from_v13": [],
+      "keys_added_in_v14": []
+    },
+    {
+      "case_id": "CASE-b40f92306b",
+      "action_v13": "REQUEST_EVIDENCE",
+      "action_v14": "REQUEST_EVIDENCE",
+      "action_identical": true,
+      "claim_id_v13": "CLM-1997ad4989",
+      "claim_id_v14": "CLM-1997ad4989",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-021192a3c5",
+        "REF-f8b978aa75"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "OBS-021192a3c5",
+        "REF-f8b978aa75"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": "SUPPORTING_EVIDENCE_MISSING",
+      "reason_v14": "SUPPORTING_EVIDENCE_MISSING",
+      "reason_string_identical": true,
+      "requested_evidence_v13_present": true,
+      "requested_evidence_v14_present": true,
+      "requested_evidence_v13": [
+        "IR_PATH_CALIBRATION"
+      ],
+      "requested_evidence_v14": [
+        "IR_PATH_CALIBRATION"
+      ],
+      "request_list_identical_for_request_action": true,
+      "keys_removed_from_v13": [
+        "reason_code"
+      ],
+      "keys_added_in_v14": [
+        "reason"
+      ]
+    },
+    {
+      "case_id": "CASE-a18319c1d2",
+      "action_v13": "NO_ACTION_REQUIRED",
+      "action_v14": "NO_ACTION_REQUIRED",
+      "action_identical": true,
+      "claim_id_v13": "CLM-0e5bd6c964",
+      "claim_id_v14": "CLM-0e5bd6c964",
+      "claim_id_identical": true,
+      "evidence_refs_v13_as_saved": [
+        "OBS-47f58243dd",
+        "REF-c3cee0e200"
+      ],
+      "evidence_refs_v14_as_saved": [
+        "OBS-47f58243dd",
+        "REF-c3cee0e200"
+      ],
+      "evidence_refs_set_identical": true,
+      "reason_code_v13": null,
+      "reason_v14": null,
+      "reason_string_identical": null,
+      "requested_evidence_v13_present": false,
+      "requested_evidence_v14_present": false,
+      "requested_evidence_v13": null,
+      "requested_evidence_v14": null,
+      "request_list_identical_for_request_action": null,
+      "keys_removed_from_v13": [],
+      "keys_added_in_v14": []
+    }
+  ]
+}

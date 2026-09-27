@@ -1,0 +1,8 @@
+{
+  "policy_incorporation": "USER_REQUESTED",
+  "individual_case_approval": "PENDING",
+  "training_data_use_approval": "NOT_GRANTED",
+  "engineering_approval": "NOT_GRANTED",
+  "human_review_performed": false,
+  "no_approval_record_created": true
+}

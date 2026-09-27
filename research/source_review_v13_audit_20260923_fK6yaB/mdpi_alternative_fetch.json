@@ -1,0 +1,16 @@
+[
+  {
+    "source_id": "SR13-CANYVAL",
+    "url": "https://mdpi-res.com/d_attachment/aerospace/aerospace-08-00150/article_deploy/aerospace-08-00150.pdf",
+    "route": "Publisher public open-access asset host, no credentials or challenge bypass",
+    "status": "SOURCE_UNAVAILABLE",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "source_id": "SR13-PROBAV",
+    "url": "https://mdpi-res.com/d_attachment/electronics/electronics-13-01822/article_deploy/electronics-13-01822.pdf",
+    "route": "Publisher public open-access asset host, no credentials or challenge bypass",
+    "status": "SOURCE_UNAVAILABLE",
+    "error": "HTTP Error 403: Forbidden"
+  }
+]

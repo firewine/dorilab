@@ -1,0 +1,8 @@
+purpose=QWEN27_LORA_RUNTIME
+torch=2.8.0+cu128
+torch_cuda=12.8
+transformers=5.18.0.dev0
+transformers_commit=002e1edf5b5198488297f401dd853056b6521d02
+transformers_lock=/workspace/dorilab/runtime/transformers_qwen27.lock.txt
+gpu=NVIDIA RTX PRO 6000 Blackwell Server Edition
+driver=595.91.07

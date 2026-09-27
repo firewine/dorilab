@@ -1,0 +1,175 @@
+{
+  "source_files": {
+    "comparison.json": "c5463a58f0cf059ffcf57d25cd1bfe7893790646ca2fad6bd102c30453dc2ea7",
+    "comparison_cases.jsonl": "09b585fb5aee92a73dcec860c0541b2f8c95eafd2d6e4221811a7148432338ee"
+  },
+  "basis": "Uploaded v06 results only; no new model inference",
+  "views_are_not_independent": true,
+  "unique_scenarios": 12,
+  "pairs": 6,
+  "models": {
+    "e1": {
+      "views": {
+        "clean": {
+          "cases": 12,
+          "action_correct": 10,
+          "schema_and_refs_valid": 12,
+          "legacy_subset_contract_pass": 8,
+          "reference_choice_exact": 12,
+          "strict_selection_contract_pass": 8,
+          "rows_citing_distractors": 0,
+          "exclusive_failure_breakdown": {
+            "ACTION_WRONG": 2,
+            "FULL_PASS": 8,
+            "ACTION_AND_REFS_RIGHT_REASON_OR_OTHER_CONTRACT_WRONG": 2
+          }
+        },
+        "first": {
+          "cases": 12,
+          "action_correct": 7,
+          "schema_and_refs_valid": 12,
+          "legacy_subset_contract_pass": 4,
+          "reference_choice_exact": 10,
+          "strict_selection_contract_pass": 4,
+          "rows_citing_distractors": 2,
+          "exclusive_failure_breakdown": {
+            "ACTION_WRONG": 5,
+            "FULL_PASS": 4,
+            "ACTION_AND_REFS_RIGHT_REASON_OR_OTHER_CONTRACT_WRONG": 3
+          }
+        },
+        "middle": {
+          "cases": 12,
+          "action_correct": 8,
+          "schema_and_refs_valid": 12,
+          "legacy_subset_contract_pass": 0,
+          "reference_choice_exact": 0,
+          "strict_selection_contract_pass": 0,
+          "rows_citing_distractors": 12,
+          "exclusive_failure_breakdown": {
+            "ACTION_RIGHT_REFERENCE_SET_WRONG": 8,
+            "ACTION_WRONG": 4
+          }
+        },
+        "last": {
+          "cases": 12,
+          "action_correct": 9,
+          "schema_and_refs_valid": 11,
+          "legacy_subset_contract_pass": 1,
+          "reference_choice_exact": 3,
+          "strict_selection_contract_pass": 1,
+          "rows_citing_distractors": 9,
+          "exclusive_failure_breakdown": {
+            "ACTION_AND_REFS_RIGHT_REASON_OR_OTHER_CONTRACT_WRONG": 2,
+            "ACTION_WRONG": 3,
+            "ACTION_RIGHT_REFERENCE_SET_WRONG": 6,
+            "FULL_PASS": 1
+          }
+        }
+      },
+      "clean_remaining_reason_errors": [
+        {
+          "case_id": "AP06-04-B",
+          "expected_reason": "MODAL_INPUTS_MISSING",
+          "output_reason": "PARAMETER_IDENTIFICATION_INSUFFICIENT"
+        },
+        {
+          "case_id": "AP06-06-A",
+          "expected_reason": "EXPOSURE_METADATA_UNRESOLVED",
+          "output_reason": "MONITORING_COVERAGE_INSUFFICIENT"
+        }
+      ],
+      "order_changed_action_cases": 4,
+      "order_changed_reference_cases": 12
+    },
+    "e2": {
+      "views": {
+        "clean": {
+          "cases": 12,
+          "action_correct": 12,
+          "schema_and_refs_valid": 12,
+          "legacy_subset_contract_pass": 9,
+          "reference_choice_exact": 12,
+          "strict_selection_contract_pass": 9,
+          "rows_citing_distractors": 0,
+          "exclusive_failure_breakdown": {
+            "FULL_PASS": 9,
+            "ACTION_AND_REFS_RIGHT_REASON_OR_OTHER_CONTRACT_WRONG": 3
+          }
+        },
+        "first": {
+          "cases": 12,
+          "action_correct": 7,
+          "schema_and_refs_valid": 11,
+          "legacy_subset_contract_pass": 4,
+          "reference_choice_exact": 11,
+          "strict_selection_contract_pass": 4,
+          "rows_citing_distractors": 1,
+          "exclusive_failure_breakdown": {
+            "ACTION_WRONG": 5,
+            "ACTION_AND_REFS_RIGHT_REASON_OR_OTHER_CONTRACT_WRONG": 3,
+            "FULL_PASS": 4
+          }
+        },
+        "middle": {
+          "cases": 12,
+          "action_correct": 9,
+          "schema_and_refs_valid": 12,
+          "legacy_subset_contract_pass": 1,
+          "reference_choice_exact": 1,
+          "strict_selection_contract_pass": 1,
+          "rows_citing_distractors": 11,
+          "exclusive_failure_breakdown": {
+            "FULL_PASS": 1,
+            "ACTION_WRONG": 3,
+            "ACTION_RIGHT_REFERENCE_SET_WRONG": 8
+          }
+        },
+        "last": {
+          "cases": 12,
+          "action_correct": 8,
+          "schema_and_refs_valid": 12,
+          "legacy_subset_contract_pass": 2,
+          "reference_choice_exact": 2,
+          "strict_selection_contract_pass": 2,
+          "rows_citing_distractors": 10,
+          "exclusive_failure_breakdown": {
+            "FULL_PASS": 2,
+            "ACTION_WRONG": 4,
+            "ACTION_RIGHT_REFERENCE_SET_WRONG": 6
+          }
+        }
+      },
+      "clean_remaining_reason_errors": [
+        {
+          "case_id": "AP06-04-B",
+          "expected_reason": "MODAL_INPUTS_MISSING",
+          "output_reason": "PARAMETER_IDENTIFICATION_INSUFFICIENT"
+        },
+        {
+          "case_id": "AP06-03-A",
+          "expected_reason": "MODE_SELECTION_MISMATCH",
+          "output_reason": "PARAMETER_IDENTIFICATION_INSUFFICIENT"
+        },
+        {
+          "case_id": "AP06-01-B",
+          "expected_reason": "MEASUREMENT_MAPPING_MISMATCH",
+          "output_reason": "BOUNDARY_CONDITION_UNRESOLVED"
+        }
+      ],
+      "order_changed_action_cases": 3,
+      "order_changed_reference_cases": 10
+    }
+  },
+  "duplicates": [
+    {
+      "model": "e1",
+      "view": "middle",
+      "case_id": "AP06-05-B",
+      "duplicate_keys": [
+        "evidence_refs"
+      ],
+      "original_strict_full_pass": false
+    }
+  ]
+}

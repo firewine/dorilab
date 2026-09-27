@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dorilab:review-explanation:v1",
+  "title": "Proposed visible review explanation; version separately from legacy action contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_question",
+    "proposal",
+    "verdict",
+    "issue_ko",
+    "basis",
+    "conclusion_ko",
+    "next_step_ko",
+    "uncertainties"
+  ],
+  "properties": {
+    "review_question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verdict": {
+      "enum": [
+        "SUPPORTED",
+        "CONTRADICTED",
+        "INSUFFICIENT"
+      ]
+    },
+    "issue_ko": {
+      "type": "string",
+      "minLength": 1
+    },
+    "basis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement_ko",
+          "evidence_refs",
+          "kind"
+        ],
+        "properties": {
+          "statement_ko": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "kind": {
+            "enum": [
+              "OBSERVATION",
+              "SOURCE_PRINCIPLE",
+              "INFERENCE"
+            ]
+          }
+        }
+      }
+    },
+    "conclusion_ko": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_step_ko": {
+      "type": "string",
+      "minLength": 1
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "files": {
+    ".gitignore": "4a3e8f1b4509272aa7ad01eec866f9cd4f3f0881dcbf32d143aa3c2ff2a89528",
+    "README_KO.md": "e7f8496bd6ac39e57ab2a42df153294c6d648e346c09afcc554f5aafd5ed92a2",
+    "constraints-torch.txt": "49de99e923303054ba592442f82887d66ea11830617f39ab6ac78bf968a1d19e",
+    "dorilab_gemma/__init__.py": "79c93ea746b302e87c3b7c8bf64355e263b1cbc2f0deb82036b3ad59a787794e",
+    "dorilab_gemma/capture_contract.py": "0e566823c720f3c055a4e2fa24b711e8038b86b5f5da5716905cb45743c8de01",
+    "dorilab_gemma/common.py": "9e03b422dfaa14ae6d02a5f1f0d98cc0375774034a315225fcc00f215e0be08b",
+    "dorilab_gemma/importer.py": "e967d5248b31f98968a60154dbf8fd3b4be1ffb8192dfcedce94b742de740e61",
+    "dorilab_gemma/modeling.py": "7fec29f411d40a902232f9f256ab3214e9765636bb0f40ff9473f8c57f4b2a98",
+    "dorilab_gemma/scoring.py": "c61d2b9ce5e662fd2e661a14f6c5277f11a3a79730e3631ba416c6b926411d27",
+    "dorilab_gemma/workers.py": "712b883fdf2667d19e67b06a5398a9fd0c737dd905d03b2323103094d16df748",
+    "requirements.txt": "02b3346cc848986580ded7e23cdaf2b5dc20b7829a8bd302d4dfc6ab3b3d104f",
+    "run_gemma.py": "1abd3aabc0be5850b051f072d143544c26fa7f9aedf920511ece33652eeaf0e2",
+    "setup_env.sh": "f7b0414785d21924c1bbd324ca038578f60b95de14c3d13974ed1b54fe442af7",
+    "start.sh": "d896da1a80266d21bdd83ab6d92a0464bea0a85efe60d7ea971fb2148ce64842",
+    "tests/test_core.py": "d32c4f03f5fe5fc4839fc12d2c1bff45c38196ffc69f2dcb151c21d433f7c601",
+    "tests/test_import.py": "0cf4f85c8c5070fee12426c6c216e2ce1572e9cba4aba77d4377e0426eb89ce6",
+    "verification/BUILD_STATUS.json": "1403c517847b88a71ca739168acf0a2d7f2197c9f1561cc25ae539b9d038bc1e",
+    "verification/cpu_tests.txt": "c63b16d5fd33c9b3e8a37fb3f594760136dabed0ead564033c8a786ef12bd402"
+  },
+  "contains_model_weights": false,
+  "contains_user_training_dataset": false
+}

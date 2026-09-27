@@ -1,0 +1,25 @@
+{
+  "status": "PASS_STRUCTURAL_REVIEW_GATES_PENDING",
+  "tests_run": 15,
+  "failures": 0,
+  "errors": 0,
+  "scope": "Proposal structure, input separation, split/hash preservation, declared policy-to-label mapping and field contract; not independent semantic approval.",
+  "test_log": "CPU_VALIDATION_LOG.txt",
+  "preserved_file_count": 336,
+  "semantic_review": "HUMAN_REVIEW_PENDING; one unresolved specific-code overlap; 16 SOURCE_UNAVAILABLE",
+  "no_model_scores_computed": true,
+  "no_inference_or_training": true,
+  "no_token_or_gpu_preflight": true,
+  "no_pod_operations": true,
+  "reserved_or_evaluatoronly_opened": false,
+  "sft_export_created": false,
+  "human_review_performed": false,
+  "artifact_sha256": {
+    "POLICY_v15.md": "dc06dd79e36d82d6c5db5dcd39a9a37c65bb0fe2b114b9197f80b83be236e6fc",
+    "LABEL_CHANGESET_v15.jsonl": "58511b347404562d44af8df017cccdd3c01a0b61777265b5e5cecc86f710d9fe",
+    "TRAIN_BUILD_CANDIDATE_v15.json": "dba662baa5b5bd94d123860048bf2a1fce981edc63c138ddd426d728b5c14bd6",
+    "RELEASE_REVIEW_KO.md": "5185f1bc53dec4c9cb569e181473a999a9384c341ed551d7c6cc91052b1bf254",
+    "build_proposal.py": "fed0b43e225122444fb44e0b490c51e8ec79342ab95a79c43ab0a72c28f04da3",
+    "validate_cpu.py": "f8c5e1dc189f290b620ae55d030fad1985e22b991036097d04ad4cafd8f25210"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "gemma4_12b",
+  "model": "google/gemma-4-12B-it",
+  "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+  "family": "hf_native",
+  "config_model_type": "gemma4_unified",
+  "max_prompt_tokens": 1251,
+  "max_new_tokens": 384,
+  "dtype": "bfloat16",
+  "quantization": null,
+  "decoding": "greedy_do_sample_false",
+  "training_executed": false,
+  "at_utc": "2026-09-23T14:06:04.025887+00:00"
+}

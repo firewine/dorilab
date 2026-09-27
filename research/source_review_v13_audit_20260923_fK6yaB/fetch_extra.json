@@ -1,0 +1,56 @@
+[
+  {
+    "file": "SR13-HYPSO.pdf",
+    "url": "https://link.springer.com/content/pdf/10.1007/s12567-023-00501-3.pdf",
+    "at_utc": "2026-09-23T17:25:09.825566+00:00",
+    "final_url": "https://link.springer.com/content/pdf/10.1007/s12567-023-00501-3.pdf?error=cookies_not_supported&code=9b1f8e23-5cee-48d9-992b-37691fde98b7",
+    "content_type": "application/pdf",
+    "status": "FETCHED_UNREVIEWED",
+    "bytes": 2408521,
+    "sha256": "a55d1e7ef20baa6f143651c8531dde0a7adf92794697bbe2a528b7826cf48652"
+  },
+  {
+    "file": "SR13-CANYVAL.pdf",
+    "url": "https://www.mdpi.com/2226-4310/8/6/150/pdf",
+    "at_utc": "2026-09-23T17:25:09.828295+00:00",
+    "status": "FAILED_PRESERVED",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "file": "SR13-PROBAV.pdf",
+    "url": "https://www.mdpi.com/2079-9292/13/10/1822/pdf",
+    "at_utc": "2026-09-23T17:25:09.829961+00:00",
+    "status": "FAILED_PRESERVED",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "file": "SR13-TIRS.catalog.json",
+    "url": "https://ntrs.nasa.gov/api/citations/20160000799",
+    "at_utc": "2026-09-23T17:25:09.831693+00:00",
+    "final_url": "https://ntrs.nasa.gov/api/citations/20160000799",
+    "content_type": "application/json; charset=utf-8",
+    "status": "FETCHED_UNREVIEWED",
+    "bytes": 5661,
+    "sha256": "b11f10ea013936f97d08f152a5c372ce7f25ec59d7499c09c73f513c962a7cbc"
+  },
+  {
+    "file": "SR13-NEA.catalog.json",
+    "url": "https://ntrs.nasa.gov/api/citations/20180005148",
+    "at_utc": "2026-09-23T17:25:09.833470+00:00",
+    "final_url": "https://ntrs.nasa.gov/api/citations/20180005148",
+    "content_type": "application/json; charset=utf-8",
+    "status": "FETCHED_UNREVIEWED",
+    "bytes": 5874,
+    "sha256": "4002eb7baae967c02d7a45a5f0d37eb1b422d033e7a82bccdd6ce0f81b628dd0"
+  },
+  {
+    "file": "SR13-RHOBC.catalog.json",
+    "url": "https://ntrs.nasa.gov/api/citations/20205006200",
+    "at_utc": "2026-09-23T17:25:09.834491+00:00",
+    "final_url": "https://ntrs.nasa.gov/api/citations/20205006200",
+    "content_type": "application/json; charset=utf-8",
+    "status": "FETCHED_UNREVIEWED",
+    "bytes": 3999,
+    "sha256": "eda40aad294d5e8f414cc3539afaeb872f0a04f4288c66eb30c43a1b82f82ec3"
+  }
+]

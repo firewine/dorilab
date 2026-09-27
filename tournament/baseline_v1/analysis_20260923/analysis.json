@@ -1,0 +1,690 @@
+{
+  "official_scores_unchanged": true,
+  "frozen_inputs_verified": true,
+  "models": {
+    "qwen35_9b": {
+      "verified_cases": 84,
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "totals": {
+        "cases": 84,
+        "action_correct": 77,
+        "strict_contract_pass": 60,
+        "reference_exact": 64,
+        "reference_eligible": 64,
+        "wrongly_accepts_refuted_proposal": 1,
+        "schema_and_refs_valid": 83,
+        "reason_joint_correct": 20,
+        "reason_cases": 41,
+        "generation_seconds": 118.88793927710503,
+        "peak_allocated_GiB": 17.91756772994995,
+        "load_seconds": 94.96868234220892,
+        "seconds_per_case": 1.4153326104417265,
+        "generated_tokens": 5144
+      },
+      "suites": {
+        "ns10": {
+          "cases": 24,
+          "action_correct": 23,
+          "schema_and_refs_valid": 24,
+          "strict_contract_pass": 18,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 24,
+          "reference_eligible": 24,
+          "reason_joint_correct": 6,
+          "reason_cases": 12,
+          "complete_pairs": 12,
+          "both_pair_states_pass": 6,
+          "generation_seconds": 34.953934371005744
+        },
+        "before40": {
+          "cases": 40,
+          "action_correct": 36,
+          "schema_and_refs_valid": 40,
+          "strict_contract_pass": 27,
+          "wrongly_accepts_refuted_proposal": 1,
+          "unnecessary_intervention": 0,
+          "reference_exact": 40,
+          "reference_eligible": 40,
+          "reason_joint_correct": 7,
+          "reason_cases": 20,
+          "complete_pairs": 20,
+          "both_pair_states_pass": 7,
+          "generation_seconds": 60.07662326749414
+        },
+        "contract20": {
+          "cases": 20,
+          "action_correct": 18,
+          "schema_and_refs_valid": 19,
+          "strict_contract_pass": 15,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 0,
+          "reason_joint_correct": 7,
+          "reason_cases": 9,
+          "complete_pairs": 0,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 23.857381638605148
+        }
+      },
+      "diagnostic_counts": {
+        "reason_mismatch": 17,
+        "action_mismatch": 6,
+        "field_mismatch:requested_evidence": 4,
+        "wrong_acceptance": 1,
+        "field_mismatch:tool": 2,
+        "field_mismatch:arguments": 2,
+        "output_contract_invalid": 1,
+        "generation_limit": 1,
+        "semantic_unresolved": 1
+      },
+      "diagnostic_views": {
+        "official_json": 83,
+        "unreadable_or_noncontract_output": 1
+      },
+      "wrong_acceptance_cases": [
+        "PHY-VBX1-P04-A"
+      ],
+      "action_mismatch_cases": [
+        "NS10-E4-A",
+        "PHY-VBX1-P02-A",
+        "PHY-VBX1-P04-A",
+        "PHY-TH01-P04-A",
+        "PHY-TH01-P05-A",
+        "DEV-AN-003"
+      ],
+      "reason_confusions": {
+        "MONITORING_COVERAGE_INSUFFICIENT -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> RADIOMETRIC_EQUIVALENCE_UNRESOLVED": 1,
+        "FORCE_LIMIT_BASIS_UNRESOLVED -> CONFIGURATION_SCOPE_UNRESOLVED": 1,
+        "POWER_DISSIPATION_UNRESOLVED -> MONITORING_COVERAGE_INSUFFICIENT": 1,
+        "MODE_SELECTION_MISMATCH -> METHOD_INTERPRETATION_ERROR": 2,
+        "BOUNDARY_CONDITION_UNRESOLVED -> METHOD_INTERPRETATION_ERROR": 2,
+        "TEST_ARTIFACT_UNMODELED -> METHOD_INTERPRETATION_ERROR": 1,
+        "PARAMETER_IDENTIFICATION_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1,
+        "METHOD_INTERPRETATION_ERROR -> None": 1,
+        "MODEL_SCOPE_EXCEEDED -> METHOD_INTERPRETATION_ERROR": 1,
+        "MODAL_INPUTS_MISSING -> PARAMETER_IDENTIFICATION_INSUFFICIENT": 1,
+        "MONITORING_COVERAGE_INSUFFICIENT -> MEASUREMENT_MAPPING_MISMATCH": 1,
+        "MONITORING_COVERAGE_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1,
+        "DURATION_INPUT_MISSING -> None": 1,
+        "EVIDENCE_CONTRADICTION -> SCOPE_ERROR": 1
+      }
+    },
+    "gemma4_12b": {
+      "verified_cases": 84,
+      "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+      "totals": {
+        "cases": 84,
+        "action_correct": 19,
+        "strict_contract_pass": 16,
+        "reference_exact": 0,
+        "reference_eligible": 64,
+        "wrongly_accepts_refuted_proposal": 0,
+        "schema_and_refs_valid": 19,
+        "reason_joint_correct": 9,
+        "reason_cases": 41,
+        "generation_seconds": 152.03941739257425,
+        "peak_allocated_GiB": 22.84105920791626,
+        "load_seconds": 72.39011595211923,
+        "seconds_per_case": 1.8099930641973125,
+        "generated_tokens": 4589
+      },
+      "suites": {
+        "ns10": {
+          "cases": 24,
+          "action_correct": 0,
+          "schema_and_refs_valid": 0,
+          "strict_contract_pass": 0,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 24,
+          "reason_joint_correct": 0,
+          "reason_cases": 12,
+          "complete_pairs": 12,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 50.9867074387148
+        },
+        "before40": {
+          "cases": 40,
+          "action_correct": 0,
+          "schema_and_refs_valid": 0,
+          "strict_contract_pass": 0,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 40,
+          "reason_joint_correct": 0,
+          "reason_cases": 20,
+          "complete_pairs": 20,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 78.58977752365172
+        },
+        "contract20": {
+          "cases": 20,
+          "action_correct": 19,
+          "schema_and_refs_valid": 19,
+          "strict_contract_pass": 16,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 0,
+          "reason_joint_correct": 9,
+          "reason_cases": 9,
+          "complete_pairs": 0,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 22.46293243020773
+        }
+      },
+      "diagnostic_counts": {
+        "output_contract_invalid": 65,
+        "reason_mismatch": 18,
+        "action_mismatch": 12,
+        "field_mismatch:requested_evidence": 9,
+        "reference_mismatch": 1,
+        "unnecessary_intervention": 2,
+        "wrong_acceptance": 1,
+        "field_mismatch:tool": 2,
+        "field_mismatch:arguments": 2,
+        "field_mismatch:valid_scope": 1
+      },
+      "diagnostic_views": {
+        "markdown_fence_diagnostic_only": 61,
+        "channel_and_fence_diagnostic_only": 3,
+        "official_json": 19,
+        "channel_prefix_diagnostic_only": 1
+      },
+      "wrong_acceptance_cases": [
+        "PHY-EE02-P01-A"
+      ],
+      "action_mismatch_cases": [
+        "NS10-E4-A",
+        "NS10-M2-A",
+        "NS10-T2-A",
+        "NS10-M4-A",
+        "PHY-VBX1-P02-A",
+        "PHY-TH01-P07-B",
+        "PHY-TH01-P04-A",
+        "PHY-TH01-P05-A",
+        "PHY-VBX1-P05-A",
+        "PHY-EE02-P01-A",
+        "PHY-EE03-P02-A",
+        "DEV-CR-007"
+      ],
+      "reason_confusions": {
+        "MONITORING_COVERAGE_INSUFFICIENT -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "EXPOSURE_METADATA_UNRESOLVED -> MODAL_INPUTS_MISSING": 1,
+        "CONFIGURATION_SCOPE_UNRESOLVED -> PARAMETER_IDENTIFICATION_INSUFFICIENT": 1,
+        "MODAL_INPUTS_MISSING -> PARAMETER_IDENTIFICATION_INSUFFICIENT": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> MODAL_INPUTS_MISSING": 1,
+        "METHOD_INTERPRETATION_ERROR -> EVIDENCE_INTERPRETATION_ERROR": 2,
+        "MODE_SELECTION_MISMATCH -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> METHOD_INTERPRETATION_ERROR": 1,
+        "TEST_ARTIFACT_UNMODELED -> METHOD_INTERPRETATION_ERROR": 1,
+        "PARAMETER_IDENTIFICATION_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1,
+        "MODEL_SCOPE_EXCEEDED -> METHOD_INTERPRETATION_ERROR": 1,
+        "MODE_SELECTION_MISMATCH -> METHOD_INTERPRETATION_ERROR": 1,
+        "MODAL_INPUTS_MISSING -> METHOD_INTERPRETATION_ERROR": 1,
+        "PROBABILISTIC_ASSUMPTIONS_UNRESOLVED -> MODAL_INPUTS_MISSING": 1,
+        "EVIDENCE_INTERPRETATION_ERROR -> None": 1,
+        "MONITORING_COVERAGE_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1
+      }
+    },
+    "mistral32_24b": {
+      "verified_cases": 84,
+      "revision": "95a6d26c4bfb886c58daf9d3f7332c857cb27b43",
+      "totals": {
+        "cases": 84,
+        "action_correct": 19,
+        "strict_contract_pass": 17,
+        "reference_exact": 0,
+        "reference_eligible": 64,
+        "wrongly_accepts_refuted_proposal": 0,
+        "schema_and_refs_valid": 20,
+        "reason_joint_correct": 9,
+        "reason_cases": 41,
+        "generation_seconds": 199.43684656964615,
+        "peak_allocated_GiB": 45.18692684173584,
+        "load_seconds": 241.81603305088356,
+        "seconds_per_case": 2.3742481734481684,
+        "generated_tokens": 5491
+      },
+      "suites": {
+        "ns10": {
+          "cases": 24,
+          "action_correct": 0,
+          "schema_and_refs_valid": 0,
+          "strict_contract_pass": 0,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 24,
+          "reason_joint_correct": 0,
+          "reason_cases": 12,
+          "complete_pairs": 12,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 63.11754481354728
+        },
+        "before40": {
+          "cases": 40,
+          "action_correct": 0,
+          "schema_and_refs_valid": 0,
+          "strict_contract_pass": 0,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 40,
+          "reason_joint_correct": 0,
+          "reason_cases": 20,
+          "complete_pairs": 20,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 107.72659393167123
+        },
+        "contract20": {
+          "cases": 20,
+          "action_correct": 19,
+          "schema_and_refs_valid": 20,
+          "strict_contract_pass": 17,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 1,
+          "reference_exact": 0,
+          "reference_eligible": 0,
+          "reason_joint_correct": 9,
+          "reason_cases": 9,
+          "complete_pairs": 0,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 28.592707824427634
+        }
+      },
+      "diagnostic_counts": {
+        "output_contract_invalid": 64,
+        "reference_mismatch": 9,
+        "reason_mismatch": 14,
+        "action_mismatch": 4,
+        "wrong_acceptance": 1,
+        "unnecessary_intervention": 2,
+        "field_mismatch:arguments": 2
+      },
+      "diagnostic_views": {
+        "markdown_fence_diagnostic_only": 64,
+        "official_json": 20
+      },
+      "wrong_acceptance_cases": [
+        "PHY-VBX1-P04-A"
+      ],
+      "action_mismatch_cases": [
+        "PHY-VBX1-P04-A",
+        "PHY-EE02-P01-A",
+        "PHY-EE03-P01-B",
+        "DEV-CR-002"
+      ],
+      "reason_confusions": {
+        "MODAL_INPUTS_MISSING -> PARAMETER_IDENTIFICATION_INSUFFICIENT": 1,
+        "FORCE_LIMIT_BASIS_UNRESOLVED -> CONFIGURATION_SCOPE_UNRESOLVED": 2,
+        "POWER_DISSIPATION_UNRESOLVED -> MONITORING_COVERAGE_INSUFFICIENT": 1,
+        "METHOD_INTERPRETATION_ERROR -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "MODE_SELECTION_MISMATCH -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> METHOD_INTERPRETATION_ERROR": 1,
+        "TEST_ARTIFACT_UNMODELED -> METHOD_INTERPRETATION_ERROR": 1,
+        "PARAMETER_IDENTIFICATION_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1,
+        "METHOD_INTERPRETATION_ERROR -> None": 1,
+        "MODE_SELECTION_MISMATCH -> METHOD_INTERPRETATION_ERROR": 1,
+        "POWER_DISSIPATION_UNRESOLVED -> PARAMETER_IDENTIFICATION_INSUFFICIENT": 1,
+        "EVIDENCE_INTERPRETATION_ERROR -> MONITORING_COVERAGE_INSUFFICIENT": 1
+      }
+    },
+    "gemma4_26b_a4b": {
+      "verified_cases": 84,
+      "revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+      "totals": {
+        "cases": 84,
+        "action_correct": 19,
+        "strict_contract_pass": 18,
+        "reference_exact": 0,
+        "reference_eligible": 64,
+        "wrongly_accepts_refuted_proposal": 0,
+        "schema_and_refs_valid": 20,
+        "reason_joint_correct": 9,
+        "reason_cases": 41,
+        "generation_seconds": 202.28078243508935,
+        "peak_allocated_GiB": 48.703267097473145,
+        "load_seconds": 169.44554551318288,
+        "seconds_per_case": 2.4081045527986826,
+        "generated_tokens": 5984
+      },
+      "suites": {
+        "ns10": {
+          "cases": 24,
+          "action_correct": 0,
+          "schema_and_refs_valid": 0,
+          "strict_contract_pass": 0,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 24,
+          "reason_joint_correct": 0,
+          "reason_cases": 12,
+          "complete_pairs": 12,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 61.87903753248975
+        },
+        "before40": {
+          "cases": 40,
+          "action_correct": 0,
+          "schema_and_refs_valid": 0,
+          "strict_contract_pass": 0,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 0,
+          "reference_eligible": 40,
+          "reason_joint_correct": 0,
+          "reason_cases": 20,
+          "complete_pairs": 20,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 104.59477535635233
+        },
+        "contract20": {
+          "cases": 20,
+          "action_correct": 19,
+          "schema_and_refs_valid": 20,
+          "strict_contract_pass": 18,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 1,
+          "reference_exact": 0,
+          "reference_eligible": 0,
+          "reason_joint_correct": 9,
+          "reason_cases": 9,
+          "complete_pairs": 0,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 35.806969546247274
+        }
+      },
+      "diagnostic_counts": {
+        "output_contract_invalid": 64,
+        "reason_mismatch": 17,
+        "reference_mismatch": 15,
+        "action_mismatch": 11,
+        "field_mismatch:requested_evidence": 4,
+        "field_mismatch:valid_scope": 1,
+        "unnecessary_intervention": 1
+      },
+      "diagnostic_views": {
+        "markdown_fence_diagnostic_only": 64,
+        "official_json": 20
+      },
+      "wrong_acceptance_cases": [],
+      "action_mismatch_cases": [
+        "NS10-E4-A",
+        "NS10-M2-A",
+        "NS10-T3-B",
+        "NS10-M1-B",
+        "PHY-VBX1-P02-A",
+        "PHY-TH01-P08-A",
+        "PHY-TH01-P03-A",
+        "PHY-TH01-P04-A",
+        "PHY-EE02-P01-A",
+        "PHY-EE03-P01-A",
+        "DEV-CR-007"
+      ],
+      "reason_confusions": {
+        "MONITORING_COVERAGE_INSUFFICIENT -> EVIDENCE_INTERPRETATION_ERROR": 2,
+        "CONFIGURATION_SCOPE_UNRESOLVED -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "MODAL_INPUTS_MISSING -> METHOD_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> PARAMETER_IDENTIFICATION_INSUFFICIENT": 1,
+        "METHOD_INTERPRETATION_ERROR -> EVIDENCE_INTERPRETATION_ERROR": 3,
+        "POWER_DISSIPATION_UNRESOLVED -> PARAMETER_IDENTIFICATION_INSUFFICIENT": 1,
+        "MODE_SELECTION_MISMATCH -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> EVIDENCE_INTERPRETATION_ERROR": 2,
+        "STABILITY_UNRESOLVED -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "TEST_ARTIFACT_UNMODELED -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "PARAMETER_IDENTIFICATION_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1,
+        "MODEL_SCOPE_EXCEEDED -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "MODE_SELECTION_MISMATCH -> METHOD_INTERPRETATION_ERROR": 1
+      }
+    },
+    "qwen38_27b": {
+      "verified_cases": 84,
+      "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+      "totals": {
+        "cases": 84,
+        "action_correct": 82,
+        "strict_contract_pass": 69,
+        "reference_exact": 60,
+        "reference_eligible": 64,
+        "wrongly_accepts_refuted_proposal": 1,
+        "schema_and_refs_valid": 84,
+        "reason_joint_correct": 30,
+        "reason_cases": 41,
+        "generation_seconds": 286.3234589439817,
+        "peak_allocated_GiB": 51.61284637451172,
+        "load_seconds": 113.92529365466908,
+        "seconds_per_case": 3.4086126064759723,
+        "generated_tokens": 5575
+      },
+      "suites": {
+        "ns10": {
+          "cases": 24,
+          "action_correct": 24,
+          "schema_and_refs_valid": 24,
+          "strict_contract_pass": 16,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 0,
+          "reference_exact": 20,
+          "reference_eligible": 24,
+          "reason_joint_correct": 7,
+          "reason_cases": 12,
+          "complete_pairs": 12,
+          "both_pair_states_pass": 6,
+          "generation_seconds": 90.54436056874692
+        },
+        "before40": {
+          "cases": 40,
+          "action_correct": 39,
+          "schema_and_refs_valid": 40,
+          "strict_contract_pass": 34,
+          "wrongly_accepts_refuted_proposal": 1,
+          "unnecessary_intervention": 0,
+          "reference_exact": 40,
+          "reference_eligible": 40,
+          "reason_joint_correct": 14,
+          "reason_cases": 20,
+          "complete_pairs": 20,
+          "both_pair_states_pass": 14,
+          "generation_seconds": 149.29293637210503
+        },
+        "contract20": {
+          "cases": 20,
+          "action_correct": 19,
+          "schema_and_refs_valid": 20,
+          "strict_contract_pass": 19,
+          "wrongly_accepts_refuted_proposal": 0,
+          "unnecessary_intervention": 1,
+          "reference_exact": 0,
+          "reference_eligible": 0,
+          "reason_joint_correct": 9,
+          "reason_cases": 9,
+          "complete_pairs": 0,
+          "both_pair_states_pass": 0,
+          "generation_seconds": 46.48616200312972
+        }
+      },
+      "diagnostic_counts": {
+        "reason_mismatch": 11,
+        "reference_mismatch": 4,
+        "action_mismatch": 2,
+        "wrong_acceptance": 1,
+        "unnecessary_intervention": 1
+      },
+      "diagnostic_views": {
+        "official_json": 84
+      },
+      "wrong_acceptance_cases": [
+        "PHY-VBX1-P04-A"
+      ],
+      "action_mismatch_cases": [
+        "PHY-VBX1-P04-A",
+        "DEV-AN-005"
+      ],
+      "reason_confusions": {
+        "MONITORING_COVERAGE_INSUFFICIENT -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "CONFIGURATION_SCOPE_UNRESOLVED -> EXPOSURE_METADATA_UNRESOLVED": 1,
+        "POWER_DISSIPATION_UNRESOLVED -> MONITORING_COVERAGE_INSUFFICIENT": 1,
+        "METHOD_INTERPRETATION_ERROR -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "MODE_SELECTION_MISMATCH -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> EVIDENCE_INTERPRETATION_ERROR": 1,
+        "BOUNDARY_CONDITION_UNRESOLVED -> METHOD_INTERPRETATION_ERROR": 1,
+        "TEST_ARTIFACT_UNMODELED -> METHOD_INTERPRETATION_ERROR": 1,
+        "PARAMETER_IDENTIFICATION_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1,
+        "METHOD_INTERPRETATION_ERROR -> None": 1,
+        "MONITORING_COVERAGE_INSUFFICIENT -> METHOD_INTERPRETATION_ERROR": 1
+      }
+    }
+  },
+  "historical": {
+    "qwen2b_historical": {
+      "ns10": {
+        "cases": 24,
+        "action_correct": 24,
+        "schema_and_refs_valid": 24,
+        "strict_contract_pass": 19,
+        "wrongly_accepts_refuted_proposal": 0,
+        "unnecessary_intervention": 0,
+        "reference_exact": 24,
+        "reference_eligible": 24,
+        "reason_joint_correct": 7,
+        "reason_cases": 12,
+        "complete_pairs": 12,
+        "both_pair_states_pass": 7,
+        "generation_seconds": 0
+      },
+      "before40": {
+        "cases": 40,
+        "action_correct": 38,
+        "schema_and_refs_valid": 40,
+        "strict_contract_pass": 36,
+        "wrongly_accepts_refuted_proposal": 2,
+        "unnecessary_intervention": 0,
+        "reference_exact": 40,
+        "reference_eligible": 40,
+        "reason_joint_correct": 16,
+        "reason_cases": 20,
+        "complete_pairs": 20,
+        "both_pair_states_pass": 16,
+        "generation_seconds": 0
+      },
+      "contract20": {
+        "cases": 20,
+        "action_correct": 20,
+        "schema_and_refs_valid": 20,
+        "strict_contract_pass": 20,
+        "wrongly_accepts_refuted_proposal": 0,
+        "unnecessary_intervention": 0,
+        "reference_exact": 0,
+        "reference_eligible": 0,
+        "reason_joint_correct": 9,
+        "reason_cases": 9,
+        "complete_pairs": 0,
+        "both_pair_states_pass": 0,
+        "generation_seconds": 0
+      }
+    },
+    "gemma4_e4b_before": {
+      "ns10": {
+        "cases": 24,
+        "action_correct": 22,
+        "schema_and_refs_valid": 24,
+        "strict_contract_pass": 11,
+        "wrongly_accepts_refuted_proposal": 0,
+        "unnecessary_intervention": 0,
+        "reference_exact": 13,
+        "reference_eligible": 24,
+        "reason_joint_correct": 7,
+        "reason_cases": 12,
+        "complete_pairs": 12,
+        "both_pair_states_pass": 3,
+        "generation_seconds": 59.48887013800231
+      },
+      "before40": {
+        "cases": 40,
+        "action_correct": 33,
+        "schema_and_refs_valid": 37,
+        "strict_contract_pass": 15,
+        "wrongly_accepts_refuted_proposal": 2,
+        "unnecessary_intervention": 4,
+        "reference_exact": 27,
+        "reference_eligible": 40,
+        "reason_joint_correct": 6,
+        "reason_cases": 20,
+        "complete_pairs": 20,
+        "both_pair_states_pass": 2,
+        "generation_seconds": 100.56106921900209
+      },
+      "contract20": {
+        "cases": 20,
+        "action_correct": 19,
+        "schema_and_refs_valid": 19,
+        "strict_contract_pass": 16,
+        "wrongly_accepts_refuted_proposal": 0,
+        "unnecessary_intervention": 0,
+        "reference_exact": 0,
+        "reference_eligible": 0,
+        "reason_joint_correct": 8,
+        "reason_cases": 9,
+        "complete_pairs": 0,
+        "both_pair_states_pass": 0,
+        "generation_seconds": 32.241204096999354
+      }
+    },
+    "gemma4_e4b_after": {
+      "ns10": {
+        "cases": 24,
+        "action_correct": 24,
+        "schema_and_refs_valid": 24,
+        "strict_contract_pass": 18,
+        "wrongly_accepts_refuted_proposal": 0,
+        "unnecessary_intervention": 0,
+        "reference_exact": 24,
+        "reference_eligible": 24,
+        "reason_joint_correct": 6,
+        "reason_cases": 12,
+        "complete_pairs": 12,
+        "both_pair_states_pass": 6,
+        "generation_seconds": 93.11147787000482
+      },
+      "before40": {
+        "cases": 40,
+        "action_correct": 39,
+        "schema_and_refs_valid": 40,
+        "strict_contract_pass": 35,
+        "wrongly_accepts_refuted_proposal": 1,
+        "unnecessary_intervention": 0,
+        "reference_exact": 40,
+        "reference_eligible": 40,
+        "reason_joint_correct": 15,
+        "reason_cases": 20,
+        "complete_pairs": 20,
+        "both_pair_states_pass": 15,
+        "generation_seconds": 149.72848700300528
+      },
+      "contract20": {
+        "cases": 20,
+        "action_correct": 20,
+        "schema_and_refs_valid": 20,
+        "strict_contract_pass": 20,
+        "wrongly_accepts_refuted_proposal": 0,
+        "unnecessary_intervention": 0,
+        "reference_exact": 0,
+        "reference_eligible": 0,
+        "reason_joint_correct": 9,
+        "reason_cases": 9,
+        "complete_pairs": 0,
+        "both_pair_states_pass": 0,
+        "generation_seconds": 28.134649015999457
+      }
+    }
+  }
+}

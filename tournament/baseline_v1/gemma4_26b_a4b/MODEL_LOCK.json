@@ -1,0 +1,14 @@
+{
+  "slug": "gemma4_26b_a4b",
+  "model": "google/gemma-4-26B-A4B-it",
+  "revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+  "family": "hf_native",
+  "config_model_type": "gemma4",
+  "max_prompt_tokens": 1251,
+  "max_new_tokens": 384,
+  "dtype": "bfloat16",
+  "quantization": null,
+  "decoding": "greedy_do_sample_false",
+  "training_executed": false,
+  "at_utc": "2026-09-23T14:17:25.103746+00:00"
+}

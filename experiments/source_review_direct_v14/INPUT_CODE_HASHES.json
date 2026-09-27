@@ -1,0 +1,27 @@
+{
+  "algorithm": "SHA256",
+  "paths_relative_to": "/workspace/dorilab",
+  "files": {
+    "experiments/source_review_direct_v14/EXPERIMENT_LOCK.json": "a4553518628731c739a56c5dd90d894960b56ca4b69ca50ca00171aa1c8c663f",
+    "experiments/source_review_direct_v14/inputs/dev8_direct_v14.jsonl": "7b50842f8abed5e621c69b4c03a924d8a6228c6f624200d2420b8cc9c8304232",
+    "experiments/source_review_direct_v14/prompts/direct_v14.txt": "c2f9b03b6990eb6ea7c6403a11e7899ba251e95f4d57907384685f94e2b16dae",
+    "experiments/source_review_direct_v14/scripts/batch_guard.py": "8b5ad3dd7c463bf7c13cb51b6c47002c795a4be2354ca6956a35b4d45647cc06",
+    "experiments/source_review_direct_v14/scripts/compare_results.py": "c9611a674dce23954b3b228de83d0dc21764ba505d37da1a089e5850d9c7a889",
+    "experiments/source_review_direct_v14/scripts/contract.py": "f93cb5e0cf6ad9a923705ecd9805022ea0d932c469562d4b788d5e9ec7f294fe",
+    "experiments/source_review_direct_v14/scripts/prepare_inputs.py": "b51ea0aa941ab80e8ad6367ca5971de496dd14ea0e24b21210d1194b1de55170",
+    "experiments/source_review_direct_v14/scripts/run_direct_v14.py": "a8ff666d31670e0cec6dd9ac95ede097e5ea05e49b92693ebaf6b076f0ba6ee8",
+    "experiments/source_review_direct_v14/tests/test_batch_guard.py": "6406763b7edc5877819ade13bc4734fa90f05332a10355544ac81b324f13fb88",
+    "experiments/source_review_direct_v14/tests/test_comparison.py": "f02048c7faa6d9fa22f9865cb5d7754d0662a8ecdd14a512c952bbc58da3e961",
+    "experiments/source_review_direct_v14/tests/test_contract_v14.py": "3a70470ec579e53fd55bbd84266b48dc408f4284e2ab40fc1234b9b738c50615",
+    "research/DoriLab_SourceReview_v13/packtool.py": "e1a81cb761ebbecae51e026b4f99122a0cac748aa548ca113ee6e318b6445fca",
+    "research/DoriLab_SourceReview_v13/schemas/action_v13.json": "4ba3493090ea58ab06d29daf83eaa51dde8baf5e2e2f45e4665db9cd7169a09d",
+    "research/DoriLab_SourceReview_v13/schemas/reason_definitions_v13.json": "2382a22843ef2934fb4efe5cc88550956236a515c3731cf9603afe4dd1ab1b18",
+    "research/DoriLab_SourceReview_v13/prompts/direct_v13.txt": "f86182b3a15ada10d8f5be8ace2491d3a8b574154b0aa3013b874e27d6ec52c9",
+    "research/DoriLab_SourceReview_v13/data/dev/inputs.jsonl": "70b8da22d271fda3ead2040e028eac7197e6b2f8872e88710b5c1b0ea3f3bb91",
+    "research/DoriLab_SourceReview_v13/data/dev/gold_candidate.jsonl": "618d866f0f3bbe53fa7a9417bd63dd3a9e574586deeafdfa9a7f9e96cedd4783",
+    "research/DoriLab_SourceReview_v13/tests/test_pack.py": "9b396a34cdf9320a15cde23cdabe5715200af9cc31ce649ad488c8d4de41f741",
+    "results/source_review_v13_qwen27/scripts/run_baseline.py": "313b9ca0660c45f7fff8a6e499b5c8105f661f1714dc7d7c427f11d66ac5d07c",
+    "results/source_review_v13_qwen27/inputs/dev8_hypso_public_v13_source_available_v1.jsonl": "d050c092f2b0857569d8975a944cc759daed2df69f61ee395009372802e7ba41",
+    "results/source_review_v13_qwen27/baseline_direct/predictions.jsonl": "c0be480c5b772ba3df09ceb9ead8b9e5f9023591d29aea2d2c9c14700c56585c"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": "VERIFIED_CPU_CANDIDATE_PREPARATION_ONLY",
+  "time_utc": "2026-09-24T06:19:23.988521+00:00",
+  "existing_files_verified_unchanged": 347,
+  "existing_v15_218_membership_preserved": true,
+  "dev_pre_output_freeze_verified": true,
+  "report_local_links_verified": 15,
+  "candidate_rows": 205,
+  "approved_training_rows": 0,
+  "source_pdfs_acquired": 2,
+  "model_scores_created": false,
+  "inference_or_training_executed": false,
+  "pod_operations": false
+}

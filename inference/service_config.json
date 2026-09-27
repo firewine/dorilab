@@ -1,0 +1,8 @@
+{
+  "host": "127.0.0.1", "port": 8080, "workers": 1,
+  "generation_concurrency": 1, "queue_capacity": 0,
+  "max_total_tokens": 4096, "max_new_tokens": 384,
+  "max_body_bytes": 65536, "max_retained_jobs": 256,
+  "result_ttl_seconds": 86400,
+  "token_file": "/root/.config/dorilab/inference.token"
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "qwen35_9b",
+  "model": "Qwen/Qwen3.5-9B",
+  "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "family": "hf_native",
+  "config_model_type": "qwen3_5",
+  "max_prompt_tokens": 1210,
+  "max_new_tokens": 384,
+  "dtype": "bfloat16",
+  "quantization": null,
+  "decoding": "greedy_do_sample_false",
+  "training_executed": false,
+  "at_utc": "2026-09-23T13:59:15.908735+00:00"
+}

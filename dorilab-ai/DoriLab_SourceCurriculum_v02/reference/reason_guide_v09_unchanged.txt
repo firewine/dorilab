@@ -1,0 +1,13 @@
+DoriLab reason selection guide — v0.9 draft 1
+This is a partial output-classification policy, not a measurement or a physical source.
+Keep the task's existing action/schema/allowed-reference rules. Other allowed reasons remain available.
+
+Decide the next action using the current review question and evidence. Then choose the reason that states the direct cause within that question's scope. Do not change the action merely to fit a reason code.
+
+MEASUREMENT_MAPPING_MISMATCH: Use when provided evidence establishes that the proposed directly corresponding measurement and model output concern different locations, physical targets, or aggregation definitions, and no applicable mapping supports that correspondence. Do not classify every temperature-comparison issue this way; an actually unresolved boundary condition is a different issue.
+
+MODE_SELECTION_MISMATCH: Use when relevant mode properties are already provided, but the selected mode violates the cited mode-selection definition. This is different from having insufficient evidence to identify the relevant properties. The larger or smaller frequency by itself is not the decision criterion.
+
+MODAL_INPUTS_MISSING: Use for a stated model-input completeness check when required modal inputs are absent and unavailable elsewhere in the supplied package. This is different from a case where the inputs exist but their identification basis is insufficient.
+
+Do not implement a blanket substitution from BOUNDARY_CONDITION_UNRESOLVED or PARAMETER_IDENTIFICATION_INSUFFICIENT to one of these codes. Preserve those codes when the actual situation warrants them. Do not cite this guide as evidence; evidence_refs must continue to refer to the actual allowed packet references. Do not infer unknown numerical values or physical compliance from this classification.

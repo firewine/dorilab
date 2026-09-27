@@ -1,0 +1,342 @@
+{
+  "references": {
+    "mapping": {
+      "source_id": "TH-01",
+      "printed_pages": [
+        "59"
+      ],
+      "pdf_pages_1based": [
+        68
+      ],
+      "section": "Canister Correlations",
+      "text": "Calculated television-camera temperatures represented average case temperatures, whereas internal thermocouples measured heater temperatures for which corresponding models were absent."
+    },
+    "power": {
+      "source_id": "TH-01",
+      "printed_pages": [
+        "29",
+        "62"
+      ],
+      "pdf_pages_1based": [
+        38,
+        71
+      ],
+      "section": "On-Site Thermal Support; Conclusions",
+      "text": "Individual component power estimates were weakened by shared power buses and long measurement leads. The report emphasizes knowing both dissipation rates and heat-source locations for correlation."
+    },
+    "modal": {
+      "source_id": "VB-X1",
+      "printed_pages": [
+        "362"
+      ],
+      "pdf_pages_1based": [
+        4
+      ],
+      "section": "Section 4.1.1 Mathematical model",
+      "text": "The stated CSMA load description includes total mass, fixed-interface natural frequencies, modal effective and residual masses, damping, and translational apparent-mass information."
+    },
+    "exposure": {
+      "source_id": "EE-03",
+      "printed_pages": [],
+      "pdf_pages_1based": [
+        7
+      ],
+      "section": "8 Data Requirements",
+      "text": "The data requirements retain SET/SEL counts and monitored signals together with facility and electrical information, including flux, fluence, LET, ion, geometry and electrical setup."
+    },
+    "observation": {
+      "source_id": "EE-02",
+      "printed_pages": [],
+      "pdf_pages_1based": [
+        14
+      ],
+      "section": "1.6 Pass/Fail criteria",
+      "text": "The report evaluates channel data during interference injection against baseline data before and after testing, and examines response timing in relation to the applied sweep."
+    },
+    "force": {
+      "source_id": "VB-X1",
+      "section": "Introduction following Eq. (1)",
+      "printed_pages": [
+        "360"
+      ],
+      "pdf_pages_1based": [
+        2
+      ],
+      "text": "The coefficient C^2 in the semi-empirical force-limit relation depends on configuration and needs an adequate justification for its selection."
+    },
+    "method": {
+      "source_id": "VB-X1",
+      "section": "Section 2, Equation (2)",
+      "printed_pages": [
+        "360"
+      ],
+      "pdf_pages_1based": [
+        2
+      ],
+      "text": "Equation (2) defines C^2 as the maximum interface-force PSD divided by the total load mass squared and the maximum interface-acceleration PSD. These two maxima need not occur at the same frequency."
+    }
+  },
+  "topics": [
+    {
+      "topic_id": "C1",
+      "fact_key": "exposure",
+      "reason": "CONFIGURATION_SCOPE_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "AS_TESTED_OPERATING_CONFIGURATION"
+      ],
+      "question": "Are the bias and operating-mode settings traceable to the identified irradiation run? Review operating-configuration records only; exposure and event coverage are already available.",
+      "proposal": "Complete the as-tested operating-configuration record check for this run.",
+      "negative": "The exposure file and event time series are complete and linked to this run. The electrical setup form has empty bias and operating-mode entries. The specimen label and run identifier are present; neither missing setting can be recovered from another record.",
+      "positive": "The exposure file and event time series are complete and linked to this run. The electrical setup form records the applied bias and operating mode, and its header matches the specimen and run identifiers.",
+      "review_ko": "노출·관측 자료는 유지하고 시험 당시 전기적 구성 기록만 바꾼다. 없는 항목은 노출량이나 파형이 아닌 bias/운용모드이므로 구성 추적성 분류를 사용한다. 범위키 존재와 실제 설정 기록의 완전성은 다르다."
+    },
+    {
+      "topic_id": "C2",
+      "fact_key": "exposure",
+      "reason": "CONFIGURATION_SCOPE_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "RUN_TO_SETUP_REVISION_LINK"
+      ],
+      "question": "Can the electrical setup revision actually used in this run be identified? The check is traceability of the run to the setup, not a radiation-effects verdict.",
+      "proposal": "Resolve the run-to-electrical-setup linkage before interpreting the result.",
+      "negative": "Two signed electrical setup sheets list different bias and mode settings. The run log identifies the specimen and contains complete exposure and event records, but contains no sheet identifier or revision link. Both setup sheets remain plausible; the supplied package contains no other linkage.",
+      "positive": "Two signed electrical setup sheets list different bias and mode settings. The run log identifies the specimen, contains complete exposure and event records, and explicitly names which setup-sheet revision was used during the interval.",
+      "review_ko": "기록이 둘 다 존재해도 실제 사용한 설정을 대응할 수 없으면 구성 연결 자료를 요청한다. 양쪽 설정이 모두 잘못됐다는 판단이나 관측 범위 부족으로 바꾸지 않는다."
+    },
+    {
+      "topic_id": "X1",
+      "fact_key": "exposure",
+      "reason": "EXPOSURE_METADATA_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "RUN_INTEGRATED_FLUENCE"
+      ],
+      "question": "Is the run-integrated particle fluence available? The electrical operating configuration and event-monitoring coverage are established; do not assess event susceptibility.",
+      "proposal": "Complete the exposure-data availability check for this irradiation interval.",
+      "negative": "The run package identifies the ion and geometry and includes electrical settings and continuous event monitoring. The integrated particle fluence is not recorded, and no calibrated beam history permitting its reconstruction is available.",
+      "positive": "The run package identifies the ion and geometry and includes electrical settings and continuous event monitoring. A beam-log entry supplies the integrated particle fluence and is linked to the same run interval.",
+      "review_ko": "이벤트 수·설정 기록과 입자 노출량은 별개다. 이 쌍은 fluence의 가용성만 바꾸며, 자료가 없다는 이유로 모니터링 자체가 없었다고 판단하지 않는다."
+    },
+    {
+      "topic_id": "X2",
+      "fact_key": "exposure",
+      "reason": "EXPOSURE_METADATA_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "ION_AND_INCIDENCE_GEOMETRY"
+      ],
+      "question": "Are the ion identity and incidence geometry recorded for this run? Limit the check to the exposure record.",
+      "proposal": "Complete the exposure-record checklist before combining this result with other runs.",
+      "negative": "Electrical settings, integrated fluence and event logs are linked to the run. The ion-species field and incidence-angle field are blank. No beamline geometry sheet or facility entry resolves those fields.",
+      "positive": "Electrical settings, integrated fluence and event logs are linked to the run. The exposure sheet names the ion species and incidence geometry, and the facility entry links those fields to this interval.",
+      "review_ko": "전기적 조건은 충분한 상태로 유지한다. 이온·입사 형상은 노출 메타데이터이며, 여기서는 LET 변환이나 이벤트 단면적을 계산하지 않는다."
+    },
+    {
+      "topic_id": "I1",
+      "fact_key": "method",
+      "reason": "METHOD_INTERPRETATION_ERROR",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Does the described scalar reduction implement Equation (2) in the cited method? All required spectra and mass data are supplied. Check the calculation rule, not the numerical result.",
+      "proposal": "Use this reduction as an implementation of the cited equation for C^2.",
+      "negative": "The force PSD and acceleration PSD attain their separate global maxima at different frequencies. The implementation takes the maximum force PSD but uses the acceleration PSD at that force-peak frequency in the denominator, even though it is smaller than the maximum acceleration PSD. The measured mass is squared in the denominator.",
+      "positive": "The force PSD and acceleration PSD attain their separate global maxima at different frequencies. The implementation uses the separate maximum of each spectrum and divides the force maximum by the measured mass squared times the acceleration maximum.",
+      "review_ko": "입력이 없거나 모드를 식별하지 못한 문제가 아니다. 두 스펙트럼의 독립 최댓값을 사용하는 식과 다른 연산을 수행했으므로 방법 적용 오류다. 특정 평가 문제의 RMS·힘제어 사례를 가져오지 않았다."
+    },
+    {
+      "topic_id": "I2",
+      "fact_key": "method",
+      "reason": "METHOD_INTERPRETATION_ERROR",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Does the stated mass dependence match Equation (2) of the cited reduction? Input quantities and their units are known.",
+      "proposal": "Accept the described reduction as algebraically consistent with the cited equation for C^2.",
+      "negative": "The implementation uses the separate maxima of the force and acceleration PSDs. Its denominator contains the measured total mass to the first power multiplied by the acceleration maximum. It labels that result C^2; no other mass factor or unit conversion is applied.",
+      "positive": "The implementation uses the separate maxima of the force and acceleration PSDs. Its denominator contains the measured total mass squared multiplied by the acceleration maximum. Consistent units are used throughout.",
+      "review_ko": "질량값·스펙트럼은 있고 질량의 지수만 다르다. 데이터 해석이나 선정근거 부족이 아니라 명시된 식을 구현한 방법의 일치 여부를 판단한다."
+    },
+    {
+      "topic_id": "Q1",
+      "fact_key": "mapping",
+      "reason": "MEASUREMENT_MAPPING_MISMATCH",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Does the reported temperature represent the same spatial quantity as the model output used in this comparison?",
+      "proposal": "Compare the reported temperature directly with the modeled casing-average temperature.",
+      "negative": "The reported channel is a single internal actuator-heater junction measurement. The model output averages the outer casing surface. No transfer model maps the heater junction to the casing average; boundary inputs and timing are otherwise documented.",
+      "positive": "The reported channel is a weighted aggregate of outer-casing surface measurements. The model output uses the same locations and weights for its casing average. Boundary inputs and timing are documented.",
+      "review_ko": "경계 입력은 명시적으로 주어져 있으며 직접적인 차이는 측정 대상과 공간 집계다. 단위가 같은 온도값도 대응관계가 다르면 직접 비교를 반박한다."
+    },
+    {
+      "topic_id": "Q2",
+      "fact_key": "mapping",
+      "reason": "MEASUREMENT_MAPPING_MISMATCH",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Is the measurement-to-model mapping consistent for the stated surface-temperature statistic? Check mapping only.",
+      "proposal": "Use the reported surface statistic as the directly corresponding measurement for the model statistic.",
+      "negative": "The model statistic is an area-weighted average over six casing regions. The reported statistic is the temperature of only the hottest sampled region. Both are time-aligned and calibrated, but there is no mapping from that maximum-region statistic to the surface average.",
+      "positive": "The model statistic is an area-weighted average over six casing regions. The reported statistic applies the same six region weights to the corresponding calibrated, time-aligned surface measurements.",
+      "review_ko": "최댓값과 평균의 공간 집계 대상이 다른 상황이다. RMS 연산 오류 사례와 다르게 여기서는 각 통계량 자체가 잘못 계산됐다고 하지 않고 대응관계만 검토한다."
+    },
+    {
+      "topic_id": "L1",
+      "fact_key": "modal",
+      "reason": "MODAL_INPUTS_MISSING",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "RESIDUAL_MASS_TERMS"
+      ],
+      "question": "Is the listed load-model input package complete for residual-mass terms in the cited CSMA formulation? Damping and other listed inputs are available.",
+      "proposal": "Complete this load-input availability check before running the coupled model.",
+      "negative": "Total mass, fixed-interface frequencies, modal effective masses, damping and translational apparent-mass data are supplied. The residual-mass terms are absent. The package states that the retained-mode data do not permit these missing terms to be recovered.",
+      "positive": "Total mass, fixed-interface frequencies, modal effective masses, damping and translational apparent-mass data are supplied. Direction-specific residual-mass terms are also tabulated and mapped to the load configuration.",
+      "review_ko": "모달 입력 항목 중 잔여질량만 누락시킨다. 추정값을 임의로 채우지 않고 그 항목을 요청하며, 제공됐을 때는 입력 존재 검사만 종료한다."
+    },
+    {
+      "topic_id": "L2",
+      "fact_key": "modal",
+      "reason": "MODAL_INPUTS_MISSING",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "MODAL_DAMPING_ASSIGNMENT"
+      ],
+      "question": "Are the required modal damping inputs available for the cited load model? Check availability, not the correctness of the damping magnitudes.",
+      "proposal": "Complete the modal-input checklist for this calculation package.",
+      "negative": "The package contains total mass, fixed-interface frequencies, effective and residual masses, and apparent-mass information. The damping-assignment table is absent and no damping assumptions are recorded elsewhere.",
+      "positive": "The package contains total mass, fixed-interface frequencies, effective and residual masses, and apparent-mass information. It also assigns a measured or justified assumed damping ratio to each modeled mode.",
+      "review_ko": "감쇠 가정 자체가 없는 것과 감쇠값의 정확도를 검증하지 못한 것은 다르다. 여기서는 전자에만 자료 요청을 붙인다."
+    },
+    {
+      "topic_id": "F1",
+      "fact_key": "force",
+      "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "CURRENT_INTERFACE_C2_JUSTIFICATION"
+      ],
+      "question": "Is the choice of C^2 justified for the current load/support configuration? Input spectra, mass, modal data and as-tested identity are already available.",
+      "proposal": "Complete the coefficient-selection-basis check before accepting the proposed force-limit envelope.",
+      "negative": "The selected coefficient is copied from a differently mounted load. The current mounting and load identities are known and documented, but the package includes no derivation or equivalence justification linking that choice to the current interface dynamics.",
+      "positive": "The selected coefficient is accompanied by a documented derivation tied to the current load and support dynamics. The record explicitly identifies the current mounting and load, with stated assumptions and a sensitivity check.",
+      "review_ko": "형상이 무엇인지 몰라서가 아니라, 알려진 현재 형상에 C²를 적용할 선정근거가 없다. 다른 장비 값을 복사했다는 이유만으로 무조건 잘못된 수치라고 확정하지 않고 질문 범위의 근거를 요청한다."
+    },
+    {
+      "topic_id": "F2",
+      "fact_key": "force",
+      "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "C2_SELECTION_DECISION_RECORD"
+      ],
+      "question": "Is the engineering basis for selecting C^2 traceable in this record package? Other calculation inputs are complete.",
+      "proposal": "Complete the rationale check for the chosen semi-empirical coefficient.",
+      "negative": "A coefficient value and the current test-article identifiers are filled in. The rationale field contains only the words standard choice. There is no referenced experience dataset, analysis or written justification for this configuration.",
+      "positive": "A coefficient value and the current test-article identifiers are filled in. The rationale links to an experience dataset or analysis with an explicit applicability argument for this configuration and records the selection decision.",
+      "review_ko": "C² 숫자 존재와 선정 근거 존재를 구분한다. 단순 표준값 문구는 현재 형상에의 적용 근거가 아니며, 존재하는 근거의 정량 적정성을 이 문제에서 새로 승인하지 않는다."
+    },
+    {
+      "topic_id": "P1",
+      "fact_key": "power",
+      "reason": "POWER_DISSIPATION_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "MODE_SPECIFIC_COMPONENT_DISSIPATIONS"
+      ],
+      "question": "Are the component heat-source powers available for the stated operating mode? Heat-source locations and configuration identity are already mapped.",
+      "proposal": "Complete the component heat-input availability check for this operating mode.",
+      "negative": "All heat-source locations and component identifiers are mapped. Only the assembly input-current record is supplied. There are no component-level dissipated powers or a power-allocation model for this mode in the package.",
+      "positive": "All heat-source locations and component identifiers are mapped. The package also tabulates the component-level dissipated powers for this mode, including the stated loss allocation and a reconciliation to the assembly record.",
+      "review_ko": "센서 coverage나 노출 메타데이터가 아닌 열원 크기의 입력 누락이다. 전체 입력을 임의 비율로 분할하는 가정은 넣지 않는다."
+    },
+    {
+      "topic_id": "P2",
+      "fact_key": "power",
+      "reason": "POWER_DISSIPATION_UNRESOLVED",
+      "action": "REQUEST_EVIDENCE",
+      "request_ids": [
+        "HEAT_SOURCE_TO_MODEL_LOCATION_MAP"
+      ],
+      "question": "Can each recorded dissipation be assigned to its physical heat-source location in the thermal model? Review the heat-input mapping record only.",
+      "proposal": "Complete the thermal heat-source input checklist before correlation.",
+      "negative": "Component dissipated powers and operating modes are tabulated and linked to this configuration. The identifiers on the power sheet cannot be linked to the physical components or thermal nodes. No allocation or location map is supplied.",
+      "positive": "Component dissipated powers and operating modes are tabulated and linked to this configuration. An allocation table links every sheet identifier to its physical component and corresponding thermal-model node.",
+      "review_ko": "측정 온도와 계산 온도의 대응 문제가 아니라 발열 입력의 공간 배치 누락이다. 위치표가 있으면 준비상태만 확인하며 열모델 상관 결과를 승인하지 않는다."
+    },
+    {
+      "topic_id": "O1",
+      "fact_key": "observation",
+      "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Does this package actually document observation of the channel throughout the applied disturbance? Check observation coverage, not a numerical acceptance threshold.",
+      "proposal": "Describe this package as containing channel monitoring throughout the disturbance interval.",
+      "negative": "The clock and stimulus log are aligned. Channel readings were taken immediately before and after the disturbance, but the acquisition system was disabled for the entire disturbance interval. No measurement of that interval exists.",
+      "positive": "The clock and stimulus log are aligned. Channel acquisition spans the complete disturbance interval as well as the before-and-after reference intervals. The acquisition log shows no gap in coverage.",
+      "review_ko": "관측했지만 해석을 잘못한 경우가 아니라, 문제의 구간을 관측하지 않았다. 전체 구간 관측을 주장하는 proposal에 대한 검토이므로 자료 요청 action으로 기계적으로 바꾸지 않는다."
+    },
+    {
+      "topic_id": "O2",
+      "fact_key": "observation",
+      "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Does the acquisition record substantiate continuous coverage of the channel during the specified stimulus sequence?",
+      "proposal": "Use this package as evidence of complete channel observation during the specified stimulus sequence.",
+      "negative": "The intended channels are identified and the available samples are valid. A recorder-status log identifies an acquisition gap covering one complete pulse group. No backup channel data cover that missing interval.",
+      "positive": "The intended channels are identified and the samples are valid. The recorder-status log and timestamps cover every pulse group without gaps; the continuous stream is linked to the stimulus sequence.",
+      "review_ko": "다른 시간의 데이터가 정상이더라도 비관측 구간의 상태는 확인되지 않는다. 시험의 합격·불합격이 아니라 전체 구간 관측을 입증하는지에 한정한다."
+    },
+    {
+      "topic_id": "D1",
+      "fact_key": "observation",
+      "reason": "EVIDENCE_INTERPRETATION_ERROR",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Does the report sentence agree with the time-aligned measurements? The acquisition coverage is complete.",
+      "proposal": "Describe the monitored channel as having remained at its pre-stimulus baseline throughout the stimulus.",
+      "negative": "The continuous and time-aligned channel record shows a repeatable offset during each stimulus interval. It returns to baseline after the intervals. No acquisition gap or measurement-mapping ambiguity is reported.",
+      "positive": "The continuous and time-aligned channel record stays at its pre-stimulus baseline during each stimulus interval and afterward. No acquisition gap or measurement-mapping ambiguity is reported.",
+      "review_ko": "관측 누락이 아니라 실제 시간기록과 보고 문장의 모순이다. 종료 후 정상 복귀는 자극 중 변화가 없었다는 결론의 근거가 아니다. 정량 EMC 합격기준을 새로 지정하지 않는다."
+    },
+    {
+      "topic_id": "D2",
+      "fact_key": "observation",
+      "reason": "EVIDENCE_INTERPRETATION_ERROR",
+      "action": "CHALLENGE",
+      "request_ids": [],
+      "question": "Does the proposed description match the archived continuous channel stream for this interval?",
+      "proposal": "State that the archive contains no repeatable channel disturbance time-aligned with the applied excitation.",
+      "negative": "The archive includes complete synchronized excitation and channel traces. Repeated excitation onsets coincide with repeated channel steps, and the observations are explicitly retained in the run report.",
+      "positive": "The archive includes complete synchronized excitation and channel traces. It contains no repeatable channel step or excursion aligned with excitation in this interval.",
+      "review_ko": "측정은 이루어졌고 기록 내용이 제안을 지지·반박하는지만 바꾼다. 방법 구현 오류나 관측 범위 누락과 대비된다."
+    }
+  ],
+  "sources": {
+    "TH-01": {
+      "title": "NASA-TN-D-6646 (existing TH-01)",
+      "url": "https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf",
+      "basis": "Previously supplied and AI-reviewed packet excerpts; no new PDF inspection in v12."
+    },
+    "VB-X1": {
+      "title": "Wijker et al. Force limited random vibration testing (2015)",
+      "url": "https://link.springer.com/article/10.1007/s12567-015-0086-0",
+      "basis": "Supplied modal-input excerpt; Eq. (2), configuration rationale and load-input prose rechecked in the publisher HTML on 2026-09-20. No chart/table data used."
+    },
+    "EE-02": {
+      "title": "Existing AMSU EMI/EMC report",
+      "url": "https://ntrs.nasa.gov/api/citations/20000021554/downloads/20000021554.pdf",
+      "basis": "Previously supplied and AI-reviewed interval-comparison excerpt. No new PDF inspection in v12."
+    },
+    "EE-03": {
+      "title": "Existing OPA855 SEE report",
+      "url": "https://ntrs.nasa.gov/api/citations/20230009783/downloads/OPA855_OpAmp_LBNL_20221111_SEE-TestReport_v3.pdf",
+      "basis": "Previously supplied and AI-reviewed data-requirements excerpt. No new PDF inspection in v12."
+    }
+  },
+  "author_type": "AI",
+  "human_review_performed": false,
+  "real_measurements": false
+}

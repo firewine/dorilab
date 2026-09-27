@@ -1,0 +1,38 @@
+{
+  "version": "0.1",
+  "queries": {
+    "MECHANICS": [
+      "spacecraft force limited random vibration test correlation",
+      "spacecraft modal survey fixture model correlation",
+      "spacecraft deployment mechanism ground test gravity offload"
+    ],
+    "THERMAL": [
+      "spacecraft thermal balance model correlation sensor location",
+      "thermal vacuum temperature stabilization parasitic heat",
+      "spacecraft heat pipe loop start up thermal vacuum test"
+    ],
+    "EEE": [
+      "spacecraft power bus source load impedance stability test",
+      "spacecraft electromagnetic compatibility susceptibility functional monitoring",
+      "space electronics single event effects transient measurement test"
+    ],
+    "MATERIALS": [
+      "spacecraft materials outgassing contamination test",
+      "atomic oxygen coating erosion spacecraft testing",
+      "lunar dust thermal control coating test"
+    ],
+    "FLUID_PRESSURE": [
+      "cryogenic seal leakage thermal cycle vibration testing",
+      "spaceflight pressure vessel proof cycle test",
+      "microgravity capillary flow experiment validation"
+    ],
+    "SOFTWARE_HIL": [
+      "spacecraft hardware in the loop fault injection test",
+      "satellite flight software simulation test oracle timing",
+      "spacecraft fault detection isolation recovery validation"
+    ]
+  },
+  "default_rows_per_query": 10,
+  "rights_auto_approval": false,
+  "program_assignment": "human_reviewed_before_split"
+}

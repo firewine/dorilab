@@ -1,0 +1,388 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DoriLab PhysicsSeed32 검토</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:1120px;margin:auto;padding:32px;background:#f7f9fb;color:#172432}h1,h2,h3{line-height:1.25}header{border-bottom:3px solid #183d55;margin-bottom:24px}article{margin:28px 0;padding:24px;background:white;border:1px solid #dbe3e8;border-radius:8px}.variants{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}.variant{padding:18px;border:1px solid #dbe3e8}pre{white-space:pre-wrap;word-break:break-word;font-size:13px;background:#f3f6f8;padding:12px}.meta{color:#486070;font-size:14px}a{color:#125787}@media print{body{background:white;padding:0}article{break-inside:avoid}.variants{display:block}}</style><header><h1>DoriLab PhysicsSeed32</h1><p>출처 2편 · 근거 16개 · 대조쌍 16개 / 사례 32개</p><p>가상 사례 · 인간 검토 대기 · PDF 본문 텍스트 확인 / 페이지 이미지 미확인</p></header>
+<article><h2>TH01-P01 | 시험용 모사체와 비행형상 대응</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 2 / PDF [11]쪽 · Introduction</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> ATM TSU는 열모사 구성품과 비행형상 요소를 함께 사용했고, 빠진 하드웨어의 열적 영향은 환경모사에 반영했다.</p>
+<p class="meta">한 필드 변경: case_packet.evidence.0.text</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P01-A</h3><p><strong>관측</strong><br>A full-size thermal article replaces telescope electronics with heater simulators. The rack and insulation match the intended configuration. Several external appendages are absent. The package contains photographs but no record mapping omitted hardware to the imposed thermal environment.</p><p><strong>제안</strong><br>Use the run to correlate the thermal model of this test article, including represented boundary effects of omitted hardware.</p><pre>{
+  &quot;action&quot;: &quot;REQUEST_EVIDENCE&quot;,
+  &quot;reason&quot;: &quot;CONFIGURATION_SCOPE_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-001&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-01&quot;,
+    &quot;OBS-1&quot;
+  ],
+  &quot;requested_evidence&quot;: [
+    &quot;AS_TESTED_CONFIGURATION_MAPPING&quot;
+  ]
+}</pre><p>생략 하드웨어가 있다는 사실 자체가 실패는 아니다. 그 열적 영향이 시험 환경과 모델에 어떻게 대응되는지 자료를 요청한다.</p></section>
+<section class="variant"><h3>PHY-TH01-P01-B</h3><p><strong>관측</strong><br>A full-size thermal article replaces telescope electronics with heater simulators. The rack and insulation match the intended configuration. Several external appendages are absent. The package includes an as-tested mapping of heater locations and powers and the recorded environmental simulation of each omitted appendage; the thermal model uses that mapping.</p><p><strong>제안</strong><br>Use the run to correlate the thermal model of this test article, including represented boundary effects of omitted hardware.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-001&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-01&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>보완된 매핑은 이 시험체의 열모델 상관이라는 제한된 목적을 뒷받침한다. 실제 전자기능이나 전체 비행 적합성까지 확장하지 않는다.</p></section>
+</div></article>
+<article><h2>TH01-P02 | 배경복사 오차와 열용량 오차의 구분</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 43, 44 / PDF [52, 53]쪽 · Data Correlation</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 시험 후 상관 과정에서 램프 열유속과 배경 열유속을 분리했다. 냉각시험의 배경복사를 잘못 모델링하면 열용량 차이처럼 나타날 수 있다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P02-A</h3><p><strong>관측</strong><br>In a cooling transient, measured and predicted temperature slopes differ. The model sets chamber background heat flux to zero. The lamp cage was used to precondition the article shortly before power-off; no background-flux history is provided.</p><p><strong>제안</strong><br>The cooling-slope discrepancy uniquely identifies an incorrect thermal capacitance; background radiation may be ignored.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;BOUNDARY_CONDITION_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-002&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-02&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>원문은 배경복사 오차가 열용량 불일치로 해석될 수 있음을 직접 지적한다. 현 자료로 단일 원인을 특정한 제안을 수정한다.</p></section>
+<section class="variant"><h3>PHY-TH01-P02-B</h3><p><strong>관측</strong><br>In a cooling transient, measured and predicted temperature slopes differ. The model sets chamber background heat flux to zero. The lamp cage was used to precondition the article shortly before power-off; no background-flux history is provided.</p><p><strong>제안</strong><br>The slope discrepancy is unresolved. Characterize and include background radiation before using this cold-soak history to isolate thermal capacitance.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-002&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-02&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>배경복사를 먼저 확인한 뒤 열용량을 분리하자는 제안은 원문 절차와 일치한다.</p></section>
+</div></article>
+<article><h2>TH01-P03 | 정상상태와 과도시험의 식별 목적</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 6, 44 / PDF [15, 53]쪽 · Test Conditions and Requirements; Data Correlation</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 전원 차단 정상상태 자료는 환경 모델을 분리 검토하는 데, cold-soak 과도자료는 열용량 보정에 사용했다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P03-A</h3><p><strong>관측</strong><br>The available campaign has a power-off steady-state run, a powered steady-state run, a cold-soak cooling history, and an orbital transient. Environment and equipment-power records are retained separately.</p><p><strong>제안</strong><br>Identify thermal capacitance solely from the final power-off steady-state temperatures; discard the cold-soak temperature history.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;PARAMETER_IDENTIFICATION_INSUFFICIENT&quot;,
+  &quot;claim_id&quot;: &quot;CLM-003&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-03&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>정상상태 자료만으로 열용량을 정하려는 제안은 이 보고서의 자료 분리 목적과 맞지 않는다.</p></section>
+<section class="variant"><h3>PHY-TH01-P03-B</h3><p><strong>관측</strong><br>The available campaign has a power-off steady-state run, a powered steady-state run, a cold-soak cooling history, and an orbital transient. Environment and equipment-power records are retained separately.</p><p><strong>제안</strong><br>Use power-off steady-state data to review the environmental model, powered steady-state data for dissipation effects, and the cold-soak transient to adjust capacitance before orbital-transient comparison.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-003&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-03&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>서로 다른 시험이 어떤 오차 요인을 분리하는지 명시했고 열용량에는 cold-soak 이력을 연결했다.</p></section>
+</div></article>
+<article><h2>TH01-P04 | 복사계와 시험체 코팅의 대응</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 22, 25 / PDF [31, 34]쪽 · Environment Simulators</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 센서와 시험체 표면의 동일 코팅은 해당 조건에서 흡수 열유속 대응에 이용됐다. 흡수 열유속에서 입사 열유속을 구하려면 흡수율을 알아야 한다.</p>
+<p class="meta">한 필드 변경: case_packet.evidence.0.text</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P04-A</h3><p><strong>관측</strong><br>A radiometer reports absorbed flux beside a painted test panel. Its sensing-surface finish differs from the panel finish. The dossier contains calibration dates but no relevant spectral absorptance or coating-equivalence record.</p><p><strong>제안</strong><br>Use the radiometer absorbed flux directly as the panel absorbed flux under this lamp spectrum.</p><pre>{
+  &quot;action&quot;: &quot;REQUEST_EVIDENCE&quot;,
+  &quot;reason&quot;: &quot;RADIOMETRIC_EQUIVALENCE_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-004&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-04&quot;,
+    &quot;OBS-1&quot;
+  ],
+  &quot;requested_evidence&quot;: [
+    &quot;SPECTRAL_ABSORPTANCE_OR_COATING_MAPPING&quot;
+  ]
+}</pre><p>교정일이 유효하다는 사실만으로 다른 표면의 흡수 특성이 같아지지는 않는다. 스펙트럼·코팅 대응을 요청한다.</p></section>
+<section class="variant"><h3>PHY-TH01-P04-B</h3><p><strong>관측</strong><br>A radiometer reports absorbed flux beside a painted test panel. The sensing surface and panel use the same characterized coating and have matching exposure histories. The supplied calibration dossier establishes their absorption correspondence for the lamp spectrum and placement used in this run.</p><p><strong>제안</strong><br>Use the radiometer absorbed flux directly as the panel absorbed flux under this lamp spectrum.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-004&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-04&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>이 가상 기록은 동일 스펙트럼·표면·배치의 흡수 대응을 제공한다. 입사 열유속이나 다른 코팅으로 범위를 넓히지 않는다.</p></section>
+</div></article>
+<article><h2>TH01-P05 | 전원버스 측정과 개별 발열량</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 29, 62 / PDF [38, 71]쪽 · On-Site Thermal Support; Conclusions</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 여러 모사품의 공통 전원버스와 긴 계측선은 개별 소비전력 식별을 약화시켰다. 보고서는 발열량뿐 아니라 발열 위치 파악도 강조한다.</p>
+<p class="meta">한 필드 변경: case_packet.evidence.0.text</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P05-A</h3><p><strong>관측</strong><br>Several thermal mockup units share a power bus. Electrical power is measured upstream of long leads. Only total bus input and commanded heater duties are available; per-unit dissipation and heat-deposition locations are absent.</p><p><strong>제안</strong><br>Initialize each component node with its own measured dissipation at the corresponding heat-source location.</p><pre>{
+  &quot;action&quot;: &quot;REQUEST_EVIDENCE&quot;,
+  &quot;reason&quot;: &quot;POWER_DISSIPATION_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-005&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-05&quot;,
+    &quot;OBS-1&quot;
+  ],
+  &quot;requested_evidence&quot;: [
+    &quot;PER_COMPONENT_POWER_AND_LOCATION&quot;
+  ]
+}</pre><p>총 입력전력으로 개별 발열원과 선로 손실을 분리할 수 없다. 모델 노드에 실제 투입할 전력·위치 자료가 필요하다.</p></section>
+<section class="variant"><h3>PHY-TH01-P05-B</h3><p><strong>관측</strong><br>Several thermal mockup units share a power bus. The updated dossier includes independently resolved per-unit electrical dissipation at the article, lead-loss accounting, heater duty histories, and heat-deposition locations mapped to the model nodes.</p><p><strong>제안</strong><br>Initialize each component node with its own measured dissipation at the corresponding heat-source location.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-005&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-05&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>보완된 기록은 질문에 해당하는 개별 발열 입력을 제공한다. 온도 모델의 최종 정확성을 판정하는 단계는 아니다.</p></section>
+</div></article>
+<article><h2>TH01-P06 | 정상상태 시험명과 실제 평형</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 53, 61 / PDF [62, 70]쪽 · Rack Correlation; Conclusions</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 큰 열용량과 다층단열 때문에 CMG는 Test 9 외의 시험에서 비평형 상태였다. 정상상태라고 부른 시험에서도 일부 구성품은 평형에 이르지 않았다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P06-A</h3><p><strong>관측</strong><br>A run is named steady-state extreme cold. Most rack nodes are stable, but a high-mass, MLI-covered unit continues cooling through the endpoint. The history does not meet that node&#x27;s stated stabilization criterion.</p><p><strong>제안</strong><br>Every component is at equilibrium because the run is labeled steady-state; use the drifting unit endpoint as a steady-state target.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;STABILITY_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-006&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-06&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>시험 단계 이름은 모든 노드의 평형 증거가 아니다. 실제 이력이 기준에 미달인 노드의 정상상태 취급을 수정한다.</p></section>
+<section class="variant"><h3>PHY-TH01-P06-B</h3><p><strong>관측</strong><br>A run is named steady-state extreme cold. Most rack nodes are stable, but a high-mass, MLI-covered unit continues cooling through the endpoint. The history does not meet that node&#x27;s stated stabilization criterion.</p><p><strong>제안</strong><br>Retain steady-state treatment for nodes with adequate stability evidence and treat the drifting MLI-covered unit as transient or unresolved at the endpoint.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-006&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-06&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>노드별로 평형 여부를 분리해 해당 단위의 과도거동을 유지하는 제안은 관측과 일치한다.</p></section>
+</div></article>
+<article><h2>TH01-P07 | 히터 열전대와 평균 케이스 모델 노드</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 59 / PDF [68]쪽 · Canister Correlations</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> TV 카메라 해석값은 평균 케이스 온도였지만 내부 열전대는 히터 온도를 측정했다. 그 히터에 대응하는 모델은 없었다.</p>
+<p class="meta">한 필드 변경: case_packet.evidence.0.text</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P07-A</h3><p><strong>관측</strong><br>The selected thermocouple is inside the camera at a heater. The selected thermal-model output is the spatially averaged exterior case temperature. No mapping or internal-heater node model connects these measurands.</p><p><strong>제안</strong><br>Compare the selected thermocouple directly with the selected model node as measurements of the same physical temperature.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;MEASUREMENT_MAPPING_MISMATCH&quot;,
+  &quot;claim_id&quot;: &quot;CLM-007&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-07&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>히터 온도와 평균 케이스 온도의 차이는 동일 물리량의 잔차가 아니다. 측정 위치와 모델 노드를 다시 연결해야 한다.</p></section>
+<section class="variant"><h3>PHY-TH01-P07-B</h3><p><strong>관측</strong><br>The selected thermocouple is inside the camera at a heater. The selected thermal-model output now represents that heater location. Sensor placement, heat input and time basis have been mapped explicitly to this internal node.</p><p><strong>제안</strong><br>Compare the selected thermocouple directly with the selected model node as measurements of the same physical temperature.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-007&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-07&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>변경된 입력은 동일 히터 위치의 모델·센서 대응을 제시하므로 이 비교 항목의 직접 잔차 계산에는 추가 수정이 없다.</p></section>
+</div></article>
+<article><h2>TH01-P08 | 계측 설치물이 바꾼 라디에이터 경계</h2>
+<p class="meta">Apollo Telescope Mount Thermal Systems Unit Thermal Vacuum Test<br>인쇄 p. 60, 61 / PDF [69, 70]쪽 · TCS Correlation</p>
+<p><a href="https://ntrs.nasa.gov/api/citations/19720011230/downloads/19720011230.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 라디에이터 앞의 교정 센서가 유효 방열면적을 줄였다. 저자들은 감소한 유효면적을 모델에 반영해 온도 차이를 재검토했다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-TH01-P08-A</h3><p><strong>관측</strong><br>Calibration hardware stands in front of radiator panels and obstructs part of the effective radiating area. The correlation model still uses the unobstructed area. Test radiator temperatures are higher than predictions.</p><p><strong>제안</strong><br>Keep the unobstructed radiating area and reduce material conductivity until the hotter measurements are matched.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;TEST_ARTIFACT_UNMODELED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-008&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-08&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>이미 알려진 계측 설치물의 방열면적 영향을 누락한 채 물성으로 오차를 흡수하려는 계획을 수정한다.</p></section>
+<section class="variant"><h3>PHY-TH01-P08-B</h3><p><strong>관측</strong><br>Calibration hardware stands in front of radiator panels and obstructs part of the effective radiating area. The correlation model still uses the unobstructed area. Test radiator temperatures are higher than predictions.</p><p><strong>제안</strong><br>Model the as-tested obstruction of effective radiating area and repeat the thermal comparison before attributing the remaining residual to material properties.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-008&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-TH01-08&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>원문의 라디에이터 상관 사례처럼 실제 면적 저하부터 반영하는 제한된 다음 분석이다. 오차 원인 확정은 아니다.</p></section>
+</div></article>
+<article><h2>VBX1-P01 | 가진기와 비행 지지구조의 동적 경계</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 359, 360 / PDF [1, 2]쪽 · Introduction; Force limits analysis method</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 가진기와 실제 지지구조는 동적 경계조건이 다를 수 있다. 힘 제한 시험은 힘과 가속도 한도를 함께 다루며 공진 부근의 가속도 입력이 제한될 수 있다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P01-A</h3><p><strong>관측</strong><br>A flexible instrument is tested on a very stiff shaker fixture. The intended flight support is compliant. The applied acceleration envelope matches the test specification, but no analysis relates the two interface impedances or reaction forces.</p><p><strong>제안</strong><br>The flight interface-force environment is reproduced because the acceleration envelope is the same, regardless of support impedance.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;BOUNDARY_CONDITION_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-009&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-01&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>동일 가속도 입력만으로 지지조건이 다른 계면 하중의 동등성을 판단한 부분을 수정한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P01-B</h3><p><strong>관측</strong><br>A flexible instrument is tested on a very stiff shaker fixture. The intended flight support is compliant. The applied acceleration envelope matches the test specification, but no analysis relates the two interface impedances or reaction forces.</p><p><strong>제안</strong><br>The same acceleration envelope does not by itself establish the same interface force; review support impedance and the basis for force-limited testing.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-009&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-01&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>계면 임피던스와 힘 제한 검토의 필요성을 구분한 제안이다. 실제 force limit 숫자를 확정하지 않는다.</p></section>
+</div></article>
+<article><h2>VBX1-P02 | C² 선정 근거의 구성 의존성</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 360 / PDF [2]쪽 · Introduction</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> C²은 구성에 따라 달라지는 반경험 계수이며 선정 근거가 필요하다.</p>
+<p class="meta">한 필드 변경: case_packet.evidence.0.text</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P02-A</h3><p><strong>관측</strong><br>A force-limit draft sets C-squared to 5. The only basis is that an unrelated lightweight unit used that value. The current load/support characteristics and a comparability assessment are absent.</p><p><strong>제안</strong><br>Use the selected C-squared for this load/support configuration.</p><pre>{
+  &quot;action&quot;: &quot;REQUEST_EVIDENCE&quot;,
+  &quot;reason&quot;: &quot;FORCE_LIMIT_BASIS_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-010&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-02&quot;,
+    &quot;OBS-1&quot;
+  ],
+  &quot;requested_evidence&quot;: [
+    &quot;CONFIGURATION_SPECIFIC_C2_BASIS&quot;
+  ]
+}</pre><p>다른 장비에서 사용한 값은 현재 구성의 선정 근거를 대신하지 않는다. 대응 해석이나 비교 정당화를 요청한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P02-B</h3><p><strong>관측</strong><br>A force-limit draft sets C-squared to 5. The dossier includes a configuration-specific derivation using the current load/support characteristics, its assumptions and sensitivity review. This review point concerns the existence of a justified selection basis, not final test authorization.</p><p><strong>제안</strong><br>Use the selected C-squared for this load/support configuration.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-010&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-02&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>가상 보완기록이 구성별 선정 근거를 제공한다. 이 답은 C²=5를 모든 장비의 권장값으로 만든 것이 아니다.</p></section>
+</div></article>
+<article><h2>VBX1-P03 | f0와 주요 모달 유효질량</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 360 / PDF [2]쪽 · Introduction, definition after Equation (1)</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 전환 주파수 f0는 유의미한 모달 유효질량을 가진 시험체 주요 모드와 연결된다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P03-A</h3><p><strong>관측</strong><br>For the considered load direction, a localized mode at 28 Hz has negligible modal effective mass. The primary load mode with significant modal effective mass is at 96 Hz. The intended formula defines f0 as in the cited paper.</p><p><strong>제안</strong><br>Select 28 Hz as f0 solely because it is the lowest listed frequency.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;MODE_SELECTION_MISMATCH&quot;,
+  &quot;claim_id&quot;: &quot;CLM-011&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-03&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>가상 수치 28/96 Hz는 논문의 실측값이 아니다. 최저 주파수라는 이유만으로 f0를 정한 논리를 검토한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P03-B</h3><p><strong>관측</strong><br>For the considered load direction, a localized mode at 28 Hz has negligible modal effective mass. The primary load mode with significant modal effective mass is at 96 Hz. The intended formula defines f0 as in the cited paper.</p><p><strong>제안</strong><br>Use the identified primary load mode at 96 Hz with significant modal effective mass as the turnover-mode candidate under the stated definition.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-011&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-03&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>유의미한 모달 유효질량을 가진 주요 모드라는 정의와 선택이 맞는다. 최종 시험수준 승인은 별개다.</p></section>
+</div></article>
+<article><h2>VBX1-P04 | 서로 다른 주파수의 PSD 최대값</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 360 / PDF [2]쪽 · Section 2, Equation (2)</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 식 (2)는 계면 힘 PSD 최대값과 계면 가속도 PSD 최대값을 사용하며, 두 최대값이 같은 주파수에서 나올 필요는 없다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P04-A</h3><p><strong>관측</strong><br>The same interface and analysis provide the maximum force PSD at 82 Hz and maximum acceleration PSD at 127 Hz. Unit conventions and load mass are consistent. The calculation under review explicitly uses Equation (2), not a same-frequency transfer-function ratio.</p><p><strong>제안</strong><br>Reject this Equation (2) calculation solely because the force-PSD and acceleration-PSD maxima occur at different frequencies.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;METHOD_INTERPRETATION_ERROR&quot;,
+  &quot;claim_id&quot;: &quot;CLM-012&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-04&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>이 논문 식 (2)는 두 최대값의 주파수 일치를 요구하지 않는다. 전달함수의 동일 주파수 비율과 구별한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P04-B</h3><p><strong>관측</strong><br>The same interface and analysis provide the maximum force PSD at 82 Hz and maximum acceleration PSD at 127 Hz. Unit conventions and load mass are consistent. The calculation under review explicitly uses Equation (2), not a same-frequency transfer-function ratio.</p><p><strong>제안</strong><br>The different peak frequencies do not alone invalidate Equation (2), which uses the separate maxima for the same interface and consistent mass and units.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-012&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-04&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>주파수 차이만을 결격 이유로 삼지 않고 해당 식의 정의대로 검토한다.</p></section>
+</div></article>
+<article><h2>VBX1-P05 | CSMA 입력의 감쇠·잔여질량</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 362 / PDF [4]쪽 · Section 4.1.1 Mathematical model</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 이 논문의 CSMA 시험체 입력은 총질량, 고정 계면 고유진동수, 모달 유효·잔여질량, 감쇠 및 병진 겉보기질량 정보를 포함한다.</p>
+<p class="meta">한 필드 변경: case_packet.evidence.0.text</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P05-A</h3><p><strong>관측</strong><br>The proposed CSMA load model has total mass, fixed-interface natural frequencies, modal effective masses and apparent-mass data. Its input dossier contains neither residual mass nor damping estimates or measurements.</p><p><strong>제안</strong><br>Proceed to construct the stated CSMA load representation from this input dossier.</p><pre>{
+  &quot;action&quot;: &quot;REQUEST_EVIDENCE&quot;,
+  &quot;reason&quot;: &quot;MODAL_INPUTS_MISSING&quot;,
+  &quot;claim_id&quot;: &quot;CLM-013&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-05&quot;,
+    &quot;OBS-1&quot;
+  ],
+  &quot;requested_evidence&quot;: [
+    &quot;RESIDUAL_MASS_AND_DAMPING&quot;
+  ]
+}</pre><p>명시된 모델 구성에 필요한 잔여질량과 감쇠 정보가 누락돼 있어 해당 입력을 요청한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P05-B</h3><p><strong>관측</strong><br>The proposed CSMA load model has total mass, fixed-interface natural frequencies, modal effective masses and apparent-mass data. The input dossier also includes residual mass by translational direction and measured or explicitly estimated damping for the retained modes.</p><p><strong>제안</strong><br>Proceed to construct the stated CSMA load representation from this input dossier.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-013&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-05&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>나열한 입력 조건이 보완됐다. 상관 정확도나 전체 CSMA 계산 결과를 승인하는 답은 아니다.</p></section>
+</div></article>
+<article><h2>VBX1-P06 | 병진 방향 모델과 교차 결합 범위</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 362 / PDF [4]쪽 · Section 4.1.1 Mathematical model</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 이 절의 시험체 표현은 세 병진 방향을 다루고 교차 결합은 고려하지 않는다고 명시한다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P06-A</h3><p><strong>관측</strong><br>The implementation follows the described load model in three translational directions and omits cross-coupling. No coupled rotational or off-diagonal interface response has been modeled or measured.</p><p><strong>제안</strong><br>This calculation validates all six interface degrees of freedom and their cross-coupled responses.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;MODEL_SCOPE_EXCEEDED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-014&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-06&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>세 병진·교차 결합 미포함 모델의 결과를 회전 및 결합응답 전체로 확장한 결론을 수정한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P06-B</h3><p><strong>관측</strong><br>The implementation follows the described load model in three translational directions and omits cross-coupling. No coupled rotational or off-diagonal interface response has been modeled or measured.</p><p><strong>제안</strong><br>This calculation addresses the specified translational representation; cross-coupled and rotational responses remain outside the demonstrated model scope.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-014&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-06&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>계산이 다룬 자유도와 남은 검증범위를 분리한 결론이다.</p></section>
+</div></article>
+<article><h2>VBX1-P07 | 확률적 지지구조 가정의 명시</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 369, 370 / PDF [11, 12]쪽 · Section 8 General conclusions/recommendations</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 확률적 지지구조는 질량·주요 주파수·유효질량·감쇠 등의 범위와 균등분포 가정을 사용한다. 저자들은 지지구조 질량 추정의 중요성을 강조한다.</p>
+<p class="meta">한 필드 변경: case_packet.evidence.0.text</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P07-A</h3><p><strong>관측</strong><br>No detailed supporting-structure model is available. A probabilistic CSMA calculation is proposed, but the dossier supplies no source-mass range, dominant-frequency range, effective-mass range, damping range or distribution assumptions.</p><p><strong>제안</strong><br>Run a conditional probabilistic C-squared estimate and report its assumptions and applicability limits.</p><pre>{
+  &quot;action&quot;: &quot;REQUEST_EVIDENCE&quot;,
+  &quot;reason&quot;: &quot;PROBABILISTIC_ASSUMPTIONS_UNRESOLVED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-015&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-07&quot;,
+    &quot;OBS-1&quot;
+  ],
+  &quot;requested_evidence&quot;: [
+    &quot;SOURCE_PARAMETER_RANGES_AND_DISTRIBUTIONS&quot;
+  ]
+}</pre><p>확률적 계산도 입력 범위와 분포 가정이 있어야 수행 가능하다. 실제 비행값이 없다는 이유만으로 임의 숫자를 채우지 않고 가정을 요청한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P07-B</h3><p><strong>관측</strong><br>No detailed supporting-structure model is available. The dossier supplies bounded source-mass, dominant-frequency, effective-mass and damping variables with explicit uniform-distribution assumptions and a sensitivity plan. They are engineering assumptions, not measured flight distributions, and the requested estimate is conditional on them.</p><p><strong>제안</strong><br>Run a conditional probabilistic C-squared estimate and report its assumptions and applicability limits.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-015&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-07&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>보완된 가정은 조건부 계산을 시작할 근거를 제공한다. 균등분포를 실제 지지구조의 측정 분포로 해석하지 않는다.</p></section>
+</div></article>
+<article><h2>VBX1-P08 | 두 문헌 사례와 적용범위</h2>
+<p class="meta">Force limited random vibration testing: the computation of the semi-empirical constant C² for a real test article and unknown supporting structure<br>인쇄 p. 369, 370 / PDF [11, 12]쪽 · Section 8 General conclusions/recommendations</p>
+<p><a href="https://link.springer.com/content/pdf/10.1007/s12567-015-0086-0.pdf" target="_blank" rel="noopener">원문 열기</a></p>
+<p><strong>원문 근거:</strong> 확률적 접근은 기존 문헌의 두 사례로 조사됐으며 논문은 추가 연구의 필요성을 명시한다.</p>
+<p class="meta">한 필드 변경: case_packet.proposal</p><div class="variants">
+<section class="variant"><h3>PHY-VBX1-P08-A</h3><p><strong>관측</strong><br>The cited study investigates two literature testcases. No new evidence for the current spacecraft family is supplied. The proposed summary is intended to describe what the study established.</p><p><strong>제안</strong><br>The two comparisons establish a universally validated force-limiting coefficient method for every spacecraft configuration.</p><pre>{
+  &quot;action&quot;: &quot;CHALLENGE&quot;,
+  &quot;reason&quot;: &quot;MODEL_SCOPE_EXCEEDED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-016&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-08&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>원문의 두 사례 조사와 추가 연구 필요성을 모든 위성의 검증완료로 바꾼 요약을 수정한다.</p></section>
+<section class="variant"><h3>PHY-VBX1-P08-B</h3><p><strong>관측</strong><br>The cited study investigates two literature testcases. No new evidence for the current spacecraft family is supplied. The proposed summary is intended to describe what the study established.</p><p><strong>제안</strong><br>The two comparisons support examination of the method in the investigated cases; additional study and configuration-specific review remain necessary for broader use.</p><pre>{
+  &quot;action&quot;: &quot;NO_ACTION_REQUIRED&quot;,
+  &quot;claim_id&quot;: &quot;CLM-016&quot;,
+  &quot;evidence_refs&quot;: [
+    &quot;SF-VBX1-08&quot;,
+    &quot;OBS-1&quot;
+  ]
+}</pre><p>원문이 보고한 적용 범위와 추가 검토 필요성을 유지한 요약이다.</p></section>
+</div></article>
+</html>

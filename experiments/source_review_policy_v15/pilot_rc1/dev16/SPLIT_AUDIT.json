@@ -1,0 +1,35 @@
+{
+  "train_sources": [
+    "EE-02",
+    "EE-03",
+    "SR13-NEA",
+    "SR13-RHOBC",
+    "SR13-TIRS",
+    "TH-01",
+    "VB-X1"
+  ],
+  "dev_sources": [
+    "SR13-CANYVAL",
+    "SR13-PROBAV"
+  ],
+  "train_programs": [
+    "AMSU_A1_EMI_EMC_SN105",
+    "AOS_OPAMP_SEE_LBNL_2022",
+    "ATM_TSU",
+    "ISS_LINEAR_DRIVE_UNIT",
+    "JWST_MIRI_IFLV",
+    "LANDSAT_LDCM_TIRS",
+    "NEA_SCOUT_AMT_EDU",
+    "VORAGO_RHOBC1_MGH2019"
+  ],
+  "dev_programs": [
+    "CANYVAL_C_TIMON_PUMBAA",
+    "PROBAV_SAMSUNG_SRAM_RADEF_PSI"
+  ],
+  "source_overlap": [],
+  "program_overlap": [],
+  "family_overlap": [],
+  "scope": "Public TRAIN48 and actual legacy repeat246 metadata; full external-corpus/evaluator audit still pending",
+  "reserved_evaluatoronly_opened": false,
+  "independent_generalization_claim": false
+}

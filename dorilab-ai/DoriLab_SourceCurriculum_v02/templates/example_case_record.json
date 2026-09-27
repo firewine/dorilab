@@ -1,0 +1,67 @@
+{
+  "case_id": "PHY-EE02-P01-A",
+  "pair_id": "EE02-P01",
+  "variant": "A",
+  "role": "CRITIC",
+  "domain": "EEE",
+  "source_id": "EE-02",
+  "source_fact_ids": [
+    "SF-EE02-P01"
+  ],
+  "source_program_groups": [
+    "AMSU_A1_EMI_EMC_SN105"
+  ],
+  "planned_split": "TRAIN_CANDIDATE",
+  "basis": "SYNTHETIC_COUNTERFACTUAL",
+  "label_basis": "SOURCE_PRINCIPLE_PLUS_DORILAB_REVIEW_POLICY",
+  "case_numbers_are": "NO_EXPERIMENTAL_NUMBERS_TRANSCRIBED",
+  "raw_measurement_available": false,
+  "source_facts_verification": "PDF_TEXT_SECTION_CHECKED",
+  "human_review_status": "PENDING",
+  "source_pdf_sha256": null,
+  "packet": {
+    "review_question": "Does the proposal distinguish monitoring during stimulus from recovery after the test?",
+    "claim_id": "CLM-EE02-P01",
+    "reference_context": [
+      {
+        "reference_id": "SF-EE02-P01",
+        "source_id": "EE-02",
+        "printed_pages": [],
+        "pdf_pages_1based": [
+          14
+        ],
+        "section": "1.6 Pass/Fail criteria",
+        "text": "The report evaluates channel data during interference injection against baseline data before and after testing, and examines response timing in relation to the applied sweep."
+      }
+    ],
+    "case_packet": {
+      "evidence": [
+        {
+          "evidence_id": "OBS-1",
+          "text": "During an injected sweep, one monitored functional channel changes at the same time as the applied stimulus. Its post-test baseline returns to the pre-test value."
+        }
+      ],
+      "proposal": "Declare that no susceptibility event occurred because the post-test baseline recovered."
+    },
+    "allowed_request_ids": []
+  },
+  "expected": {
+    "action": "CHALLENGE",
+    "claim_id": "CLM-EE02-P01",
+    "evidence_refs": [
+      "SF-EE02-P01",
+      "OBS-1"
+    ],
+    "reason": "EVIDENCE_INTERPRETATION_ERROR"
+  },
+  "rationale_ko": "사후 복귀와 시험 중 이상 관측은 별개다. 복귀만으로 간섭 중 이상을 없던 일로 처리한 해석을 수정한다.",
+  "scope_of_no_action": "Only the named review item; no approval of the device or test.",
+  "synthetic_assumptions": [
+    "All scenario observations and proposals are constructed; not reported events of the cited test."
+  ],
+  "pair_changed_paths": [
+    "case_packet.proposal"
+  ],
+  "prompt_version": "physics-review-v0.2",
+  "schema_version": "physics-review-action-v0.2"
+}

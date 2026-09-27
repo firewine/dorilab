@@ -1,0 +1,14 @@
+{
+  "load_seconds": 169.44554551318288,
+  "model_class": "Gemma4ForConditionalGeneration",
+  "allocated_GiB": 48.076741218566895,
+  "reserved_GiB": 48.107421875,
+  "stops": [
+    1,
+    50,
+    106
+  ],
+  "pad_token_id": 0,
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "vram_GiB": 94.972412109375
+}

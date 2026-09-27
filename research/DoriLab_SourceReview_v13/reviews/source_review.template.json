@@ -1,0 +1,68 @@
+[
+  {
+    "source_id": "SR13-TIRS",
+    "raw_file_sha256": null,
+    "verified_local_source_path": "",
+    "content_verified": false,
+    "rights_approved": false,
+    "split_novelty_verified": false,
+    "reviewer": "",
+    "reviewed_at": "",
+    "notes": ""
+  },
+  {
+    "source_id": "SR13-NEA",
+    "raw_file_sha256": null,
+    "verified_local_source_path": "",
+    "content_verified": false,
+    "rights_approved": false,
+    "split_novelty_verified": false,
+    "reviewer": "",
+    "reviewed_at": "",
+    "notes": ""
+  },
+  {
+    "source_id": "SR13-RHOBC",
+    "raw_file_sha256": null,
+    "verified_local_source_path": "",
+    "content_verified": false,
+    "rights_approved": false,
+    "split_novelty_verified": false,
+    "reviewer": "",
+    "reviewed_at": "",
+    "notes": ""
+  },
+  {
+    "source_id": "SR13-HYPSO",
+    "raw_file_sha256": null,
+    "verified_local_source_path": "",
+    "content_verified": false,
+    "rights_approved": false,
+    "split_novelty_verified": false,
+    "reviewer": "",
+    "reviewed_at": "",
+    "notes": ""
+  },
+  {
+    "source_id": "SR13-CANYVAL",
+    "raw_file_sha256": null,
+    "verified_local_source_path": "",
+    "content_verified": false,
+    "rights_approved": false,
+    "split_novelty_verified": false,
+    "reviewer": "",
+    "reviewed_at": "",
+    "notes": ""
+  },
+  {
+    "source_id": "SR13-PROBAV",
+    "raw_file_sha256": null,
+    "verified_local_source_path": "",
+    "content_verified": false,
+    "rights_approved": false,
+    "split_novelty_verified": false,
+    "reviewer": "",
+    "reviewed_at": "",
+    "notes": ""
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "slug": "mistral32_24b",
+  "model": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+  "revision": "95a6d26c4bfb886c58daf9d3f7332c857cb27b43",
+  "family": "mistral_common",
+  "config_model_type": "mistral3",
+  "max_prompt_tokens": 1206,
+  "max_new_tokens": 384,
+  "dtype": "bfloat16",
+  "quantization": null,
+  "decoding": "greedy_do_sample_false",
+  "training_executed": false,
+  "at_utc": "2026-09-23T14:09:56.732510+00:00"
+}

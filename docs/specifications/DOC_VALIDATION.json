@@ -1,0 +1,84 @@
+{
+  "schema": "dorilab.documentation-validation.v1",
+  "checked_at_utc": "2026-09-27T11:07:24.116414+00:00",
+  "checks": {
+    "source_files_unchanged": true,
+    "local_links_resolve": true,
+    "json_examples_parse": true,
+    "trajectory_and_plan_examples_validate": true,
+    "planner_contract_matches_source": true,
+    "test_inventory_matches_existing_receipt": true,
+    "style_review_passed": true,
+    "json_examples_unchanged": true,
+    "command_examples_unchanged": true,
+    "existing_validation_receipt_unchanged": true
+  },
+  "source_files_checked": 22,
+  "changed_sources": [],
+  "local_link_count": 28,
+  "missing_links": [],
+  "json_examples": [
+    {
+      "document": "IO_SPEC_KO.md",
+      "block": 1,
+      "check": "trajectory_validator"
+    },
+    {
+      "document": "IO_SPEC_KO.md",
+      "block": 2,
+      "check": "planner_validator"
+    },
+    {
+      "document": "IO_SPEC_KO.md",
+      "block": 3,
+      "check": "planner_validator"
+    },
+    {
+      "document": "IO_SPEC_KO.md",
+      "block": 4,
+      "check": "planner_validator"
+    },
+    {
+      "document": "IO_SPEC_KO.md",
+      "block": 5,
+      "check": "json_syntax"
+    },
+    {
+      "document": "IO_SPEC_KO.md",
+      "block": 6,
+      "check": "json_syntax"
+    }
+  ],
+  "test_inventory": {
+    "project_memory/test_memory.py": 21,
+    "project_memory/test_controller.py": 12,
+    "inference/test_service.py": 4
+  },
+  "heading_counts": {
+    "DEVELOPMENT_SPEC_KO.md": 17,
+    "IO_SPEC_KO.md": 25,
+    "ARCHITECTURE_KO.md": 18,
+    "README.md": 1
+  },
+  "not_run": [
+    "GPU generation",
+    "service restart",
+    "dependency install",
+    "runtime regression rerun",
+    "official benchmark"
+  ],
+  "documents": {
+    "DEVELOPMENT_SPEC_KO.md": "6db049bdc82b3970efe3fa26e45c3091d74efd613488943240863c56e89b947f",
+    "IO_SPEC_KO.md": "aee166b84450afefdce5c884f246086989c9e68fde50cac81d58a23b0d044afc",
+    "ARCHITECTURE_KO.md": "02da3843e442ac329704195b13f5ebb4e6d81d34d636262c38797c8488979e01",
+    "README.md": "ec388ea059611f0dfd373873070e264ac2d64dec8a1e4ab5b5b115467e3dcc2c"
+  },
+  "style_review": {
+    "scope": "docs/**/*.md",
+    "documents_checked": 4,
+    "negative_sentence_matches": 0,
+    "middle_dot_matches": 0,
+    "prohibited_word_matches": 0,
+    "manual_context_review": true
+  }
+}

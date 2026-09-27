@@ -1,0 +1,12 @@
+{
+  "load_seconds": 241.81603305088356,
+  "model_class": "Mistral3ForConditionalGeneration",
+  "allocated_GiB": 44.73524475097656,
+  "reserved_GiB": 45.380859375,
+  "stops": [
+    2
+  ],
+  "pad_token_id": 2,
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "vram_GiB": 94.972412109375
+}

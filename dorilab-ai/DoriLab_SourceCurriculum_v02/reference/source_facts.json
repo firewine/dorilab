@@ -1,0 +1,152 @@
+[
+  {
+    "fact_id": "PRINCIPLE-T1",
+    "source_id": "NS10-TH-MRO",
+    "section": "Introduction: sensor locations and model-to-flight comparison",
+    "pdf_pages_1based": [
+      1
+    ],
+    "printed_pages": [],
+    "text": "The MRO study compares predicted temperatures at thermal-sensor locations with the corresponding flight sensor data, while distinguishing sensors on opposite array faces.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-T2",
+    "source_id": "NS10-TH-MRO",
+    "section": "Cruise Events Model Correlation: flight direction vectors and distance inputs",
+    "pdf_pages_1based": [
+      2
+    ],
+    "printed_pages": [],
+    "text": "For cruise-event correlation, flight solar and Earth direction vectors and trajectory-derived solar distance were used as radiation-model inputs, constraining orientation-dependent heat fluxes.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-T3",
+    "source_id": "NS10-TH-MRO",
+    "section": "Cruise Events Model Correlation: RMS measure across time",
+    "pdf_pages_1based": [
+      2,
+      3
+    ],
+    "printed_pages": [],
+    "text": "The study evaluates sensor prediction errors over time with an RMS calculation so positive and negative residuals do not cancel; it then combines the per-sensor measures.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-T4",
+    "source_id": "NS10-TH-MRO",
+    "section": "Cruise Events Model Correlation: discussion preceding Figure 21",
+    "pdf_pages_1based": [
+      7
+    ],
+    "printed_pages": [],
+    "text": "The authors discuss electrical power drawn from illuminated solar cells as a possible reduction of energy remaining as array heat; this was a proposed explanation for a correlation discrepancy, not a universally verified cause.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-M1",
+    "source_id": "NS10-ME-CM2",
+    "section": "Force Limiting Theory and Application; Equation (2) variable definitions",
+    "pdf_pages_1based": [],
+    "printed_pages": [
+      "2"
+    ],
+    "text": "The CM-2 semi-empirical formulation defines f0 as the test article fundamental resonant frequency. It also requires the static mass, acceleration spectrum and a configuration-dependent constant C.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-M2",
+    "source_id": "NS10-ME-CM2",
+    "section": "CM-2 Xybion Camera Package Testing: first force-limit calculation step",
+    "pdf_pages_1based": [],
+    "printed_pages": [
+      "2"
+    ],
+    "text": "The paper starts its force-limit calculation by estimating the test article fundamental frequency and total mass before applying the acceleration spectrum and selecting C.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-M3",
+    "source_id": "NS10-ME-CM2",
+    "section": "CM-2 Xybion Camera Package Testing: instrumentation and schedule limitation",
+    "pdf_pages_1based": [],
+    "printed_pages": [
+      "2",
+      "3"
+    ],
+    "text": "In the reported CM-2 camera test, interface force was monitored but was not used in shaker control because of schedule constraints. The paper compares measurements with proposed force limits rather than claiming force limiting was executed.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-M4",
+    "source_id": "NS10-ME-CM2",
+    "section": "Force Limiting Theory and Application; selection of C",
+    "pdf_pages_1based": [],
+    "printed_pages": [
+      "2"
+    ],
+    "text": "The CM-2 method treats C as configuration dependent and uses engineering judgement and reference data for similar configurations; the force-limit curve also inherits errors in the input acceleration spectrum.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-E1",
+    "source_id": "NS10-EE-RTG4",
+    "section": "Sections 4.2 Monitoring Functionality and 4.3 Automated Data Capture and Messaging",
+    "pdf_pages_1based": [
+      16,
+      17
+    ],
+    "printed_pages": [
+      "16",
+      "17"
+    ],
+    "text": "The RTG4 report describes comparing DUT outputs with expected values and storing detected erroneous data with timestamp, expected value and received value.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-E2",
+    "source_id": "NS10-EE-RTG4",
+    "section": "Introduction; Sections 4.2 and 4.4",
+    "pdf_pages_1based": [
+      8,
+      16,
+      17,
+      18
+    ],
+    "printed_pages": [
+      "8",
+      "16",
+      "17",
+      "18"
+    ],
+    "text": "The report investigates functional upsets through DUT-output monitoring and examines possible latch-up using device-current monitoring. These are distinct observations.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-E3",
+    "source_id": "NS10-EE-RTG4",
+    "section": "Section 3.1 Cross Sections",
+    "pdf_pages_1based": [
+      11
+    ],
+    "printed_pages": [
+      "11"
+    ],
+    "text": "The RTG4 report describes normalizing observed upset counts by particle fluence and calculating cross sections for specified LET values; it distinguishes fluence from particle flux.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  },
+  {
+    "fact_id": "PRINCIPLE-E4",
+    "source_id": "NS10-EE-RTG4",
+    "section": "Section 7.2.2 Files required for running a test",
+    "pdf_pages_1based": [
+      61
+    ],
+    "printed_pages": [
+      "61"
+    ],
+    "text": "The described RTG4 test setup requires both a DUT configuration file and a tester bit file, with file identity and timestamps recorded for the designs under analysis.",
+    "text_kind": "AI_PARAPHRASE_OF_PRIMARY_SOURCE_NOT_QUOTATION"
+  }
+]

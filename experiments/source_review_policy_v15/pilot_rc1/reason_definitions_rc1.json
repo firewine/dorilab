@@ -1,0 +1,14 @@
+{
+  "MEASUREMENT_MAPPING_MISMATCH": "The measured or modeled location/quantity does not correspond to the judged quantity, including the signal-to-physical-quantity conversion/calibration relationship or missing required mapping records.",
+  "EVIDENCE_INTERPRETATION_ERROR": "The proposed inference misstates supplied observations or source support, and no applicable specific reason code fits the question and facts.",
+  "METHOD_INTERPRETATION_ERROR": "The proposed procedure conflicts with a stated method, assumption or calculation rule.",
+  "CONFIGURATION_SCOPE_UNRESOLVED": "Information needed to establish the relevant configuration or connectivity is missing.",
+  "BOUNDARY_CONDITION_UNRESOLVED": "Required environmental or mechanical boundary conditions are missing or an asserted equivalence ignores a documented difference.",
+  "MONITORING_COVERAGE_INSUFFICIENT": "The recorded observables or acquisition coverage cannot support the requested observation/attribution.",
+  "SUPPORTING_EVIDENCE_MISSING": "Necessary supporting records are absent and a more specific code is not applicable.",
+  "AS_RUN_MISSING": "Execution identity, actual conditions or execution results are missing.",
+  "MODEL_SCOPE_EXCEEDED": "A claim extends applicability or experimentally demonstrated behavior beyond the provided model or experimental coverage.",
+  "TEST_ARTIFACT_UNMODELED": "The reviewed inference ignores an identified test-setup effect that requires representation or discrimination.",
+  "MODAL_INPUTS_MISSING": "Required modal data such as measured shapes or their coordinate mapping are absent.",
+  "MODE_SELECTION_MISMATCH": "Proposed mode pairing/selection is inconsistent with the specified identifying evidence."
+}

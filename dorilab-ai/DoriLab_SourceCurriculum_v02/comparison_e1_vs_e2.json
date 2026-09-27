@@ -1,0 +1,782 @@
+{
+  "analysis_version": "position-e1-vs-e2-readonly-review-1.0",
+  "date": "2026-09-19",
+  "scope": "Same-case, same-source development diagnostic; 3 correlated views of 40 cases, not 120 independent samples.",
+  "new_training_performed": false,
+  "new_model_inference_performed": false,
+  "e2_adapter_sha256_reported_by_evaluation": "c16813cc75b33133fbdc4065e991ff0bea9580a75440900eae0fc2be2e4d44c5",
+  "adapter_bytes_verified_here": false,
+  "primary_reference_recalculation": "Exact primary expected set with no duplicates. Existing schema/reference validity and contract_pass are read from uploaded evaluation rows, not rerun without dcurr/source packets. All 120 primary targets matched prior comparison records.",
+  "checks": {
+    "rows_and_unique_ids": true,
+    "summary_counts_match_raw": true,
+    "raw_output_matches_parsed": true,
+    "same_adapter_prompt_and_schema_in_three_views": true,
+    "e1_primary_gold_equals_e2_primary_gold": true
+  },
+  "files": {
+    "comparison.json": {
+      "bytes": 51691,
+      "sha256": "f0cb629a6cc88a8cd37c0a93b480c275f9cc8ba372cb01632e0f5e30f56245ca"
+    },
+    "comparison_cases.jsonl": {
+      "bytes": 553249,
+      "sha256": "45c939c1b87ba994a95369ed6e1be9ed29ba3011054acc21510ba9ab603d943b"
+    },
+    "evidence_training_v05_position_e2_control.jsonl": {
+      "bytes": 35272,
+      "sha256": "f4606f55204a84d9e0277942c82c4ca96138f856e7ce83645fc60af957d544b2"
+    },
+    "evidence_training_v05_position_e2_control.summary.json": {
+      "bytes": 1394,
+      "sha256": "7bebd878cc396d269ca4841a839d2d66c93d17aaf6de80437099ba9c3c366bed"
+    },
+    "evidence_training_v05_position_e2_after.jsonl": {
+      "bytes": 35300,
+      "sha256": "3139b9bb824a15f59e785b821a24e9a5f7ebccacc56f340ee3205230789fd942"
+    },
+    "evidence_training_v05_position_e2_after.summary.json": {
+      "bytes": 1394,
+      "sha256": "d3cca90ec8d5e6fdf756b092a17aa6663e856d46879871618ba1b331999fee53"
+    },
+    "evidence_training_v05_position_e2_before.jsonl": {
+      "bytes": 35395,
+      "sha256": "0287dee5ff5c6285deb4c0d6700591bbc2e79ae4e6b93c875981ea04f353a9c8"
+    },
+    "evidence_training_v05_position_e2_before.summary.json": {
+      "bytes": 1394,
+      "sha256": "494d0ce94591516f3bb20540dbafb4828af7342e090425ba7e86fd5b245e1a7d"
+    }
+  },
+  "views": {
+    "control": {
+      "e1": {
+        "records": 40,
+        "action_correct": 35,
+        "schema_and_refs_valid": 40,
+        "legacy_contract_pass": 30,
+        "reference_exact_primary_gold": 40,
+        "strict_selection_contract_pass": 30
+      },
+      "e2": {
+        "records": 40,
+        "action_correct": 37,
+        "schema_and_refs_valid": 40,
+        "legacy_contract_pass": 33,
+        "reference_exact_primary_gold": 40,
+        "strict_selection_contract_pass": 33,
+        "strict_json_valid": 40,
+        "reason_only_errors": 4,
+        "normal_case_false_alarm": 2,
+        "challenge_false_accept": 1,
+        "generation_budget_hit": 0
+      },
+      "e1_groups": {
+        "remainder_same_source20": {
+          "records": 20,
+          "action_correct": 17,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 13,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 13
+        },
+        "domain:THERMAL": {
+          "records": 16,
+          "action_correct": 14,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 12,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 12
+        },
+        "gold_action:NO_ACTION_REQUIRED": {
+          "records": 20,
+          "action_correct": 20,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 20,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 20
+        },
+        "selected20": {
+          "records": 20,
+          "action_correct": 18,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 17,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 17
+        },
+        "gold_action:CHALLENGE": {
+          "records": 12,
+          "action_correct": 7,
+          "schema_and_refs_valid": 12,
+          "legacy_contract_pass": 5,
+          "reference_exact_primary_gold": 12,
+          "strict_selection_contract_pass": 5
+        },
+        "domain:VIBRATION": {
+          "records": 16,
+          "action_correct": 14,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 11,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 11
+        },
+        "gold_action:REQUEST_EVIDENCE": {
+          "records": 8,
+          "action_correct": 8,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 5,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 5
+        },
+        "domain:EEE": {
+          "records": 8,
+          "action_correct": 7,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 7,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 7
+        }
+      },
+      "e2_groups": {
+        "remainder_same_source20": {
+          "records": 20,
+          "action_correct": 17,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 13,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 13,
+          "strict_json_valid": 20,
+          "reason_only_errors": 4,
+          "normal_case_false_alarm": 2,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "domain:THERMAL": {
+          "records": 16,
+          "action_correct": 14,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 13,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 13,
+          "strict_json_valid": 16,
+          "reason_only_errors": 1,
+          "normal_case_false_alarm": 2,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "gold_action:NO_ACTION_REQUIRED": {
+          "records": 20,
+          "action_correct": 18,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 18,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 18,
+          "strict_json_valid": 20,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 2,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "selected20": {
+          "records": 20,
+          "action_correct": 20,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 20,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 20,
+          "strict_json_valid": 20,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "gold_action:CHALLENGE": {
+          "records": 12,
+          "action_correct": 11,
+          "schema_and_refs_valid": 12,
+          "legacy_contract_pass": 8,
+          "reference_exact_primary_gold": 12,
+          "strict_selection_contract_pass": 8,
+          "strict_json_valid": 12,
+          "reason_only_errors": 3,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "domain:VIBRATION": {
+          "records": 16,
+          "action_correct": 15,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 12,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 12,
+          "strict_json_valid": 16,
+          "reason_only_errors": 3,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "gold_action:REQUEST_EVIDENCE": {
+          "records": 8,
+          "action_correct": 8,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 7,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 7,
+          "strict_json_valid": 8,
+          "reason_only_errors": 1,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "domain:EEE": {
+          "records": 8,
+          "action_correct": 8,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 8,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 8,
+          "strict_json_valid": 8,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        }
+      },
+      "e1_pair_strict": 10,
+      "e2_pair_strict": 13,
+      "e2_pair_action": 17,
+      "gained_strict_ids": [
+        "PHY-TH01-P06-A",
+        "PHY-TH01-P01-A",
+        "PHY-TH01-P03-A",
+        "PHY-VBX1-P07-A",
+        "PHY-EE02-P01-A"
+      ],
+      "lost_strict_ids": [
+        "PHY-TH01-P06-B",
+        "PHY-TH01-P04-B"
+      ],
+      "e2_failed_ids": [
+        "PHY-TH01-P06-B",
+        "PHY-TH01-P08-A",
+        "PHY-VBX1-P08-A",
+        "PHY-TH01-P04-B",
+        "PHY-VBX1-P04-A",
+        "PHY-VBX1-P06-A",
+        "PHY-VBX1-P05-A"
+      ],
+      "e2_generation_seconds": 69.45630870200148,
+      "e2_generated_tokens": 1868,
+      "e2_peak_allocated_GiB": 4.379782199859619
+    },
+    "after": {
+      "e1": {
+        "records": 40,
+        "action_correct": 34,
+        "schema_and_refs_valid": 40,
+        "legacy_contract_pass": 29,
+        "reference_exact_primary_gold": 40,
+        "strict_selection_contract_pass": 29
+      },
+      "e2": {
+        "records": 40,
+        "action_correct": 37,
+        "schema_and_refs_valid": 40,
+        "legacy_contract_pass": 33,
+        "reference_exact_primary_gold": 40,
+        "strict_selection_contract_pass": 33,
+        "strict_json_valid": 40,
+        "reason_only_errors": 4,
+        "normal_case_false_alarm": 2,
+        "challenge_false_accept": 1,
+        "generation_budget_hit": 0
+      },
+      "e1_groups": {
+        "remainder_same_source20": {
+          "records": 20,
+          "action_correct": 17,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 13,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 13
+        },
+        "domain:THERMAL": {
+          "records": 16,
+          "action_correct": 14,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 13,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 13
+        },
+        "gold_action:NO_ACTION_REQUIRED": {
+          "records": 20,
+          "action_correct": 20,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 20,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 20
+        },
+        "selected20": {
+          "records": 20,
+          "action_correct": 17,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 16,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 16
+        },
+        "gold_action:CHALLENGE": {
+          "records": 12,
+          "action_correct": 7,
+          "schema_and_refs_valid": 12,
+          "legacy_contract_pass": 5,
+          "reference_exact_primary_gold": 12,
+          "strict_selection_contract_pass": 5
+        },
+        "domain:VIBRATION": {
+          "records": 16,
+          "action_correct": 13,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 10,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 10
+        },
+        "gold_action:REQUEST_EVIDENCE": {
+          "records": 8,
+          "action_correct": 7,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 4,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 4
+        },
+        "domain:EEE": {
+          "records": 8,
+          "action_correct": 7,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 6,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 6
+        }
+      },
+      "e2_groups": {
+        "remainder_same_source20": {
+          "records": 20,
+          "action_correct": 17,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 13,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 13,
+          "strict_json_valid": 20,
+          "reason_only_errors": 4,
+          "normal_case_false_alarm": 2,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "domain:THERMAL": {
+          "records": 16,
+          "action_correct": 14,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 13,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 13,
+          "strict_json_valid": 16,
+          "reason_only_errors": 1,
+          "normal_case_false_alarm": 2,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "gold_action:NO_ACTION_REQUIRED": {
+          "records": 20,
+          "action_correct": 18,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 18,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 18,
+          "strict_json_valid": 20,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 2,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "selected20": {
+          "records": 20,
+          "action_correct": 20,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 20,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 20,
+          "strict_json_valid": 20,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "gold_action:CHALLENGE": {
+          "records": 12,
+          "action_correct": 11,
+          "schema_and_refs_valid": 12,
+          "legacy_contract_pass": 8,
+          "reference_exact_primary_gold": 12,
+          "strict_selection_contract_pass": 8,
+          "strict_json_valid": 12,
+          "reason_only_errors": 3,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "domain:VIBRATION": {
+          "records": 16,
+          "action_correct": 15,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 12,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 12,
+          "strict_json_valid": 16,
+          "reason_only_errors": 3,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "gold_action:REQUEST_EVIDENCE": {
+          "records": 8,
+          "action_correct": 8,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 7,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 7,
+          "strict_json_valid": 8,
+          "reason_only_errors": 1,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "domain:EEE": {
+          "records": 8,
+          "action_correct": 8,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 8,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 8,
+          "strict_json_valid": 8,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        }
+      },
+      "e1_pair_strict": 9,
+      "e2_pair_strict": 13,
+      "e2_pair_action": 17,
+      "gained_strict_ids": [
+        "PHY-VBX1-P02-A",
+        "PHY-TH01-P06-A",
+        "PHY-TH01-P03-A",
+        "PHY-VBX1-P07-A",
+        "PHY-EE02-P01-A",
+        "PHY-EE03-P02-A"
+      ],
+      "lost_strict_ids": [
+        "PHY-TH01-P04-B",
+        "PHY-TH01-P07-B"
+      ],
+      "e2_failed_ids": [
+        "PHY-TH01-P08-A",
+        "PHY-VBX1-P08-A",
+        "PHY-TH01-P04-B",
+        "PHY-TH01-P07-B",
+        "PHY-VBX1-P04-A",
+        "PHY-VBX1-P06-A",
+        "PHY-VBX1-P05-A"
+      ],
+      "e2_generation_seconds": 69.10537847699561,
+      "e2_generated_tokens": 1868,
+      "e2_peak_allocated_GiB": 4.389768123626709
+    },
+    "before": {
+      "e1": {
+        "records": 40,
+        "action_correct": 31,
+        "schema_and_refs_valid": 39,
+        "legacy_contract_pass": 25,
+        "reference_exact_primary_gold": 40,
+        "strict_selection_contract_pass": 25
+      },
+      "e2": {
+        "records": 40,
+        "action_correct": 36,
+        "schema_and_refs_valid": 39,
+        "legacy_contract_pass": 31,
+        "reference_exact_primary_gold": 39,
+        "strict_selection_contract_pass": 31,
+        "strict_json_valid": 40,
+        "reason_only_errors": 4,
+        "normal_case_false_alarm": 3,
+        "challenge_false_accept": 1,
+        "generation_budget_hit": 0
+      },
+      "e1_groups": {
+        "remainder_same_source20": {
+          "records": 20,
+          "action_correct": 15,
+          "schema_and_refs_valid": 19,
+          "legacy_contract_pass": 11,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 11
+        },
+        "domain:THERMAL": {
+          "records": 16,
+          "action_correct": 12,
+          "schema_and_refs_valid": 15,
+          "legacy_contract_pass": 10,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 10
+        },
+        "gold_action:NO_ACTION_REQUIRED": {
+          "records": 20,
+          "action_correct": 20,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 20,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 20
+        },
+        "selected20": {
+          "records": 20,
+          "action_correct": 16,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 14,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 14
+        },
+        "gold_action:CHALLENGE": {
+          "records": 12,
+          "action_correct": 7,
+          "schema_and_refs_valid": 12,
+          "legacy_contract_pass": 3,
+          "reference_exact_primary_gold": 12,
+          "strict_selection_contract_pass": 3
+        },
+        "domain:VIBRATION": {
+          "records": 16,
+          "action_correct": 13,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 10,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 10
+        },
+        "gold_action:REQUEST_EVIDENCE": {
+          "records": 8,
+          "action_correct": 4,
+          "schema_and_refs_valid": 7,
+          "legacy_contract_pass": 2,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 2
+        },
+        "domain:EEE": {
+          "records": 8,
+          "action_correct": 6,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 5,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 5
+        }
+      },
+      "e2_groups": {
+        "remainder_same_source20": {
+          "records": 20,
+          "action_correct": 16,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 12,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 12,
+          "strict_json_valid": 20,
+          "reason_only_errors": 4,
+          "normal_case_false_alarm": 3,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "domain:THERMAL": {
+          "records": 16,
+          "action_correct": 13,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 12,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 12,
+          "strict_json_valid": 16,
+          "reason_only_errors": 1,
+          "normal_case_false_alarm": 3,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "gold_action:NO_ACTION_REQUIRED": {
+          "records": 20,
+          "action_correct": 17,
+          "schema_and_refs_valid": 20,
+          "legacy_contract_pass": 17,
+          "reference_exact_primary_gold": 20,
+          "strict_selection_contract_pass": 17,
+          "strict_json_valid": 20,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 3,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "selected20": {
+          "records": 20,
+          "action_correct": 20,
+          "schema_and_refs_valid": 19,
+          "legacy_contract_pass": 19,
+          "reference_exact_primary_gold": 19,
+          "strict_selection_contract_pass": 19,
+          "strict_json_valid": 20,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "gold_action:CHALLENGE": {
+          "records": 12,
+          "action_correct": 11,
+          "schema_and_refs_valid": 11,
+          "legacy_contract_pass": 7,
+          "reference_exact_primary_gold": 11,
+          "strict_selection_contract_pass": 7,
+          "strict_json_valid": 12,
+          "reason_only_errors": 3,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "domain:VIBRATION": {
+          "records": 16,
+          "action_correct": 15,
+          "schema_and_refs_valid": 16,
+          "legacy_contract_pass": 12,
+          "reference_exact_primary_gold": 16,
+          "strict_selection_contract_pass": 12,
+          "strict_json_valid": 16,
+          "reason_only_errors": 3,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 1,
+          "generation_budget_hit": 0
+        },
+        "gold_action:REQUEST_EVIDENCE": {
+          "records": 8,
+          "action_correct": 8,
+          "schema_and_refs_valid": 8,
+          "legacy_contract_pass": 7,
+          "reference_exact_primary_gold": 8,
+          "strict_selection_contract_pass": 7,
+          "strict_json_valid": 8,
+          "reason_only_errors": 1,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        },
+        "domain:EEE": {
+          "records": 8,
+          "action_correct": 8,
+          "schema_and_refs_valid": 7,
+          "legacy_contract_pass": 7,
+          "reference_exact_primary_gold": 7,
+          "strict_selection_contract_pass": 7,
+          "strict_json_valid": 8,
+          "reason_only_errors": 0,
+          "normal_case_false_alarm": 0,
+          "challenge_false_accept": 0,
+          "generation_budget_hit": 0
+        }
+      },
+      "e1_pair_strict": 5,
+      "e2_pair_strict": 11,
+      "e2_pair_action": 16,
+      "gained_strict_ids": [
+        "PHY-VBX1-P02-A",
+        "PHY-TH01-P06-A",
+        "PHY-TH01-P07-A",
+        "PHY-TH01-P01-A",
+        "PHY-TH01-P03-A",
+        "PHY-TH01-P05-A",
+        "PHY-VBX1-P07-A",
+        "PHY-EE02-P01-A",
+        "PHY-EE03-P02-A"
+      ],
+      "lost_strict_ids": [
+        "PHY-TH01-P01-B",
+        "PHY-TH01-P04-B",
+        "PHY-TH01-P07-B"
+      ],
+      "e2_failed_ids": [
+        "PHY-TH01-P08-A",
+        "PHY-VBX1-P08-A",
+        "PHY-TH01-P01-B",
+        "PHY-TH01-P04-B",
+        "PHY-TH01-P07-B",
+        "PHY-VBX1-P04-A",
+        "PHY-VBX1-P06-A",
+        "PHY-VBX1-P05-A",
+        "PHY-EE03-P01-A"
+      ],
+      "e2_generation_seconds": 68.81125802999122,
+      "e2_generated_tokens": 1878,
+      "e2_peak_allocated_GiB": 4.389768123626709
+    }
+  },
+  "cross_view": {
+    "e1_position_action_changed": 3,
+    "e1_position_refs_changed": 0,
+    "e1_all_three_strict_pass": 25,
+    "e2_position_action_changed_ids": [
+      "PHY-TH01-P01-B"
+    ],
+    "e2_position_refs_changed_ids": [
+      "PHY-EE03-P01-A"
+    ],
+    "e2_all_three_strict_pass_ids": [
+      "PHY-TH01-P02-A",
+      "PHY-VBX1-P06-B",
+      "PHY-VBX1-P05-B",
+      "PHY-VBX1-P02-A",
+      "PHY-TH01-P06-A",
+      "PHY-VBX1-P01-A",
+      "PHY-TH01-P03-B",
+      "PHY-TH01-P05-B",
+      "PHY-VBX1-P01-B",
+      "PHY-VBX1-P04-B",
+      "PHY-TH01-P07-A",
+      "PHY-TH01-P01-A",
+      "PHY-VBX1-P02-B",
+      "PHY-TH01-P03-A",
+      "PHY-VBX1-P08-B",
+      "PHY-TH01-P04-A",
+      "PHY-TH01-P08-B",
+      "PHY-VBX1-P03-A",
+      "PHY-VBX1-P03-B",
+      "PHY-TH01-P05-A",
+      "PHY-VBX1-P07-B",
+      "PHY-VBX1-P07-A",
+      "PHY-TH01-P02-B",
+      "PHY-EE02-P01-A",
+      "PHY-EE02-P01-B",
+      "PHY-EE02-P02-A",
+      "PHY-EE02-P02-B",
+      "PHY-EE03-P01-B",
+      "PHY-EE03-P02-A",
+      "PHY-EE03-P02-B"
+    ],
+    "e2_all_three_strict_pass": 30
+  },
+  "contract_dev": {
+    "e1": {
+      "pass": 20,
+      "total": 20,
+      "source": "prior comparison.json/models/position/legacy_contract_dev"
+    },
+    "e2": {
+      "pass": 20,
+      "total": 20,
+      "source": "Earlier uploaded console transcript; standalone Contract result JSONL not supplied in latest upload",
+      "independently_reparsed_raw_rows": false
+    }
+  },
+  "decision": "Retain both e1 and e2; use e2 as provisional development benchmark. Halt epoch/LR search on these 40 cases; next evaluate previously unused scenarios and source families with fixed policy."
+}

@@ -1,0 +1,12 @@
+{
+  "experiments/source_review_direct_v14/EXPERIMENT_LOCK.json": "a4553518628731c739a56c5dd90d894960b56ca4b69ca50ca00171aa1c8c663f",
+  "experiments/source_review_direct_v14/cpu_token_preflight_v1/scripts/compare_results_extended.py": "22675cec3a0428c88514acb29e683ac0c8f6fa045eadb3a679c86da476da26f6",
+  "experiments/source_review_direct_v14/cpu_token_preflight_v1/scripts/cpu_preflight.py": "751c9a3c14366b01c84affeb879325c27ad94323f189a713ad69c1777547289d",
+  "experiments/source_review_direct_v14/cpu_token_preflight_v1/scripts/execute_once.py": "aee686b3659778ead13b2f748c56d89460aa4d4c840232d01a3bb54298d1535c",
+  "experiments/source_review_direct_v14/cpu_token_preflight_v1/scripts/fetch_assets.py": "3a353994b2e4ea5e9b1b14eaf5febeaab382def6c48b409b3ac31bf3559ab7a7",
+  "experiments/source_review_direct_v14/cpu_token_preflight_v1/scripts/preflight_core.py": "704cac601e2385a482cff52b585de596b2a286fb83b1460abf45c2f5b4475200",
+  "experiments/source_review_direct_v14/cpu_token_preflight_v1/scripts/run_direct_v14_checked.py": "a2f78f21120a36cfb1b6b3c4a848a916e61e298f2222542d46c0dd87271eb8a3",
+  "experiments/source_review_direct_v14/gpu_batch_v1/scripts/restore_locked_weights.py": "ecea596ee5b03273fee0ac8cbfd1813f0ee46d3f048b539d53025def0baaf7a4",
+  "experiments/source_review_direct_v14/inputs/dev8_direct_v14.jsonl": "7b50842f8abed5e621c69b4c03a924d8a6228c6f624200d2420b8cc9c8304232",
+  "experiments/source_review_direct_v14/prompts/direct_v14.txt": "c2f9b03b6990eb6ea7c6403a11e7899ba251e95f4d57907384685f94e2b16dae"
+}

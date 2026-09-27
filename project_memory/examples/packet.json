@@ -1,0 +1,12 @@
+{
+  "claim_id": "SYN-MEMORY-01",
+  "review_question": "Is the explicitly supplied synthetic sensor input record present for this limited input-readiness review?",
+  "review_target": {"kind": "INPUT_READINESS", "text": "Review only presence of the named synthetic sensor input record."},
+  "scope": {"unit_id": "SYN-UNIT", "configuration_id": "SYN-CONFIG", "run_id": "SYN-RUN"},
+  "source_refs": [],
+  "observations": [],
+  "request_catalog": [
+    {"request_id": "CURRENT_SCOPE_SUPPORTING_EVIDENCE", "description": "Input record for the specified unit, configuration and run"}
+  ],
+  "scope_of_result": "Synthetic memory integration only; no compliance, project approval, or verification closure."
+}

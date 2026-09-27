@@ -1,0 +1,13 @@
+# DoriLab 9B~27B baseline tournament
+
+동일한 84개 개발·회귀 입력으로 학습 전 모델을 비교했다. 새 후보는 BF16, greedy decoding, adapter 없음 조건이다.
+
+| 모델 | NS10 action | NS10 strict | Before40 action | Before40 strict | 잘못된 제안 수용 | Contract20 |
+|---|---:|---:|---:|---:|---:|---:|
+| qwen2b_historical | 24/24 | 19/24 | 38/40 | 36/40 | 2 | 20/20 |
+| gemma4_e4b_before | 22/24 | 11/24 | 33/40 | 15/40 | 2 | 16/20 |
+| gemma4_e4b_after | 24/24 | 18/24 | 39/40 | 35/40 | 1 | 20/20 |
+| qwen35_9b | 23/24 | 18/24 | 36/40 | 27/40 | 1 | 15/20 |
+
+선택 시 strict 점수 하나만 보지 않고 잘못된 정상 판정, action, 근거 선택, reason 오류를 사례별로 확인한다.
+상위 후보만 별도 LoRA 실험으로 넘기며 이 결과 자체는 배포 승인이나 공학 승인으로 사용하지 않는다.

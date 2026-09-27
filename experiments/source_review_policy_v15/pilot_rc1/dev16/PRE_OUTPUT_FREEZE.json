@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-09-24T06:12:42.210571+00:00",
+  "status": "AI_CANDIDATE_CONTENT_FROZEN_BEFORE_NEXT_MODEL_OUTPUT_NOT_RELEASE_APPROVAL",
+  "case_count": 16,
+  "source_method_dependent_cases": 8,
+  "observation_sufficient_controls": 8,
+  "file_sha256": {
+    "dev16/INPUTS.jsonl": "58773a133bb95facbbb520ab8a329b411c7ab1908dd794419c71dd17c0e2f7e9",
+    "dev16/GOLD_AI_CANDIDATE.jsonl": "7a248d9e9608a48a26aaa119aec002fcf3c1154cd1b3336d12ee337e22226894",
+    "dev16/METADATA.jsonl": "9fee5e1b75ffd666810ccd688614eddc34a061ce0c07eee8533691770eb506dd",
+    "dev16/MODEL_INPUT_PREVIEWS.jsonl": "ac57babab05dbe005806065550c0d5f20abf94e2a2d773eb5b4cf64445195550",
+    "dev16/INPUT_FACTS.json": "64f827c9d428ed85fe5ad660ff23cc51478802d5ad39b616bf4f07722ef6ebf2",
+    "prompts/direct_v15_pilot_rc1.txt": "4fe243c2300a5084f54833e7b6fd8aa45f55592c9dfcf6aaa53cc07692e0282f",
+    "POLICY_v15_RC1.md": "886f812d750f7415ed26b53ed69509728db655c1e68e69e73bdb818e87adcaf5",
+    "sources/SOURCE_AUDIT_RC1.json": "d899c07a07cf1b82594a077eaf551727bd807439598f34e5a4f278a901274b8f"
+  },
+  "model_inference_executed": false,
+  "human_review_performed": false,
+  "training_use_approval": false,
+  "revision_rule": "Any reviewer changes require a new freeze manifest before inference; never silently amend this snapshot."
+}

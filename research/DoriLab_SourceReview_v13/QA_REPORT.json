@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "scope": "CPU structural integrity, parser/serializer/guard regression, candidate-label self-consistency and synthetic arithmetic; not LLM performance or independent engineering review",
+  "unit_tests": 34,
+  "unit_tests_all_pass": true,
+  "base_cases": 96,
+  "related_families": 24,
+  "sources": 9,
+  "program_groups": 9,
+  "splits": {
+    "DEV": 24,
+    "TRAIN": 48,
+    "RESERVED_TEST": 24
+  },
+  "human_review_boundary_probes": 6,
+  "numeric_calculation_records_checked": 8,
+  "unique_calculation_types": 4,
+  "required_reference_cardinalities": [
+    2,
+    3
+  ],
+  "schema_checked_against": "JSON Schema Draft202012",
+  "all_sources_and_programs_disjoint_within_this_package": true,
+  "reserved_case_ids_and_target_rationales_absent_from_main_package": true,
+  "user_full_legacy_corpus_overlap_audit": "PENDING",
+  "native_model_token_preflight": "NOT_EXECUTED",
+  "model_inference_executed": false,
+  "training_executed": false,
+  "independent_human_review_performed": false,
+  "source_pdf_visual_review_complete": false,
+  "raw_source_files_shipped": false,
+  "source_download_tool_network_test": "NOT_EXECUTED_IN_THIS_CONTAINER",
+  "fixture_scoring_note": "Expected answers were supplied directly to the scorer only for software self-consistency tests. This is not model evaluation.",
+  "release_status": "SOURCE_GROUNDED_AI_CANDIDATE_REVIEW_REQUIRED"
+}

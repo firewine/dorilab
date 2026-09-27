@@ -1,0 +1,16 @@
+{
+  "version": "eval40-v1",
+  "total_cases": 40,
+  "splits": {
+    "dev": 20,
+    "holdout": 10,
+    "adversarial": 10
+  },
+  "roles": {
+    "ANALYSIS": 12,
+    "EVIDENCE": 14,
+    "CRITIC": 14
+  },
+  "inputs_sha256": "29932876322368ac6c5c51cbae1bbd35f9d4f4f69acd8dcd263cc8bdca82e570",
+  "gold_sha256": "d0d20b7f5768a5f92ba1298fea26946c02425841845ced9ed6a0e352430b3acf"
+}

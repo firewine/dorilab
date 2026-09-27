@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DoriLab Source Review Action v13 - NEW EXPERIMENTAL CONTRACT",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "action",
+    "claim_id",
+    "evidence_refs"
+  ],
+  "properties": {
+    "action": {
+      "enum": [
+        "NO_ACTION_REQUIRED",
+        "REQUEST_EVIDENCE",
+        "CHALLENGE",
+        "CALL_TOOL",
+        "PROPOSE_FINDING"
+      ]
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "MEASUREMENT_MAPPING_MISMATCH",
+        "EVIDENCE_INTERPRETATION_ERROR",
+        "METHOD_INTERPRETATION_ERROR",
+        "CONFIGURATION_SCOPE_UNRESOLVED",
+        "BOUNDARY_CONDITION_UNRESOLVED",
+        "MONITORING_COVERAGE_INSUFFICIENT",
+        "SUPPORTING_EVIDENCE_MISSING",
+        "AS_RUN_MISSING",
+        "MODEL_SCOPE_EXCEEDED",
+        "TEST_ARTIFACT_UNMODELED",
+        "MODAL_INPUTS_MISSING",
+        "MODE_SELECTION_MISMATCH"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "requested_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "tool": {
+      "type": "string"
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "finding_type": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "REQUEST_EVIDENCE"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reason",
+          "requested_evidence"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "CHALLENGE"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reason"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "CALL_TOOL"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "tool",
+          "arguments"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "PROPOSE_FINDING"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "finding_type"
+        ]
+      }
+    }
+  ]
+}

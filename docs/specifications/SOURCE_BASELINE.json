@@ -1,0 +1,33 @@
+{
+  "schema": "dorilab.specification-source-baseline.v1",
+  "document_version": "1.0",
+  "captured_at_utc": "2026-09-27T10:34:56.551635+00:00",
+  "scope": "project memory, Qwen search controller, RC3 serving bridge and HTTP runtime",
+  "files": {
+    "inference/contracts/service_contracts.json": "f0befa91e2ab05878434bbe03b25c7389df291348b5671d460e659bc948b0249",
+    "inference/contracts/system_allowlist.json": "c652168fc89c84d500adc9dd66c8a2af7633951f99ef484549bcff4fd02a621c",
+    "inference/model_runtime.py": "241d28dc6505b8d08b90a44c97b05ca97ff346605baa85b3f5db7a9f867b1008",
+    "inference/requirements-api.lock": "b77ec2698ec03df8dc7976ae74388cb7003e150defbd2ee11c2f108529b68a38",
+    "inference/restore_api.py": "4da6fbe721793e1f9909e41c8ecfcd7a3f28b2d2ed73e251046f0525bf657391",
+    "inference/server.py": "dcd36dbf0a78233e1d07819bb01a477cd563da2c8a6af35ed97a5ddc6114ee5f",
+    "inference/service_config.json": "28b5574fc14193e0c7d6bc5f8c791996b417891a162e7f71901c8c8b1d026488",
+    "inference/start_inference.sh": "2da573726ac76f29046613807fae59752c2cda4ac26e08a7ce7480f36dae2299",
+    "inference/start_service.py": "5e041eb02d97b62d9c9cea790e683313fa800ae7b05eb814aa37d3316c921cc9",
+    "inference/test_service.py": "0434bf68cd7061c1784c6c22146718e6aa6b7d6f99001253f83ec3cad14425d0",
+    "project_memory/__init__.py": "0ccf0e4bc75b4bc7cefdfca8d9d956a5f770258086e3a820d040aac37650d0d3",
+    "project_memory/__main__.py": "33bffeec8c700e82a9b6b51f5618488bdc471f60b0d421c1fc8595950e953c8f",
+    "project_memory/bridge.py": "1c7476f7ec15500956164e7fc36a664bd129c0a487649034e3e0480108c22efc",
+    "project_memory/controller.py": "a5e5483660431d7da584fcc24ffd54cc163323097c041e1a31eda667bd4874c6",
+    "project_memory/examples/packet.json": "51961b83631def66391020fe8de6396d549693fe519dfdc457156d98782ec0a3",
+    "project_memory/examples/trajectory.json": "c755095148949b32f8d19827fde44c1dcf3330d6ee0873db06a871f37325bfae",
+    "project_memory/planner_contract.py": "ae32408650d064b23b6abec41ac768c857028b450dc1bd344f2308b04c028b8d",
+    "project_memory/store.py": "b410785779494e38219167a5cd9f8929536733436ea1aa34d4fcf12dadd26d0b",
+    "project_memory/test_controller.py": "66922b0f03e77965e8905d65e32ce82967c0c2f95635ae46a42b450fb94f7b45",
+    "project_memory/test_memory.py": "2c0f3456c6d4c6e1d97b4766797c114186d3b7e3be7c8d991257dcd4a661e6ce",
+    "results/v15_release_progress/cpu_rc3/common.py": "6e6253fbfec9bc7592dc5f508dddeb93e5f4f2a234ece7fa4c7b2ceddbdbdcae",
+    "results/v15_release_progress/cpu_rc3/tokenization.py": "d76a6714547d383ec5aa9966b8b2347176b86ae5a23ee607b0b3325317c28529"
+  },
+  "validation_receipt": "project_memory/artifacts/controller_v1/verification.json",
+  "receipt_sha256": "17284f39e8b29576d119994add47a677360ca4ebdd0986197d9023895968c980",
+  "runtime_changes_authorized": false
+}

@@ -1,0 +1,25 @@
+{
+  "package": "DoriLab_DataFactory_v01",
+  "files": {
+    "README_KO.md": "e5cabf0002e86ef0e70245a158c5b97fde00d7539e9c1a19900d7b5dd5986c56",
+    "tests/test_factory.py": "9da328d5e1643cc046066fea66e5a8589a76faf017dc43d7202c0ee4e4a7eadd",
+    "schemas/review_explanation_v1.json": "5be8105d2c856d104ceca9f93c652eba677201a6b4a0ff3aa54b8f99421fa7c9",
+    "config/pipeline.example.json": "2f5f17ff715b0b9822e1730f705b4f03a310f594ddcc7f642a60770a9704306c",
+    "config/source_queries.json": "b50db307ec44b516df5e871bffa5bcbe3d23823d883cdbaefde38f2e01c6fad1",
+    "prompts/01_FACTS_KO.md": "9fad037ec2284b651159976d5b56a3242784886e9246161a610e7bf772a7fa4d",
+    "prompts/03_REVIEW_KO.md": "41f6af6db173eed510db00c57825811b1e17f69c2cb1f9545128868f5e902e17",
+    "prompts/02_CASES_KO.md": "abf2881c96c4d53f392ec714a07d5d8caa747990b3f6750c6fb33093dee74223",
+    "examples/j7_review_demo.jsonl": "2ab23b885dadc3ad1b301406f8531e465de53b1ef5aa5e4f93610927ab300a5b",
+    "docs/IMPLEMENTATION_KO.md": "0f84fea13a2f958531533be0f7fa1911f7d533704fc0fe9779c5fe2af6f4f996",
+    "dfactory/discovery.py": "aeb8913288cfdb8c0b11c56a32ef18cd6b8406fa94a40accebaddb9e3175f0cd",
+    "dfactory/review.html": "3a39ad921008b9031181c54ca628b97b4e9c284ceff2a2b123ec860133d17bc6",
+    "dfactory/__main__.py": "74a99969a7bd7cd64456c550cbc73274acc380bcea7cd33853b7a6adac68ed96",
+    "dfactory/__init__.py": "fec97c5b131139c43cb7c914492cd2f944caca411938dd3a82ddac5549d5dacc",
+    "dfactory/server.py": "da257e85665e4f9dad430352dbf9b4ac8309aeef66f5528e9b9154e58fbe33e2",
+    "dfactory/core.py": "1da6e52d7f42e07e2e28ebba4917c776f30d39eddab4e4c97c93c5dfe5a7fd2a",
+    "reports/browser_test.json": "7758b21fe6ae7240f1ff5167a201cc30b4cf766d2fd14e88897247047057ef5b",
+    "reports/imported40_audit.json": "9cae0f1fc36b07217d6e8124c066bec09fb5e3d26fc436c4be4716b8a4fb907b",
+    "reports/cpu_tests.txt": "fd4aaf37535f0c790393f66bb4b3a3bf58d0110748ea7330c316c3c4e417a70a",
+    "reports/BUILD_STATUS.json": "fb9f03595ee5ae888be07155e5695d782f0d22ec2dd996fe9243fc7450faebbc"
+  }
+}

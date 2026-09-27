@@ -1,0 +1,95 @@
+[
+  {
+    "source_id": "NS10-TH-MRO",
+    "title": "Thermal Model Correlation for Mars Reconnaissance Orbiter",
+    "authors": [
+      "Ruth M. Amundsen",
+      "John A. Dec",
+      "Joseph F. Gasbarre"
+    ],
+    "publication_year": 2007,
+    "document_id": "20070030304",
+    "report_number": "07ICES-17",
+    "program_group": "MRO_SOLAR_ARRAY_CRUISE_AEROBRAKING_CORRELATION",
+    "domain": "THERMAL",
+    "landing_url": "https://ntrs.nasa.gov/citations/20070030304",
+    "pdf_url": "https://ntrs.nasa.gov/api/citations/20070030304/downloads/20070030304.pdf",
+    "novelty_terms": [
+      "20070030304",
+      "Mars Reconnaissance Orbiter",
+      "MRO_SOLAR_ARRAY"
+    ],
+    "scope_note_ko": "열진공 지상시험 논문이 아니라 MRO 태양전지판의 비행자료 기반 열모델 상관 논문이다. 기존 ATM 열시험과 다른 프로그램이다. 센서 위치 대응, 태양 방향 입력, 전력 추출 고려를 사용한다. 기존 TH-01의 부품 발열 분배 원리를 이 논문의 주장으로 옮기지 않는다.",
+    "verification": "PUBLIC_PRIMARY_PDF_PARSED_TEXT_CHECKED",
+    "pdf_bytes_sha256": null,
+    "visual_verification": false,
+    "verification_limit": "PDF text read via web. Screenshot attempts failed; no plots, tables or numerical results extracted. PDF bytes not downloaded into this package; local PDF hash not established.",
+    "reviewer_type": "AI",
+    "human_review_performed": false,
+    "raw_measurements_included": false
+  },
+  {
+    "source_id": "NS10-ME-CM2",
+    "title": "Benefits of Force Limiting Vibration Testing",
+    "authors": [
+      "Mark E. McNelis",
+      "Terry D. Scharton"
+    ],
+    "publication_year": 1999,
+    "document_id": "19990095797",
+    "report_number": "NASA/TM-1999-209382",
+    "program_group": "COMBUSTION_MODULE_2_XYBION_CAMERA",
+    "domain": "VIBRATION",
+    "landing_url": "https://ntrs.nasa.gov/citations/19990095797",
+    "pdf_url": "https://ntrs.nasa.gov/api/citations/19990095797/downloads/19990095797.pdf?attachment=true",
+    "novelty_terms": [
+      "19990095797",
+      "Combustion Module-2",
+      "Xybion",
+      "COMBUSTION_MODULE_2"
+    ],
+    "scope_note_ko": "CM-2 Xybion 카메라 시험이다. 원문 실제 시험에서는 힘을 계측만 하고 힘 제한 제어를 실행하지 않았다. 예상 저감 효과를 실제 실측 개선으로 해석하지 않는다. f0는 이 논문의 시험체 기본 공진주파수 정의를 사용하며 이전 VB-X1의 주 모드 표현을 그대로 이식하지 않는다. 방법론과 저자/참고문헌은 기존 force-limiting 문헌과 겹칠 수 있으나 프로그램은 다르다.",
+    "verification": "PUBLIC_PRIMARY_PDF_PARSED_TEXT_CHECKED",
+    "pdf_bytes_sha256": null,
+    "visual_verification": false,
+    "verification_limit": "PDF text read via web. Screenshot attempts failed; no plots, tables or numerical results extracted. PDF bytes not downloaded into this package; local PDF hash not established.",
+    "reviewer_type": "AI",
+    "human_review_performed": false,
+    "raw_measurements_included": false
+  },
+  {
+    "source_id": "NS10-EE-RTG4",
+    "title": "Microsemi RTG4 Rev C Field Programmable Gate Array Single Event Effects (SEE) Heavy-ion Test Report",
+    "authors": [
+      "Melanie Berg",
+      "Hak Kim",
+      "Anthony Phan",
+      "Christina Seidleck",
+      "Ken Label",
+      "Jonny Pellish",
+      "Michael Campola"
+    ],
+    "publication_year": 2019,
+    "document_id": "20190001593",
+    "report_number": "GSFC-E-DAA-TN44754",
+    "pdf_revision_note": "PDF cover lists rev2 updates in 2017; NTRS publication date is 2019-03-15. Campaigns span 2015-2017.",
+    "program_group": "RTG4_REV_C_NEPP_HEAVY_ION_2015_2017",
+    "domain": "EEE",
+    "landing_url": "https://ntrs.nasa.gov/citations/20190001593",
+    "pdf_url": "https://ntrs.nasa.gov/api/citations/20190001593/downloads/20190001593.pdf",
+    "novelty_terms": [
+      "20190001593",
+      "RTG4",
+      "RT4G150",
+      "RTG4_REV_C"
+    ],
+    "scope_note_ko": "Microsemi RTG4 Rev C FPGA 중이온 시험 프로그램이다. 기존 OPA855 2022 시험과 다른 소자·캠페인이다. NASA/LBNL 같은 기관 또는 시험시설의 일부 공유는 프로그램 동일성을 뜻하지 않는다. 실제 소자의 우주 적합성·오류율을 새로 계산하지 않는다.",
+    "verification": "PUBLIC_PRIMARY_PDF_PARSED_TEXT_CHECKED",
+    "pdf_bytes_sha256": null,
+    "visual_verification": false,
+    "verification_limit": "PDF text read via web. Screenshot attempts failed; no plots, tables or numerical results extracted. PDF bytes not downloaded into this package; local PDF hash not established.",
+    "reviewer_type": "AI",
+    "human_review_performed": false,
+    "raw_measurements_included": false
+  }
+]

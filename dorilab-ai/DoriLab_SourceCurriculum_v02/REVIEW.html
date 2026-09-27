@@ -1,0 +1,401 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>v10 평가 후보</title><style>body{font:16px/1.7 sans-serif;max-width:1100px;margin:2rem auto;padding:0 20px}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>DoriLab 새 출처 24개 · AI 작성/검토</h1><pre># 새 출처 24개 평가 후보 — AI 작성·AI 논리 검토
+
+
+
+사람 전문가 승인이나 실제 시험 결과가 아니다. 원문 근거는 웹의 PDF 텍스트로 확인했다. PDF 스크린샷 요청이 실패하여 그림·표를 재해석하지 않았고 로컬 원본 PDF 해시는 없다.
+
+모든 OBS와 식별자·83/191 Hz 같은 사례 수치는 새 가상 조건이다. 문헌 원리는 출처별 정의를 그대로 유지한다. e2 가중치/출력은 새 평가에 대해 아직 실행되지 않았다.
+
+v09 분류 설명은 24개 작성 이전 파일과 바이트가 같다. 12쌍은 관련 사례이고 독립 표본 24개로 추론하지 않는다. 3개 다른 프로그램은 기존 4개 출처 기준이며 로컬 prior-use audit을 함께 확인한다.
+
+
+
+## Thermal Model Correlation for Mars Reconnaissance Orbiter
+
+열진공 지상시험 논문이 아니라 MRO 태양전지판의 비행자료 기반 열모델 상관 논문이다. 기존 ATM 열시험과 다른 프로그램이다. 센서 위치 대응, 태양 방향 입력, 전력 추출 고려를 사용한다. 기존 TH-01의 부품 발열 분배 원리를 이 논문의 주장으로 옮기지 않는다.
+
+출처: https://ntrs.nasa.gov/citations/20070030304
+
+원문: https://ntrs.nasa.gov/api/citations/20070030304/downloads/20070030304.pdf
+
+
+
+## Benefits of Force Limiting Vibration Testing
+
+CM-2 Xybion 카메라 시험이다. 원문 실제 시험에서는 힘을 계측만 하고 힘 제한 제어를 실행하지 않았다. 예상 저감 효과를 실제 실측 개선으로 해석하지 않는다. f0는 이 논문의 시험체 기본 공진주파수 정의를 사용하며 이전 VB-X1의 주 모드 표현을 그대로 이식하지 않는다. 방법론과 저자/참고문헌은 기존 force-limiting 문헌과 겹칠 수 있으나 프로그램은 다르다.
+
+출처: https://ntrs.nasa.gov/citations/19990095797
+
+원문: https://ntrs.nasa.gov/api/citations/19990095797/downloads/19990095797.pdf?attachment=true
+
+
+
+## Microsemi RTG4 Rev C Field Programmable Gate Array Single Event Effects (SEE) Heavy-ion Test Report
+
+Microsemi RTG4 Rev C FPGA 중이온 시험 프로그램이다. 기존 OPA855 2022 시험과 다른 소자·캠페인이다. NASA/LBNL 같은 기관 또는 시험시설의 일부 공유는 프로그램 동일성을 뜻하지 않는다. 실제 소자의 우주 적합성·오류율을 새로 계산하지 않는다.
+
+출처: https://ntrs.nasa.gov/citations/20190001593
+
+원문: https://ntrs.nasa.gov/api/citations/20190001593/downloads/20190001593.pdf
+
+
+
+## T1
+
+문헌은 센서 위치의 예측값과 해당 센서 비행자료를 비교한다. 가상 사례에서 점온도와 전체 패널 평균의 대응이 없으면 직접 비교 proposal을 반박한다. 일치 조건에서는 값의 합격이 아니라 비교 대상 대응만 인정한다.
+
+
+
+### NS10-T1-A
+
+질문: Does the selected model output directly correspond to the measured quantity in this sensor comparison? This check concerns measurement-to-model correspondence, not temperature acceptance.
+
+제안: Use output N_skin as the directly corresponding prediction for measured channel Q8.
+
+가상 현재 관측: Record scope: unit=SYN-U-1717; configuration=C-7430; run=R-6465. The channel map defines Q8 as the temperature at the outer-face sensor attachment location. N_skin is evaluated at that same attachment location and on that same face, using the same time samples.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-6808&quot;,&quot;evidence_refs&quot;:[&quot;SF-1033&quot;,&quot;OBS-5680&quot;]}`
+
+
+
+### NS10-T1-B
+
+질문: Does the selected model output directly correspond to the measured quantity in this sensor comparison? This check concerns measurement-to-model correspondence, not temperature acceptance.
+
+제안: Use output N_skin as the directly corresponding prediction for measured channel Q8.
+
+가상 현재 관측: Record scope: unit=SYN-U-1717; configuration=C-7430; run=R-6465. The channel map defines Q8 as the temperature at one outer-face sensor attachment location. N_skin is instead the whole-panel area mean, including both faces. No spatial averaging or transfer mapping supports treating the point measurement as that mean.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;CHALLENGE&quot;,&quot;claim_id&quot;:&quot;CLM-6808&quot;,&quot;evidence_refs&quot;:[&quot;SF-1033&quot;,&quot;OBS-5680&quot;],&quot;reason&quot;:&quot;MEASUREMENT_MAPPING_MISMATCH&quot;}`
+
+
+
+## T2
+
+문헌의 경계 입력은 방향·거리 정보다. 이 정보가 없을 때는 경계조건 미확정으로 요청한다. 센서-모델 대응 오류라는 새 규칙으로 무조건 치환하지 않는 음성 대조다.
+
+
+
+### NS10-T2-A
+
+질문: Is the radiation boundary-input package complete for the stated cruise-interval review? Check availability only; do not infer an unknown orientation.
+
+제안: Close the radiation boundary-input availability check before comparing the temperature time histories.
+
+가상 현재 관측: Record scope: unit=SYN-U-7391; configuration=C-9603; run=R-7567. The interval package contains the temperature histories, but neither the solar/Earth direction histories nor solar distance for this interval. No equivalent boundary record is supplied.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;REQUEST_EVIDENCE&quot;,&quot;claim_id&quot;:&quot;CLM-5949&quot;,&quot;evidence_refs&quot;:[&quot;SF-3831&quot;,&quot;OBS-9762&quot;],&quot;reason&quot;:&quot;BOUNDARY_CONDITION_UNRESOLVED&quot;,&quot;requested_evidence&quot;:[&quot;RADIATION_DIRECTION_AND_DISTANCE_HISTORY&quot;]}`
+
+
+
+### NS10-T2-B
+
+질문: Is the radiation boundary-input package complete for the stated cruise-interval review? Check availability only; do not infer an unknown orientation.
+
+제안: Close the radiation boundary-input availability check before comparing the temperature time histories.
+
+가상 현재 관측: Record scope: unit=SYN-U-7391; configuration=C-9603; run=R-7567. The interval package includes time-aligned solar direction vectors, Earth direction vectors and solar distance from the trajectory. Their units and time basis are supplied for this run.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-5949&quot;,&quot;evidence_refs&quot;:[&quot;SF-3831&quot;,&quot;OBS-9762&quot;]}`
+
+
+
+## T3
+
+RMS 정의의 구현을 묻는 검사다. 부호 있는 잔차의 단순 평균은 RMS가 아니다. 수치 오차나 실제 궤도 모델 정확도를 계산하는 문제로 확장하지 않는다.
+
+
+
+### NS10-T3-A
+
+질문: Does the described reduction implement the cited RMS treatment of signed residuals? Assess the algorithm description only.
+
+제안: Label the supplied residual reduction as an RMS-over-time error metric.
+
+가상 현재 관측: Record scope: unit=SYN-U-4190; configuration=C-3398; run=R-1947. The reduction squares each signed sensor residual, averages those squared residuals over the stated samples and takes the square root. Sensor-level results are retained before combination.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-5647&quot;,&quot;evidence_refs&quot;:[&quot;SF-1040&quot;,&quot;OBS-1158&quot;]}`
+
+
+
+### NS10-T3-B
+
+질문: Does the described reduction implement the cited RMS treatment of signed residuals? Assess the algorithm description only.
+
+제안: Label the supplied residual reduction as an RMS-over-time error metric.
+
+가상 현재 관측: Record scope: unit=SYN-U-4190; configuration=C-3398; run=R-1947. The reduction averages the signed residuals directly and labels the result RMS. Equal positive and negative deviations cancel. Neither squaring nor taking a square root is performed.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;CHALLENGE&quot;,&quot;claim_id&quot;:&quot;CLM-5647&quot;,&quot;evidence_refs&quot;:[&quot;SF-1040&quot;,&quot;OBS-1158&quot;],&quot;reason&quot;:&quot;METHOD_INTERPRETATION_ERROR&quot;}`
+
+
+
+## T4
+
+전력 추출은 원문에서 가능한 원인으로 논의됐을 뿐 확정 원인이 아니다. 이 사례는 추출 전력의 시간 이력이 있는지만 검토하며 원문을 부품 발열 분배 주장으로 대체하지 않는다.
+
+
+
+### NS10-T4-A
+
+질문: Are the records needed to examine electrical power extraction from this illuminated array interval available? This is input availability, not proof of a unique physical cause.
+
+제안: Complete the power-extraction input check before assessing its contribution to the thermal discrepancy.
+
+가상 현재 관측: Record scope: unit=SYN-U-4054; configuration=C-1871; run=R-5524. The package supplies illumination and temperatures but no electrical output power histories or mapping of extracted power to the array wings. The missing records are unavailable elsewhere in the packet.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;REQUEST_EVIDENCE&quot;,&quot;claim_id&quot;:&quot;CLM-8857&quot;,&quot;evidence_refs&quot;:[&quot;SF-1674&quot;,&quot;OBS-8653&quot;],&quot;reason&quot;:&quot;POWER_DISSIPATION_UNRESOLVED&quot;,&quot;requested_evidence&quot;:[&quot;ARRAY_ELECTRICAL_POWER_EXTRACTION_HISTORY&quot;]}`
+
+
+
+### NS10-T4-B
+
+질문: Are the records needed to examine electrical power extraction from this illuminated array interval available? This is input availability, not proof of a unique physical cause.
+
+제안: Complete the power-extraction input check before assessing its contribution to the thermal discrepancy.
+
+가상 현재 관측: Record scope: unit=SYN-U-4054; configuration=C-1871; run=R-5524. The package supplies the interval-specific electrical output power history for each array wing, its timing relative to the illumination record and the mapping of those outputs to the thermal energy balance.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-8857&quot;,&quot;evidence_refs&quot;:[&quot;SF-1674&quot;,&quot;OBS-8653&quot;]}`
+
+
+
+## M1
+
+새 문헌의 f0 정의는 시험체 기본 공진이다. 가상 survey가 83 Hz를 fixture-only라고 식별한 상태에서 이를 시험체 f0로 쓰면 선정 오류다. 이전 문헌의 유효질량 정의를 새 문헌에 덧씌우지 않는다.
+
+
+
+### NS10-M1-A
+
+질문: Does the proposed f0 match this paper&#x27;s test-article fundamental-resonance definition for this axis? Mode classifications are already supplied.
+
+제안: Use the observed peak at 83 Hz as f0 for the current test article.
+
+가상 현재 관측: Record scope: unit=SYN-U-1927; configuration=C-3627; run=R-8264. The modal survey classifies the 83 Hz peak as the current test article&#x27;s fundamental resonance on this axis. The 191 Hz peak is a higher test-article mode; fixture-only resonances are separately identified.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-1340&quot;,&quot;evidence_refs&quot;:[&quot;SF-6888&quot;,&quot;OBS-6865&quot;]}`
+
+
+
+### NS10-M1-B
+
+질문: Does the proposed f0 match this paper&#x27;s test-article fundamental-resonance definition for this axis? Mode classifications are already supplied.
+
+제안: Use the observed peak at 83 Hz as f0 for the current test article.
+
+가상 현재 관측: Record scope: unit=SYN-U-1927; configuration=C-3627; run=R-8264. The modal survey classifies the 83 Hz peak as a fixture-only resonance, not a test-article mode. The current test article&#x27;s fundamental resonance on this axis is 191 Hz.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;CHALLENGE&quot;,&quot;claim_id&quot;:&quot;CLM-1340&quot;,&quot;evidence_refs&quot;:[&quot;SF-6888&quot;,&quot;OBS-6865&quot;],&quot;reason&quot;:&quot;MODE_SELECTION_MISMATCH&quot;}`
+
+
+
+## M2
+
+주어진 계산에 필요한 모달 주파수 입력 자체가 없다. 이미 주어진 모드를 잘못 선택한 경우와 구분한다. 필요한 입력이 있으면 입력 존재 검사만 통과하며 하중 계산 정확성까지 인정하지 않는다.
+
+
+
+### NS10-M2-A
+
+질문: Is the modal-frequency input available for the cited force-limit setup? Only input presence is being reviewed, not approval of the computed force curve.
+
+제안: Close the fundamental-frequency input-completeness check for this axis.
+
+가상 현재 관측: Record scope: unit=SYN-U-4136; configuration=C-7166; run=R-2279. The mass record, acceleration spectrum and C basis are present. No test-article fundamental frequency, modal survey or recoverable modal-frequency input exists for this axis in the supplied package.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;REQUEST_EVIDENCE&quot;,&quot;claim_id&quot;:&quot;CLM-5263&quot;,&quot;evidence_refs&quot;:[&quot;SF-9082&quot;,&quot;OBS-1659&quot;],&quot;reason&quot;:&quot;MODAL_INPUTS_MISSING&quot;,&quot;requested_evidence&quot;:[&quot;AXIS_SPECIFIC_FUNDAMENTAL_FREQUENCY&quot;]}`
+
+
+
+### NS10-M2-B
+
+질문: Is the modal-frequency input available for the cited force-limit setup? Only input presence is being reviewed, not approval of the computed force curve.
+
+제안: Close the fundamental-frequency input-completeness check for this axis.
+
+가상 현재 관측: Record scope: unit=SYN-U-4136; configuration=C-7166; run=R-2279. The mass record, acceleration spectrum and C basis are present. An axis-specific modal survey also supplies the identified test-article fundamental frequency and its mapping to the current configuration.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-5263&quot;,&quot;evidence_refs&quot;:[&quot;SF-9082&quot;,&quot;OBS-1659&quot;]}`
+
+
+
+## M3
+
+원문 실제 CM-2 시험은 힘 모니터링만 실시했다. 새 가상 trial에서는 제어 로그를 기준으로 실제 dual-control 실행 여부를 판정한다. 계획된 force limit을 실제 적용했다고 표현하지 않는다.
+
+
+
+### NS10-M3-A
+
+질문: Does this new trial&#x27;s control log support the statement that both force and acceleration were used to limit the excitation? Review execution description only; this is not the historical CM-2 run.
+
+제안: Describe this trial as having executed dual force-and-acceleration limiting.
+
+가상 현재 관측: Record scope: unit=SYN-U-9652; configuration=C-4652; run=R-1323. The current trial controller log shows the measured interface-force channel and control-acceleration channel were both enabled in the limiting algorithm, with independently configured references and recorded control action.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-3180&quot;,&quot;evidence_refs&quot;:[&quot;SF-7393&quot;,&quot;OBS-7720&quot;]}`
+
+
+
+### NS10-M3-B
+
+질문: Does this new trial&#x27;s control log support the statement that both force and acceleration were used to limit the excitation? Review execution description only; this is not the historical CM-2 run.
+
+제안: Describe this trial as having executed dual force-and-acceleration limiting.
+
+가상 현재 관측: Record scope: unit=SYN-U-9652; configuration=C-4652; run=R-1323. The current trial controller log shows only acceleration was used for control. The force channel was logged for monitoring and never fed into the limiting algorithm.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;CHALLENGE&quot;,&quot;claim_id&quot;:&quot;CLM-3180&quot;,&quot;evidence_refs&quot;:[&quot;SF-7393&quot;,&quot;OBS-7720&quot;],&quot;reason&quot;:&quot;METHOD_INTERPRETATION_ERROR&quot;}`
+
+
+
+## M4
+
+C 숫자만 존재하는 것과 선정 근거가 존재하는 것을 분리한다. 자료 존재 여부를 묻는 질문이므로 누락 시 요청한다. 모달 주파수 누락 코드로 바꾸는 것은 부적절하다.
+
+
+
+### NS10-M4-A
+
+질문: Is a configuration-specific basis for C present in this input package? Review documentation availability only.
+
+제안: Close the C-selection documentation check for the current mounting configuration.
+
+가상 현재 관측: Record scope: unit=SYN-U-6857; configuration=C-8942; run=R-4571. The package contains a numerical C copied into the setup, but the current mounting rationale and supporting reference record are missing and unavailable elsewhere in the package.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;REQUEST_EVIDENCE&quot;,&quot;claim_id&quot;:&quot;CLM-6074&quot;,&quot;evidence_refs&quot;:[&quot;SF-5265&quot;,&quot;OBS-4592&quot;],&quot;reason&quot;:&quot;FORCE_LIMIT_BASIS_UNRESOLVED&quot;,&quot;requested_evidence&quot;:[&quot;CURRENT_CONFIGURATION_C_RATIONALE&quot;]}`
+
+
+
+### NS10-M4-B
+
+질문: Is a configuration-specific basis for C present in this input package? Review documentation availability only.
+
+제안: Close the C-selection documentation check for the current mounting configuration.
+
+가상 현재 관측: Record scope: unit=SYN-U-6857; configuration=C-8942; run=R-4571. The package contains the selected C and a dated rationale tied to the current mounting, acceleration-spectrum revision, reference configuration and structural design-load constraint. The rationale is available for review.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-6074&quot;,&quot;evidence_refs&quot;:[&quot;SF-5265&quot;,&quot;OBS-4592&quot;]}`
+
+
+
+## E1
+
+검출된 mismatch는 나중에 정상 복귀했다고 사라지지 않는다. 기록 서술의 모순을 판정하며 입자 원인 확정이나 우주용 합격을 판정하지 않는다.
+
+
+
+### NS10-E1-A
+
+질문: Does the stored comparison record support the description of this monitored irradiation interval? This is event-description consistency, not radiation qualification.
+
+제안: Describe the monitored interval as containing no detected output mismatch.
+
+가상 현재 관측: Record scope: unit=SYN-U-2316; configuration=C-2785; run=R-3660. Time-aligned expected/received records cover the monitored interval. Every stored received value matches its expected value, and the comparison log reports no mismatches in that interval.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-4502&quot;,&quot;evidence_refs&quot;:[&quot;SF-1388&quot;,&quot;OBS-2702&quot;]}`
+
+
+
+### NS10-E1-B
+
+질문: Does the stored comparison record support the description of this monitored irradiation interval? This is event-description consistency, not radiation qualification.
+
+제안: Describe the monitored interval as containing no detected output mismatch.
+
+가상 현재 관측: Record scope: unit=SYN-U-2316; configuration=C-2785; run=R-3660. Time-aligned expected/received records contain a detected mismatch during the monitored interval. Later samples match again, but the mismatch event and its timestamp remain in the record.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;CHALLENGE&quot;,&quot;claim_id&quot;:&quot;CLM-4502&quot;,&quot;evidence_refs&quot;:[&quot;SF-1388&quot;,&quot;OBS-2702&quot;],&quot;reason&quot;:&quot;EVIDENCE_INTERPRETATION_ERROR&quot;}`
+
+
+
+## E2
+
+전류 로깅과 기능 출력 비교는 관측 대상이 다르다. 이미 전체 기능 관측을 문서화했다고 주장하는 proposal에 대해 전류만 있으면 coverage 불충분으로 반박한다. 이는 자료 요청을 묻는 문제와 다르다.
+
+
+
+### NS10-E2-A
+
+질문: Does the monitoring package support the proposal&#x27;s functional-output coverage claim? Do not infer coverage of an unmeasured signal from a different signal.
+
+제안: Accept this package as documenting functional-output monitoring throughout the irradiation interval.
+
+가상 현재 관측: Record scope: unit=SYN-U-8891; configuration=C-9580; run=R-8837. The package contains only a DUT current log. There was no DUT output comparison capture during the interval and no functional record is available.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;CHALLENGE&quot;,&quot;claim_id&quot;:&quot;CLM-5869&quot;,&quot;evidence_refs&quot;:[&quot;SF-8338&quot;,&quot;OBS-6623&quot;],&quot;reason&quot;:&quot;MONITORING_COVERAGE_INSUFFICIENT&quot;}`
+
+
+
+### NS10-E2-B
+
+질문: Does the monitoring package support the proposal&#x27;s functional-output coverage claim? Do not infer coverage of an unmeasured signal from a different signal.
+
+제안: Accept this package as documenting functional-output monitoring throughout the irradiation interval.
+
+가상 현재 관측: Record scope: unit=SYN-U-8891; configuration=C-9580; run=R-8837. The package contains a synchronized functional output-versus-expected comparison stream for the complete interval, together with a separate DUT current log. The functional stream coverage is explicitly documented.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-5869&quot;,&quot;evidence_refs&quot;:[&quot;SF-8338&quot;,&quot;OBS-6623&quot;]}`
+
+
+
+## E3
+
+count를 정규화할 fluence/LET 기록의 가용성만 묻는다. 원문은 flux와 fluence를 구분한다. 없는 노출량으로 cross section을 계산하거나 0을 가정하지 않는다.
+
+
+
+### NS10-E3-A
+
+질문: Are the exposure records required for the stated count-to-fluence normalization available? This is a completeness check; do not compute a cross section.
+
+제안: Complete the exposure-record check before normalizing this run&#x27;s upset count.
+
+가상 현재 관측: Record scope: unit=SYN-U-6549; configuration=C-9998; run=R-1824. The run-linked package provides the upset count, accumulated particle fluence and the LET identifier with units, plus the associated electrical operating mode and time interval.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-4840&quot;,&quot;evidence_refs&quot;:[&quot;SF-7298&quot;,&quot;OBS-4840&quot;]}`
+
+
+
+### NS10-E3-B
+
+질문: Are the exposure records required for the stated count-to-fluence normalization available? This is a completeness check; do not compute a cross section.
+
+제안: Complete the exposure-record check before normalizing this run&#x27;s upset count.
+
+가상 현재 관측: Record scope: unit=SYN-U-6549; configuration=C-9998; run=R-1824. The run-linked package provides the upset count and electrical mode but no accumulated fluence or LET record. A beam-on note alone is present; it gives no recoverable exposure quantities.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;REQUEST_EVIDENCE&quot;,&quot;claim_id&quot;:&quot;CLM-4840&quot;,&quot;evidence_refs&quot;:[&quot;SF-7298&quot;,&quot;OBS-4840&quot;],&quot;reason&quot;:&quot;EXPOSURE_METADATA_UNRESOLVED&quot;,&quot;requested_evidence&quot;:[&quot;RUN_FLUENCE_AND_LET_RECORD&quot;]}`
+
+
+
+## E4
+
+시험 장치와 DUT 중 하나의 build만으로는 실행 조합을 추적할 수 없다. 현재 범위의 configuration mapping 자료를 요청한다. 모델 자체의 옳고 그름이나 실제 FPGA 적합성 결론은 아니다.
+
+
+
+### NS10-E4-A
+
+질문: Is the run-linked DUT-and-tester build identification complete? Review configuration traceability, not the correctness of either design.
+
+제안: Close the build-identity check for the recorded DUT and tester combination.
+
+가상 현재 관측: Record scope: unit=SYN-U-9295; configuration=C-6361; run=R-9354. The package identifies the DUT configuration image but omits the tester bitstream version and timestamp. No other record links a tester build to the current run.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;REQUEST_EVIDENCE&quot;,&quot;claim_id&quot;:&quot;CLM-9046&quot;,&quot;evidence_refs&quot;:[&quot;SF-9750&quot;,&quot;OBS-8110&quot;],&quot;reason&quot;:&quot;CONFIGURATION_SCOPE_UNRESOLVED&quot;,&quot;requested_evidence&quot;:[&quot;DUT_AND_TESTER_BUILD_IDENTITIES&quot;]}`
+
+
+
+### NS10-E4-B
+
+질문: Is the run-linked DUT-and-tester build identification complete? Review configuration traceability, not the correctness of either design.
+
+제안: Close the build-identity check for the recorded DUT and tester combination.
+
+가상 현재 관측: Record scope: unit=SYN-U-9295; configuration=C-6361; run=R-9354. The package identifies both the DUT configuration image and tester bitstream with their versions and timestamps, and maps the pair to the current unit, electrical mode and run.
+
+AI 정답 후보: `{&quot;action&quot;:&quot;NO_ACTION_REQUIRED&quot;,&quot;claim_id&quot;:&quot;CLM-9046&quot;,&quot;evidence_refs&quot;:[&quot;SF-9750&quot;,&quot;OBS-8110&quot;]}`
+
+</pre></html>

@@ -1,0 +1,28 @@
+{
+  "schema": "dorilab.public-export-validation.v1",
+  "checked_at_utc": "2026-09-27T11:36:32.378845+00:00",
+  "status": "PASS",
+  "target_repository": "https://github.com/firewine/dorilab",
+  "checks": {
+    "payload_hashes_match": true,
+    "sealed_source_hashes_match": true,
+    "documentation_baseline_matches": true,
+    "tokenizer_allowlist_matches": true,
+    "contract_input_binding_matches": true,
+    "checkpoint_receipts_present": true,
+    "selected_files_allowed": true,
+    "runtime_and_secret_paths_ignored": true,
+    "documentation_links_resolve": true,
+    "credential_pattern_scan_passed": true,
+    "individual_files_under_100_MiB": true
+  },
+  "payload_files": 439,
+  "payload_bytes": 26768508,
+  "sealed_sources_checked": 16,
+  "tokenizer_assets_checked": 8,
+  "checkpoint_receipts_checked": 18,
+  "documentation_links_checked": 28,
+  "credential_pattern_findings": [],
+  "credential_review_scope": "File-path exclusions plus private-key, GitHub, Hugging Face, OpenAI, AWS and credential-URL patterns; token values stay local.",
+  "execution_scope": "Static export validation; existing runtime and service state preserved."
+}

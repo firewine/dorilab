@@ -1,0 +1,37 @@
+{
+  "trajectory_id": "synthetic-input-record",
+  "source": {"uri": "synthetic://memory-smoke/input-record", "revision": "1"},
+  "scope": {"unit_id": "SYN-UNIT", "configuration_id": "SYN-CONFIG", "run_id": "SYN-RUN"},
+  "steps": [
+    {
+      "observed_at": "2026-09-27T00:00:00Z",
+      "observation": "Synthetic sensor input record is missing.",
+      "action": "Attach synthetic sensor input record."
+    },
+    {
+      "observed_at": "2026-09-27T00:01:00Z",
+      "observation": "Synthetic sensor input record is present for SYN-UNIT, SYN-CONFIG, SYN-RUN. Presence alone makes no compliance or approval claim.",
+      "action": ""
+    }
+  ],
+  "notes": [
+    {
+      "kind": "workflow",
+      "text": "For this synthetic workflow, attach the sensor input record before checking presence.",
+      "status": "confirmed",
+      "step_indices": [0, 1]
+    },
+    {
+      "kind": "gotcha",
+      "text": "Synthetic gotcha: input record presence does not establish project approval.",
+      "status": "confirmed",
+      "step_indices": [1]
+    },
+    {
+      "kind": "premise",
+      "text": "A synthetic sensor input record does not establish applicability to a different configuration.",
+      "status": "confirmed",
+      "step_indices": [1]
+    }
+  ]
+}

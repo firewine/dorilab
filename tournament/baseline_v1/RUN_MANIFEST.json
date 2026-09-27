@@ -1,0 +1,38 @@
+{
+  "version": "dorilab-model-tournament-v1.0.0",
+  "created_at_utc": "2026-09-23T13:59:07.211972+00:00",
+  "project": "/workspace/dorilab/dorilab-gemma4-e4b",
+  "models": [
+    "qwen35_9b"
+  ],
+  "max_total_tokens": 2048,
+  "max_new_tokens": 384,
+  "dtype": "bfloat16",
+  "quantization": null,
+  "decoding": "greedy_do_sample_false",
+  "frozen_inputs_sha256": {
+    "data/action_schema.json": "3a3c78383bff2e8f2084d252c4f24f56e2a5fd72bbd14e8a0dafaff140920aac",
+    "reports/comparison.json": "55f416e9ae0c857c6f8882f1d5aae883d6654cc1b46e77d8fa964be874d03b8c",
+    "dorilab_gemma/scoring.py": "c61d2b9ce5e662fd2e661a14f6c5277f11a3a79730e3631ba416c6b926411d27",
+    "data/eval_ns10.jsonl": "2eed2845cbef78583474c12395c0aa6c3348bdc886f8cf7f2a835bfde80283aa",
+    "data/eval_before40.jsonl": "f43349f574ec9c6871656a0a79940fbd2d86026119d85fadc927e59452777a88",
+    "data/eval_contract20.jsonl": "c8758e3ad6d2ee89c1ac0738c57d7c5fe064ac075114f00ca762144ec2f5bb9a"
+  },
+  "environment": {
+    "python": "3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]",
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "transformers": "5.18.0.dev0",
+    "accelerate": "1.15.0",
+    "peft": "0.21.0",
+    "datasets": "5.0.1",
+    "huggingface_hub": "1.32.0",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "vram_GiB": 94.972412109375,
+    "hf_home": "/root/hf-cache"
+  }
+}

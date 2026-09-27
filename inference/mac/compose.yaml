@@ -1,0 +1,49 @@
+services:
+  tunnel:
+    build: .
+    image: dorilab-local-ssh-client
+    restart: unless-stopped
+    volumes:
+      - ${DORILAB_SSH_KEY:?absolute SSH key path}:/run/ssh/id:ro
+      - ${DORILAB_KNOWN_HOSTS:?absolute known_hosts path}:/run/ssh/known_hosts:ro
+    command:
+      - ssh
+      - -NT
+      - -p
+      - ${DORILAB_SSH_PORT:?direct SSH port}
+      - -i
+      - /run/ssh/id
+      - -o
+      - UserKnownHostsFile=/run/ssh/known_hosts
+      - -o
+      - StrictHostKeyChecking=yes
+      - -o
+      - BatchMode=yes
+      - -o
+      - ExitOnForwardFailure=yes
+      - -o
+      - ServerAliveInterval=30
+      - -o
+      - ServerAliveCountMax=3
+      - -L
+      - 127.0.0.1:8080:127.0.0.1:8080
+      - root@${DORILAB_SSH_HOST:?direct SSH host}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+  client:
+    image: dorilab-local-ssh-client
+    network_mode: service:tunnel
+    depends_on:
+      tunnel:
+        condition: service_healthy
+    volumes:
+      - ./client.py:/app/client.py:ro
+    secrets:
+      - dorilab_token
+    command: [python, /app/client.py]
+secrets:
+  dorilab_token:
+    file: ${DORILAB_TOKEN_FILE:?absolute local token file path}

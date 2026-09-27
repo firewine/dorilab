@@ -1,0 +1,13 @@
+{
+  "package_version": "source-review-v13.0",
+  "status": "PENDING",
+  "reviewer": "",
+  "reviewed_at": "",
+  "source_program_split_audit_pass": false,
+  "legacy_corpus_audit_pass": false,
+  "candidate_label_policy_accepted": false,
+  "approved_training_experiment": false,
+  "approved_diagnostic_only": false,
+  "notes": "Fill only after actual review. User authorization for research/authoring does not manufacture an independent label sign-off.",
+  "approved_pack_manifest_sha256": null
+}

@@ -1,0 +1,25 @@
+{
+  "status": "DESIGN_NOT_EXECUTABLE_PIPELINE_CONFIG",
+  "batch": {
+    "max_sources": 5,
+    "max_pairs_per_principle": 2,
+    "max_retries": 2
+  },
+  "models": {
+    "teacher_model_id": "SET_FROM_AVAILABLE_PROVIDER",
+    "critic_model_id": "SET_FROM_AVAILABLE_PROVIDER",
+    "student_model_id": "EXISTING_4B_CANDIDATE"
+  },
+  "external_api_calls_enabled": false,
+  "auto_train": false,
+  "auto_promote": false,
+  "acceptance": {
+    "new_principle_human_review": "ALL",
+    "auto_pass_sample_review": "REQUIRED",
+    "data_tiers": [
+      "GOLD_REVIEWED",
+      "SILVER_MACHINE_CHECKED"
+    ]
+  },
+  "gpu_workers": 1
+}

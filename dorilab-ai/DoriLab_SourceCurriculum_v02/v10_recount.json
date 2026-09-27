@@ -1,0 +1,452 @@
+{
+  "version": "v10-independent-local-recount-1",
+  "basis": "Uploaded comparison.json and comparison_cases.jsonl; packets read from the already supplied v10 generator. No new literature verification or GPU inference.",
+  "input_hashes": {
+    "comparison.json": "9131c67e3b86544c104f4f8a379178ae29c7657365976b3a3dbc71e9d1d3b8b2",
+    "comparison_cases.jsonl": "f94108e84b9b788e4cda7e37064342212065f3bad3504e48d70f26b1c2b6a959"
+  },
+  "counts_recomputed": {
+    "baseline": {
+      "action_correct": 24,
+      "schema_and_refs_valid": 24,
+      "reference_exact": 24,
+      "strict_contract_pass": 18,
+      "wrongly_accepts_refuted_proposal": 0,
+      "unnecessary_intervention": 0,
+      "reason_joint_correct": 6,
+      "reason_gold_denominator": 12
+    },
+    "guide": {
+      "action_correct": 22,
+      "schema_and_refs_valid": 23,
+      "reference_exact": 24,
+      "strict_contract_pass": 16,
+      "wrongly_accepts_refuted_proposal": 0,
+      "unnecessary_intervention": 1,
+      "reason_joint_correct": 5,
+      "reason_gold_denominator": 12
+    }
+  },
+  "paired_gain": 1,
+  "paired_loss": 3,
+  "parsed_objects_changed": 5,
+  "action_changed": 2,
+  "prompt_tokens_added_per_case": [
+    327
+  ],
+  "baseline_failures": [
+    {
+      "case_id": "NS10-E3-B",
+      "expected": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-4840",
+        "evidence_refs": [
+          "SF-7298",
+          "OBS-4840"
+        ],
+        "reason": "EXPOSURE_METADATA_UNRESOLVED",
+        "requested_evidence": [
+          "RUN_FLUENCE_AND_LET_RECORD"
+        ]
+      },
+      "baseline": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-4840",
+        "evidence_refs": [
+          "SF-7298",
+          "OBS-4840"
+        ],
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "requested_evidence": [
+          "RUN_FLUENCE_AND_LET_RECORD"
+        ]
+      },
+      "guide": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-4840",
+        "evidence_refs": [
+          "SF-7298",
+          "OBS-4840"
+        ],
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "requested_evidence": [
+          "RUN_FLUENCE_AND_LET_RECORD"
+        ]
+      },
+      "failure_type": "REASON_ONLY_VS_PRIMARY_GOLD",
+      "human_label_review": false
+    },
+    {
+      "case_id": "NS10-E4-A",
+      "expected": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-9046",
+        "evidence_refs": [
+          "SF-9750",
+          "OBS-8110"
+        ],
+        "reason": "CONFIGURATION_SCOPE_UNRESOLVED",
+        "requested_evidence": [
+          "DUT_AND_TESTER_BUILD_IDENTITIES"
+        ]
+      },
+      "baseline": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "claim_id": "CLM-9046",
+        "evidence_refs": [
+          "SF-9750",
+          "OBS-8110"
+        ],
+        "requested_evidence": [
+          "DUT_AND_TESTER_BUILD_IDENTITIES"
+        ]
+      },
+      "guide": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "claim_id": "CLM-9046",
+        "evidence_refs": [
+          "SF-9750",
+          "OBS-8110"
+        ],
+        "requested_evidence": [
+          "DUT_AND_TESTER_BUILD_IDENTITIES"
+        ]
+      },
+      "failure_type": "REASON_ONLY_VS_PRIMARY_GOLD",
+      "human_label_review": false
+    },
+    {
+      "case_id": "NS10-M4-A",
+      "expected": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-6074",
+        "evidence_refs": [
+          "SF-5265",
+          "OBS-4592"
+        ],
+        "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+        "requested_evidence": [
+          "CURRENT_CONFIGURATION_C_RATIONALE"
+        ]
+      },
+      "baseline": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "CONFIGURATION_SCOPE_UNRESOLVED",
+        "claim_id": "CLM-6074",
+        "evidence_refs": [
+          "SF-5265",
+          "OBS-4592"
+        ],
+        "requested_evidence": [
+          "CURRENT_CONFIGURATION_C_RATIONALE"
+        ]
+      },
+      "guide": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+        "claim_id": "CLM-6074",
+        "evidence_refs": [
+          "SF-5265",
+          "OBS-4592"
+        ],
+        "requested_evidence": [
+          "CURRENT_CONFIGURATION_C_RATIONALE"
+        ]
+      },
+      "failure_type": "REASON_ONLY_VS_PRIMARY_GOLD",
+      "human_label_review": false
+    },
+    {
+      "case_id": "NS10-T3-B",
+      "expected": {
+        "action": "CHALLENGE",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ],
+        "reason": "METHOD_INTERPRETATION_ERROR"
+      },
+      "baseline": {
+        "action": "CHALLENGE",
+        "reason": "EVIDENCE_INTERPRETATION_ERROR",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ]
+      },
+      "guide": {
+        "action": "CHALLENGE",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ],
+        "reason": "PARAMETER_IDENTIFICATION_INSUFFICIENT"
+      },
+      "failure_type": "REASON_ONLY_VS_PRIMARY_GOLD",
+      "human_label_review": false
+    },
+    {
+      "case_id": "NS10-T4-A",
+      "expected": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-8857",
+        "evidence_refs": [
+          "SF-1674",
+          "OBS-8653"
+        ],
+        "reason": "POWER_DISSIPATION_UNRESOLVED",
+        "requested_evidence": [
+          "ARRAY_ELECTRICAL_POWER_EXTRACTION_HISTORY"
+        ]
+      },
+      "baseline": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "claim_id": "CLM-8857",
+        "evidence_refs": [
+          "SF-1674",
+          "OBS-8653"
+        ],
+        "requested_evidence": [
+          "ARRAY_ELECTRICAL_POWER_EXTRACTION_HISTORY"
+        ]
+      },
+      "guide": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "claim_id": "CLM-8857",
+        "evidence_refs": [
+          "SF-1674",
+          "OBS-8653"
+        ],
+        "requested_evidence": [
+          "ARRAY_ELECTRICAL_POWER_EXTRACTION_HISTORY"
+        ]
+      },
+      "failure_type": "REASON_ONLY_VS_PRIMARY_GOLD",
+      "human_label_review": false
+    },
+    {
+      "case_id": "NS10-M3-B",
+      "expected": {
+        "action": "CHALLENGE",
+        "claim_id": "CLM-3180",
+        "evidence_refs": [
+          "SF-7393",
+          "OBS-7720"
+        ],
+        "reason": "METHOD_INTERPRETATION_ERROR"
+      },
+      "baseline": {
+        "action": "CHALLENGE",
+        "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+        "claim_id": "CLM-3180",
+        "evidence_refs": [
+          "SF-7393",
+          "OBS-7720"
+        ]
+      },
+      "guide": {
+        "action": "CHALLENGE",
+        "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+        "claim_id": "CLM-3180",
+        "evidence_refs": [
+          "SF-7393",
+          "OBS-7720"
+        ]
+      },
+      "failure_type": "REASON_ONLY_VS_PRIMARY_GOLD",
+      "human_label_review": false
+    }
+  ],
+  "changes": [
+    {
+      "case_id": "NS10-E2-A",
+      "expected": {
+        "action": "CHALLENGE",
+        "claim_id": "CLM-5869",
+        "evidence_refs": [
+          "SF-8338",
+          "OBS-6623"
+        ],
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT"
+      },
+      "baseline": {
+        "action": "CHALLENGE",
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "claim_id": "CLM-5869",
+        "evidence_refs": [
+          "SF-8338",
+          "OBS-6623"
+        ]
+      },
+      "guide": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "claim_id": "CLM-5869",
+        "evidence_refs": [
+          "SF-8338",
+          "OBS-6623"
+        ],
+        "requested_evidence": [
+          "OBS-6623"
+        ]
+      },
+      "strict_gain": false,
+      "strict_loss": true
+    },
+    {
+      "case_id": "NS10-T2-A",
+      "expected": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-5949",
+        "evidence_refs": [
+          "SF-3831",
+          "OBS-9762"
+        ],
+        "reason": "BOUNDARY_CONDITION_UNRESOLVED",
+        "requested_evidence": [
+          "RADIATION_DIRECTION_AND_DISTANCE_HISTORY"
+        ]
+      },
+      "baseline": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "BOUNDARY_CONDITION_UNRESOLVED",
+        "claim_id": "CLM-5949",
+        "evidence_refs": [
+          "SF-3831",
+          "OBS-9762"
+        ],
+        "requested_evidence": [
+          "RADIATION_DIRECTION_AND_DISTANCE_HISTORY"
+        ]
+      },
+      "guide": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-5949",
+        "evidence_refs": [
+          "SF-3831",
+          "OBS-9762"
+        ],
+        "reason": "MONITORING_COVERAGE_INSUFFICIENT",
+        "requested_evidence": [
+          "RADIATION_DIRECTION_AND_DISTANCE_HISTORY"
+        ]
+      },
+      "strict_gain": false,
+      "strict_loss": true
+    },
+    {
+      "case_id": "NS10-T3-A",
+      "expected": {
+        "action": "NO_ACTION_REQUIRED",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ]
+      },
+      "baseline": {
+        "action": "NO_ACTION_REQUIRED",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ]
+      },
+      "guide": {
+        "action": "CHALLENGE",
+        "reason": "METHOD_INTERPRETATION_ERROR",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ]
+      },
+      "strict_gain": false,
+      "strict_loss": true
+    },
+    {
+      "case_id": "NS10-M4-A",
+      "expected": {
+        "action": "REQUEST_EVIDENCE",
+        "claim_id": "CLM-6074",
+        "evidence_refs": [
+          "SF-5265",
+          "OBS-4592"
+        ],
+        "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+        "requested_evidence": [
+          "CURRENT_CONFIGURATION_C_RATIONALE"
+        ]
+      },
+      "baseline": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "CONFIGURATION_SCOPE_UNRESOLVED",
+        "claim_id": "CLM-6074",
+        "evidence_refs": [
+          "SF-5265",
+          "OBS-4592"
+        ],
+        "requested_evidence": [
+          "CURRENT_CONFIGURATION_C_RATIONALE"
+        ]
+      },
+      "guide": {
+        "action": "REQUEST_EVIDENCE",
+        "reason": "FORCE_LIMIT_BASIS_UNRESOLVED",
+        "claim_id": "CLM-6074",
+        "evidence_refs": [
+          "SF-5265",
+          "OBS-4592"
+        ],
+        "requested_evidence": [
+          "CURRENT_CONFIGURATION_C_RATIONALE"
+        ]
+      },
+      "strict_gain": true,
+      "strict_loss": false
+    },
+    {
+      "case_id": "NS10-T3-B",
+      "expected": {
+        "action": "CHALLENGE",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ],
+        "reason": "METHOD_INTERPRETATION_ERROR"
+      },
+      "baseline": {
+        "action": "CHALLENGE",
+        "reason": "EVIDENCE_INTERPRETATION_ERROR",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ]
+      },
+      "guide": {
+        "action": "CHALLENGE",
+        "claim_id": "CLM-5647",
+        "evidence_refs": [
+          "SF-1040",
+          "OBS-1158"
+        ],
+        "reason": "PARAMETER_IDENTIFICATION_INSUFFICIENT"
+      },
+      "strict_gain": false,
+      "strict_loss": false
+    }
+  ],
+  "recommendation": "Keep scope gate + e2 baseline without v09 guide as development default. Audit actual supervised reason-label exposure before any further fine-tuning. Preserve this evaluation and do not auto-relabel.",
+  "model_capacity_conclusion": "Not determined by this small source-separated, same-format, pre-gated synthetic evaluation.",
+  "new_training_executed": false,
+  "new_inference_executed": false
+}

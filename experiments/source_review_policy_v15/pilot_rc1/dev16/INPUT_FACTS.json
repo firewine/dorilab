@@ -1,0 +1,69 @@
+{
+  "SR13-CANYVAL-DAMAGE": {
+    "fact_key": "DAMAGE",
+    "section": "6 Conclusions",
+    "pdf_pages_1based": [],
+    "text": "Panel frequency changed during the vibration campaign while the authors reported no structural or functional damage. A frequency change alone was not a unique diagnosis of damage.",
+    "source_id": "SR13-CANYVAL",
+    "fact_id": "SR13-CANYVAL-DAMAGE",
+    "kind": "SOURCE_PRINCIPLE_PARAPHRASE",
+    "source_reported_vs_policy": "SOURCE_REPORTED",
+    "source_url": "https://www.mdpi.com/2226-4310/8/6/150",
+    "used_table_or_figure_values": false
+  },
+  "SR13-CANYVAL-PRELOAD": {
+    "fact_key": "PRELOAD",
+    "section": "6 Conclusions",
+    "pdf_pages_1based": [],
+    "text": "The deployable-panel frequency depended on nylon-wire tightening and workmanship; the analysis represented changes in the restraint condition.",
+    "source_id": "SR13-CANYVAL",
+    "fact_id": "SR13-CANYVAL-PRELOAD",
+    "kind": "SOURCE_PRINCIPLE_PARAPHRASE",
+    "source_reported_vs_policy": "SOURCE_REPORTED",
+    "source_url": "https://www.mdpi.com/2226-4310/8/6/150",
+    "used_table_or_figure_values": false
+  },
+  "SR13-PROBAV-CENSOR": {
+    "fact_key": "CENSOR",
+    "section": "4.1 SEE Cross Sections",
+    "pdf_pages_1based": [],
+    "text": "Frequent latch-up recovery restarts at high LET reduced the ability to retrieve all induced bit errors, artificially reducing the reported SEU cross section.",
+    "source_id": "SR13-PROBAV",
+    "fact_id": "SR13-PROBAV-CENSOR",
+    "kind": "SOURCE_PRINCIPLE_PARAPHRASE",
+    "source_reported_vs_policy": "SOURCE_REPORTED",
+    "source_url": "https://www.mdpi.com/2079-9292/13/10/1822",
+    "used_table_or_figure_values": false
+  },
+  "SR13-PROBAV-SYNC": {
+    "fact_key": "SYNC",
+    "section": "3.1 Test Setup and Instrumentation; 5 Discussion",
+    "pdf_pages_1based": [],
+    "text": "Synchronized memory-error and current records enabled event association. Independent totals without coherent timestamps lack that temporal linkage.",
+    "source_id": "SR13-PROBAV",
+    "fact_id": "SR13-PROBAV-SYNC",
+    "kind": "SOURCE_PRINCIPLE_PARAPHRASE",
+    "source_reported_vs_policy": "SOURCE_REPORTED",
+    "source_url": "https://www.mdpi.com/2079-9292/13/10/1822",
+    "used_table_or_figure_values": false
+  },
+  "SR15-CANYVAL-HRM-METHOD": {
+    "fact_id": "SR15-CANYVAL-HRM-METHOD",
+    "source_id": "SR13-CANYVAL",
+    "section": "5.1 Vibration Testing",
+    "pdf_pages_1based": [
+      17,
+      18
+    ],
+    "text": "In the reported structural comparison, the strongly bounded HRM case has its two parts in direct contact. The other two representations connect parts indirectly with nylon wire, distinguished as face-to-edge and edge-to-edge. These alternatives represent changed restraint/tightening conditions; they are not identical boundary models. This describes the authors' comparison, not a universal requirement for every panel."
+  },
+  "SR15-PROBAV-MODES": {
+    "fact_id": "SR15-PROBAV-MODES",
+    "source_id": "SR13-PROBAV",
+    "section": "3.2 Test Execution and Monitoring",
+    "pdf_pages_1based": [
+      6
+    ],
+    "text": "The paper defines static testing as writing the memory and reading it after a waiting period. Dynamic testing continually reads and writes with March C- or March Dynamic Stress and reports errors on read accesses. A final stored image alone does not reproduce that dynamic observation path. Standby and chip-enabled are separate modes. These are this instrumentation's mode definitions, not certification requirements."
+  }
+}

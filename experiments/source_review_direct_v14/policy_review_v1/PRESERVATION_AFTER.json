@@ -1,0 +1,15 @@
+{
+  "status": "REVIEW_ARTIFACTS_COMPLETE_NOT_HUMAN_APPROVED",
+  "checked_original_files": 328,
+  "changed_original_files": [],
+  "document_links_valid": true,
+  "impact_case_ids_valid": true,
+  "selection_identity_checks_verified": true,
+  "new_model_scores_created": false,
+  "scorer_executed": false,
+  "inference_executed": false,
+  "pod_controls_used": false,
+  "independent_human_review": false,
+  "post_output_ai_review": true,
+  "timestamp_utc": "2026-09-24T04:18:03.465732+00:00"
+}

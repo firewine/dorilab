@@ -1,0 +1,91 @@
+{
+  "version": "dorilab-model-tournament-v1.0.0",
+  "slug": "gemma4_26b_a4b",
+  "model": "google/gemma-4-26B-A4B-it",
+  "revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+  "training_executed": false,
+  "inference_executed": true,
+  "dtype": "bfloat16",
+  "quantization": null,
+  "decoding": "greedy_do_sample_false",
+  "max_new_tokens": 384,
+  "suites": {
+    "ns10": {
+      "cases": 24,
+      "action_correct": 0,
+      "schema_and_refs_valid": 0,
+      "strict_contract_pass": 0,
+      "wrongly_accepts_refuted_proposal": 0,
+      "unnecessary_intervention": 0,
+      "reference_exact": 0,
+      "reference_eligible": 24,
+      "reason_joint_correct": 0,
+      "reason_cases": 12,
+      "complete_pairs": 12,
+      "both_pair_states_pass": 0,
+      "generation_seconds": 61.87903753248975
+    },
+    "before40": {
+      "cases": 40,
+      "action_correct": 0,
+      "schema_and_refs_valid": 0,
+      "strict_contract_pass": 0,
+      "wrongly_accepts_refuted_proposal": 0,
+      "unnecessary_intervention": 0,
+      "reference_exact": 0,
+      "reference_eligible": 40,
+      "reason_joint_correct": 0,
+      "reason_cases": 20,
+      "complete_pairs": 20,
+      "both_pair_states_pass": 0,
+      "generation_seconds": 104.59477535635233
+    },
+    "contract20": {
+      "cases": 20,
+      "action_correct": 19,
+      "schema_and_refs_valid": 20,
+      "strict_contract_pass": 18,
+      "wrongly_accepts_refuted_proposal": 0,
+      "unnecessary_intervention": 1,
+      "reference_exact": 0,
+      "reference_eligible": 0,
+      "reason_joint_correct": 9,
+      "reason_cases": 9,
+      "complete_pairs": 0,
+      "both_pair_states_pass": 0,
+      "generation_seconds": 35.806969546247274
+    }
+  },
+  "load_report": {
+    "load_seconds": 169.44554551318288,
+    "model_class": "Gemma4ForConditionalGeneration",
+    "allocated_GiB": 48.076741218566895,
+    "reserved_GiB": 48.107421875,
+    "stops": [
+      1,
+      50,
+      106
+    ],
+    "pad_token_id": 0,
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "vram_GiB": 94.972412109375
+  },
+  "environment": {
+    "python": "3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]",
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "transformers": "5.18.0.dev0",
+    "accelerate": "1.15.0",
+    "peft": "0.21.0",
+    "datasets": "5.0.1",
+    "huggingface_hub": "1.32.0",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "vram_GiB": 94.972412109375,
+    "hf_home": "/root/hf-cache"
+  },
+  "evaluation_status": "Existing inspected development/regression suites; not independent holdout"
+}

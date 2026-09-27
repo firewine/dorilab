@@ -1,0 +1,17 @@
+{
+  "status": "PASS_CPU_ONLY_APPROVALS_PENDING",
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "selected_candidates": 205,
+  "training_approved_rows": 0,
+  "source_pdfs_acquired": 2,
+  "dev_candidates": 16,
+  "source_dependency_status": "AI_COUNTERFACTUAL_AUTHOR_REVIEW_NOT_MODEL_ABLATION_OR_HUMAN_APPROVAL",
+  "reference_boundary_tests": "all-provided exact approved sufficient set passes; all-provided with irrelevant ID fails",
+  "existing_scorer_or_scores_changed": false,
+  "training_export_created": false,
+  "model_inference_or_training_executed": false,
+  "token_or_gpu_preflight_executed": false,
+  "pod_operations_executed": false
+}

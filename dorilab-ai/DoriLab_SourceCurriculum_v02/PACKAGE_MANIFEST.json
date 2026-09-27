@@ -1,0 +1,10 @@
+{
+  "README_KO.md": "cdadc2a268775444e54d91e30863ba862d7969da7b095ca824fa0c0cce957b91",
+  "curriculum_spec.json": "ce1d4f87a31052e5d221f7da43fb47b9292173bc41901bd845c31a1a61aaf81e",
+  "reason_coverage_v12.py": "367494a327aa16f0f9dc37a6070ca2218d45ca68034b3f285d3f285f13fdb0ad",
+  "new_cases36_AI_candidate.jsonl": "86752f912f8b4aa53b75827b1f8d2e1bad6f200148e6d989fce242d455c3642c",
+  "AI_REVIEW_KO.md": "d53dffe4cf40d28b399882052780372aba398fa82fad2716ccf71ba026072e7c",
+  "tests/test_reason_coverage_v12.py": "5cab2f45e16cbb9968a3f974d94f1309580f26a3b25df26dd0744273eb2d8dc8",
+  "reports/BUILD_STATUS.json": "b0b84c14d0bf23017c35bcc11d6112ba0ad68828e5e9492dbd2b56de9ce978b9",
+  "reports/cpu_tests.txt": "9d80c367f37d3a358edb0868dd32f2136c9878405efa01091ed206f2ffbce62c"
+}
