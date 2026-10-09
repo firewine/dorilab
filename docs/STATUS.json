@@ -1,6 +1,23 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-10",
+  "learning_set_review": {
+    "updated_at": "2026-10-10",
+    "status": "LOCAL_IMPLEMENTED_VERIFIED",
+    "source_format": "DORILAB_100Q_HANDOFF_V1",
+    "importer_version": "dorilab.100q-handoff.v2",
+    "approval_scope": "LOCAL_LABEL_REVIEW_ONLY",
+    "actual_registered": {"total": 100, "draft": 100, "approved": 0, "rejected": 0, "train": 87, "evaluation": 13},
+    "tests": {"full_passed": 252, "final_image_related_passed": 50, "warning_count": 1},
+    "browser": "PASS_UPLOAD_INDIVIDUAL_EDIT_APPROVE_REJECT_REFRESH_REOPEN_AND_EVALUATION_FILTER",
+    "original_papers_verified": false,
+    "dataset_export_connected": false,
+    "remote_training_enabled": false,
+    "site_source_synced": true,
+    "site_render_neon_deployed": false,
+    "report": "docs/LEARNING_SET_REVIEW_20261010.md",
+    "records": "var/run-records/learning-set-review-20261010"
+  },
   "local_runpod_connection": {
     "updated_at": "2026-10-09",
     "implementation": "LOCAL_COMPLETE",

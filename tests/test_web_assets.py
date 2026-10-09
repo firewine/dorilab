@@ -15,7 +15,7 @@ def test_rebuilt_ui_uses_current_assets_in_existing_browser(client, page):
     assert response.headers["Cache-Control"] == "no-store"
     assets = re.findall(r'"(/assets/([a-zA-Z0-9_-]+\.(?:js|css))\?v=([a-f0-9]+))"', response.text)
     assert {filename for _, filename, _ in assets} == (
-        {"styles.css", "setup-demo.js", "app.js", "development.js"}
+        {"styles.css", "setup-demo.js", "app.js", "learning-sets.js", "development.js"}
         if page == "/" else {"blackboard-observer.css", "blackboard-observer.js"}
     )
     for url, filename, version in assets:

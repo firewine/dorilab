@@ -61,6 +61,7 @@
     const generation = ++view.generation;
     view.ready = false;
     const user = state.status?.user;
+    window.dorilabLearningSets.context({projectId, user, ready: false, reload: load, openTab: activateTab});
     const changed = view.projectId !== projectId || view.user !== user;
     if (changed) {
       view.catalog = view.data = null;
@@ -98,7 +99,7 @@
     const model = catalog.model_baseline;
     $("developmentGoals").innerHTML = `
       <section class="hero development-hero"><div><div class="eyebrow">DORILAB DEVELOPMENT GOAL</div><h2>${html(catalog.goal)}</h2><p>${html(catalog.scope_note)}</p></div><div class="hero-side">${badge(catalog.overall_status)}<p>개발 기준일 ${html(catalog.assessed_at)}<br>프로젝트 공식 승인과 별도</p></div></section>
-      <div class="notice blue">현재 원문 등록·사례 작성과 사람의 검토·기각 기록을 제공합니다. 검토는 로컬 자료 준비에 한정되며 데이터 버전 고정과 RunPod 학습 연결은 후속 단계입니다.</div><div class="space"></div>
+      <div class="notice blue">원문 등록·사례 작성과 문항 세트 자동 분리·개별 승인/기각 기록을 제공합니다. 문항 승인은 자료 준비를 위한 내용 검토입니다. 원 논문·권리 검증, 데이터 버전 고정과 RunPod 학습 연결은 후속 단계입니다.</div><div class="space"></div>
       <div class="development-summary"><div class="card cardbody"><span>기존 등록 원문</span><strong>${view.data.documents.length}건</strong></div><div class="card cardbody"><span>작성한 사례</span><strong>${view.data.example_authoring_enabled ? `${view.data.examples.length}건` : "다음 단계"}</strong></div><div class="card cardbody"><span>데이터 버전 관리</span><strong>${view.data.preparation_enabled ? `${view.data.datasets.length}건` : "이후 단계"}</strong></div><div class="card cardbody"><span>RunPod 학습 작업</span><strong>미연결</strong></div></div>
       <section class="card"><div class="cardhead"><div><h3>전체 개발 마일스톤</h3><p>원 설계의 남은 목표와 모델 관리 작업을 함께 추적합니다. 완료율이나 모델 정확도를 추정하지 않습니다.</p></div></div><div class="cardbody development-milestones">${catalog.milestones.map(m => `<article class="development-milestone"><div class="development-milestone-title"><span class="mono">${html(m.id)}</span><h3>${html(m.title)}</h3>${badge(m.status)}</div><p>${html(m.current)}</p><p><b>통과 조건</b> ${html(m.acceptance)}</p><details><summary>판정 근거·남은 범위</summary><p>${html(m.limit)}</p>${m.evidence_ids.map(id => {const source = catalog.evidence.find(e => e.id === id); return source ? `<p><a href="${html(source.download_url)}">${html(source.title)} ↗</a> · ${source.source_verified ? "원본 hash 일치" : "근거 파일 확인 필요"}<span class="subline">${html(source.source)} · ${html(source.kind)} · ${html(source.date)}</span></p>` : "";}).join("")}</details></article>`).join("")}</div></section><div class="space"></div>
       <div class="grid2"><section class="card"><div class="cardhead"><div><h3>RunPod 연결과 학습 준비</h3><p>추론 연결과 학습 실행 준비는 별도 상태입니다.</p></div><button class="btn small" data-development-connection type="button">주소·SSH 포트 설정</button></div><div class="cardbody"><p>현재 추론 연결: <b>${html(state.status?.remote?.state || "확인 대기")}</b> · 앱 ${html(state.status?.mode || "—")}</p><p>학습 실행: ${badge(training.state)} · 원격 GPU 조회 미실행</p><ul>${training.blockers.map(code => `<li>${html(blockers[code] || code)}</li>`).join("")}</ul><button class="btn primary" type="button" disabled title="학습 실행기는 아직 연결되지 않았습니다.">RunPod 학습 실행 · 준비 대기</button><p class="smalltext muted">여기서 데이터를 준비·검토해도 외부 전송이나 학습이 시작되지 않습니다. 실제 실행은 대상·설정·GPU 사용 범위를 확인하는 다음 단계입니다.</p></div></section>
@@ -109,9 +110,18 @@
     const statuses = {COMPLETED: "텍스트 파싱 완료", FAILED: "파싱 실패", PROCESSING: "파싱 진행 중"};
     const rights = {PUBLIC: "공개", GRANTED: "권리 확보", RESTRICTED: "제한", UNCONFIRMED: "미확인"};
     const applicability = {APPLICABLE: "적용 가능", NOT_APPLICABLE: "적용 불가", UNCONFIRMED: "미확인"};
-    $("developmentDocumentList").innerHTML = `<section class="card"><div class="cardhead"><div><h3>프로젝트 원문 등록부 · ${documents.length}건</h3><p>기존 워크스페이스의 자료도 조회합니다. 추출 텍스트와 원본 파일은 구분해 보존합니다.</p></div><button class="btn small" data-page="workspace">RAG 검색 열기</button></div><div class="cardbody development-documents">${documents.length ? documents.map(d => `<article class="item" data-development-document="${html(d.id)}"><div class="development-milestone-title"><h3>${html(d.filename)}</h3><span class="pill ${d.parser_status === "COMPLETED" ? "ok" : "wait"}">${html(statuses[d.parser_status] || "파싱 대기")}</span></div><p>판본 ${html(d.edition || "미지정")} · 권리 ${html(rights[d.rights_status] || d.rights_status)} · ${html(d.usage_purpose === "OPERATIONAL_EVIDENCE" ? "RAG용 (검색 시 범위 검사)" : d.usage_purpose === "TRAINING" ? "학습 준비 전용 · RAG 제외" : "평가 전용 · RAG·학습 제외")}</p><p>${d.page_count ?? 0}페이지 · ${d.chunk_count ?? 0}개 청크 · ${d.byte_size.toLocaleString()} bytes · ${date(d.created_at)}</p><details><summary>원문 hash·파싱 정보 보기</summary><p class="mono">SHA256 ${html(d.sha256)}</p><p>채택 ${d.adopted ? "확인" : "미확인"} · 적용성 ${html(applicability[d.applicability_status] || d.applicability_status)}</p><p>파서 ${html(d.parser_version || "미실행")} · 청킹 ${html(d.chunker_version || "미실행")} · 완료 ${date(d.finished_at)}</p>${d.receipt_sha256 ? `<p class="mono">파싱 기록 SHA256 ${html(d.receipt_sha256)}</p>` : ""}<ul>${(d.issues || []).map(issue => `<li>${html(issue.code)}${issue.page ? ` · 페이지 ${issue.page}` : ""}${issue.detail ? ` · ${html(issue.detail)}` : ""}</li>`).join("")}</ul></details>${d.parser_status === "COMPLETED" ? `<details data-development-preview="${html(d.id)}"><summary>원문 위치·텍스트 보기</summary><div class="development-source-preview" role="status">펼치면 저장된 추출 텍스트를 조회합니다.</div></details>` : ""}<div class="buttons"><a class="btn small" href="/api/v1/artifacts/${html(d.id)}/download">원본 다운로드</a>${d.parser_status !== "COMPLETED" ? `<button class="btn small" type="button" data-development-parse="${html(d.id)}" ${isEditor() && d.parser_status !== "PROCESSING" ? "" : "disabled"}>${d.parser_status === "FAILED" ? "파싱 다시시도" : "파싱 시도"}</button>` : ""}</div>${d.error_code ? `<p class="notice amber">${html(parseFailure(d.error_code))}<span class="subline">${html(d.error_code)} · ${html(d.error_detail || "")}</span>원본은 보존되어 있습니다.</p>` : ""}</article>`).join("") : '<div class="notice empty">등록한 원문이 없습니다. 위에서 논문이나 텍스트 파일을 등록하십시오.</div>'}</div></section>`;
+    $("developmentDocumentList").innerHTML = `<section class="card"><div class="cardhead"><div><h3>프로젝트 원문 등록부 · ${documents.length}건</h3><p>기존 워크스페이스의 자료도 조회합니다. 추출 텍스트와 원본 파일은 구분해 보존합니다.</p></div><button class="btn small" data-page="workspace">RAG 검색 열기</button></div><div class="cardbody development-documents">${documents.length ? documents.map(d => `<article class="item" data-development-document="${html(d.id)}"><div class="development-milestone-title"><h3>${html(d.filename)}</h3><span class="pill ${d.parser_status === "COMPLETED" ? "ok" : "wait"}">${html(statuses[d.parser_status] || "파싱 대기")}</span></div><p>판본 ${html(d.edition || "미지정")} · 권리 ${html(rights[d.rights_status] || d.rights_status)} · ${html(d.usage_purpose === "OPERATIONAL_EVIDENCE" ? "RAG용 (검색 시 범위 검사)" : d.usage_purpose === "TRAINING" ? "학습 준비 전용 · RAG 제외" : "평가 전용 · RAG·학습 제외")}</p><p>${d.page_count ?? 0}페이지 · ${d.chunk_count ?? 0}개 청크 · ${d.byte_size.toLocaleString()} bytes · ${date(d.created_at)}</p><details><summary>원문 hash·파싱 정보 보기</summary><p class="mono">SHA256 ${html(d.sha256)}</p><p>채택 ${d.adopted ? "확인" : "미확인"} · 적용성 ${html(applicability[d.applicability_status] || d.applicability_status)}</p><p>파서 ${html(d.parser_version || "미실행")} · 청킹 ${html(d.chunker_version || "미실행")} · 완료 ${date(d.finished_at)}</p>${d.receipt_sha256 ? `<p class="mono">파싱 기록 SHA256 ${html(d.receipt_sha256)}</p>` : ""}<ul>${(d.issues || []).map(issue => `<li>${html(issue.code)}${issue.page ? ` · 페이지 ${issue.page}` : ""}${issue.detail ? ` · ${html(issue.detail)}` : ""}</li>`).join("")}</ul></details>${d.parser_status === "COMPLETED" ? `<details data-development-preview="${html(d.id)}"><summary>원문 위치·텍스트 보기</summary><div class="development-source-preview" role="status">펼치면 저장된 추출 텍스트를 조회합니다.</div></details>` : ""}<div class="buttons"><a class="btn small" href="/api/v1/artifacts/${html(d.id)}/download">원본 다운로드</a>${d.parser_status !== "COMPLETED" ? `<button class="btn small" type="button" data-development-parse="${html(d.id)}" ${isEditor() && d.parser_status !== "PROCESSING" ? "" : "disabled"}>${d.parser_status === "FAILED" ? "파싱 다시시도" : "파싱 시도"}</button>` : ""}${d.usage_purpose === "TRAINING" && d.filename.toLowerCase().endsWith(".md") ? `<button class="btn small" type="button" data-learning-handoff-preview="${html(d.id)}" ${isEditor() ? "" : "disabled"}>100문항 파일 분리 미리보기</button>` : ""}</div><div data-learning-handoff-result="${html(d.id)}" hidden></div>${d.error_code ? `<p class="notice amber">${html(parseFailure(d.error_code))}<span class="subline">${html(d.error_code)} · ${html(d.error_detail || "")}</span>원본은 보존되어 있습니다.</p>` : ""}</article>`).join("") : '<div class="notice empty">등록한 원문이 없습니다. 위에서 논문이나 텍스트 파일을 등록하십시오.</div>'}</div></section>`;
+    const setHashes = new Set((view.data.imports || []).map(i => i.source_sha256));
+    for (const artifact of documents.filter(d => d.usage_purpose === "TRAINING" && d.filename.toLowerCase().endsWith(".md"))) {
+      const button = document.createElement("button");
+      button.type = "button"; button.className = "btn small";
+      button.dataset.learningSetImport = artifact.id;
+      button.textContent = setHashes.has(artifact.sha256) ? "문항별 검토 열기" : "자동 분리 · 문항별 검토 목록에 등록";
+      button.disabled = !view.ready || !isEditor();
+      $("developmentDocumentList").querySelector(`[data-development-document="${CSS.escape(artifact.id)}"] .buttons`).append(button);
+    }
     const selected = $("learningSourceDocument").value;
-    const parsed = documents.filter(d => d.parser_status === "COMPLETED");
+    const parsed = documents.filter(d => d.parser_status === "COMPLETED" && !setHashes.has(d.sha256));
     $("learningSourceDocument").innerHTML = '<option value="">파싱된 원문 선택</option>' + parsed.map(d => `<option value="${html(d.id)}">${html(d.filename)} · ${html(d.edition || "판본 미지정")}</option>`).join("");
     if (parsed.some(d => d.id === selected)) {
       const document = parsed.find(d => d.id === selected);
@@ -127,6 +137,10 @@
     const target = details.querySelector('.development-source-preview');
     const start = result.offset, end = Math.min(start + 10, result.chunks.length);
     target.innerHTML = `<p class="smalltext muted">파싱된 텍스트의 위치입니다. 문서 내용의 타당성·적용성 승인을 뜻하지 않습니다.</p><p>${start + 1}–${end} / ${result.chunks.length}개 청크</p>${result.chunks.slice(start, end).map(c => `<section><h4>${html(c.locator)}</h4>${c.section_path.length ? `<p>${html(c.section_path.join(" / "))}</p>` : ""}<pre>${html(c.chunk_text)}</pre><p class="mono smalltext">텍스트 SHA256 ${html(c.text_sha256)}</p></section>`).join("")}<div class="buttons"><button class="btn small" type="button" data-development-chunks="-10" ${start === 0 ? "disabled" : ""}>이전 청크</button><button class="btn small" type="button" data-development-chunks="10" ${end === result.chunks.length ? "disabled" : ""}>다음 청크</button></div><details><summary>파싱 기록 JSON</summary><pre>${html(JSON.stringify(result.parser_run.receipt, null, 2))}</pre></details>`;
+  }
+  function renderHandoffPreview(target, preview) {
+    target.hidden = false;
+    target.innerHTML = `<div class="notice amber"><b>검토용 미리보기 · 학습은 시작되지 않았습니다.</b><p>${preview.example_count}개 문항 · TRAIN ${preview.train_count}개 · EVALUATION ${preview.evaluation_count}개</p><p>원 정답은 미승인 초안입니다. 오답과 재작성 제안은 정답으로 승인되지 않았으며 여기서 학습 대상에 넣지 않습니다. EVALUATION 문항은 학습에서 제외됩니다. 권리 확인과 사람 검토 후에도 별도의 학습 실행기가 필요합니다.</p><p>원본 SHA256 <code>${html(preview.source_sha256)}</code> · 권리 ${html(preview.rights_status)} · ${preview.rights_confirmed ? "사용 권리 확인 상태" : "사용 권리 미확인"}</p></div><div class="development-documents">${preview.rows.map(row => `<details class="item"><summary>${html(row.id)} · ${html(row.category)} · ${row.split === "TRAIN" ? "학습 후보" : "평가 전용"} · 미승인</summary><p><b>질문</b></p><pre>${html(row.question)}</pre><p><b>모델 입력 초안</b></p><pre>${html(row.prompt)}</pre><p><b>정답 초안</b></p><pre>${html(row.completion_draft)}</pre><p><b>오답 초안 (학습 데이터로 사용하지 않음)</b></p><pre>${html(row.rejected_draft)}</pre><p><b>기존 오답 이유</b></p><pre>${html(row.rejected_reason_draft)}</pre></details>`).join("")}</div>`;
   }
   $("developmentDocumentList").addEventListener("toggle", async event => {
     const details = event.target;
@@ -166,6 +180,8 @@
     $("learningDatasetChoices").innerHTML = eligible.length ? eligible.map(e => `<label class="checkline"><input type="checkbox" name="example_ids" value="${html(e.id)}"><span>${html(e.title)} · ${html(e.family_key)}</span></label>`).join("") : '<p class="smalltext muted">이 용도로 검토 완료된 현행 사례가 없습니다.</p>';
   }
   function render() {
+    window.dorilabLearningSets.context({projectId: view.projectId, user: view.user, ready: view.ready, reload: load, openTab: activateTab});
+    window.dorilabLearningSets.render(view.data);
     for (const name of ['documents', 'learning']) document.querySelector(`[data-development-tab="${name}"]`).disabled = !view.catalog.released_sections.includes(name);
     renderGoals(); renderDocuments(); renderExamples(); activateTab(view.tab);
     for (const id of ["developmentUploadForm", "learningExampleForm", "learningDatasetForm"]) $(id).querySelector('button[type="submit"]').disabled = !formAllowed($(id)) || $(id).dataset.busy === "true";
@@ -210,6 +226,13 @@
   document.querySelectorAll("[data-development-tab]").forEach(button => button.addEventListener("click", () => activateTab(button.dataset.developmentTab)));
   $("developmentGoals").addEventListener("click", event => {if (event.target.closest("[data-development-connection]")) openRunpodSettings();});
   $("developmentDocumentList").addEventListener("click", async event => {
+    const setButton = event.target.closest("[data-learning-set-import]");
+    if (setButton) {
+      setButton.disabled = true;
+      await window.dorilabLearningSets.importArtifact(setButton.dataset.learningSetImport);
+      if (setButton.isConnected) setButton.disabled = !view.ready || !isEditor();
+      return;
+    }
     const paginate = event.target.closest("[data-development-chunks]");
     if (paginate) {
       const details = paginate.closest('[data-development-preview]');
@@ -222,6 +245,18 @@
       parse.disabled = true;
       try {await api(`/api/v1/artifacts/${parse.dataset.developmentParse}/parse`, {method: "POST", headers: csrfHeaders}); if (current(projectId, user)) await load();}
       catch (e) {if (current(projectId, user)) {await load(); error(`원본은 보존됐지만 파싱은 완료되지 않았습니다: ${e.message}`);}}
+    }
+    const importButton = event.target.closest("[data-learning-handoff-preview]");
+    if (importButton) {
+      const projectId = view.projectId, user = view.user, artifactId = importButton.dataset.learningHandoffPreview;
+      importButton.disabled = true;
+      const target = document.querySelector(`[data-learning-handoff-result="${CSS.escape(artifactId)}"]`);
+      if (target) {target.hidden = false; target.textContent = "원본 형식·hash와 문항 구성을 확인하고 있습니다.";}
+      try {
+        const preview = await api(`/api/v1/projects/${projectId}/learning/import-preview`, {method: "POST", headers: {...csrfHeaders, "Content-Type": "application/json"}, body: JSON.stringify({artifact_id: artifactId})});
+        if (current(projectId, user) && target) renderHandoffPreview(target, preview);
+      } catch (e) {if (current(projectId, user) && target) {target.hidden = false; target.textContent = `미리보기를 만들지 못했습니다: ${e.message}. 원본은 변경하지 않았습니다.`;}}
+      finally {if (current(projectId, user)) importButton.disabled = false;}
     }
   });
   $("learningSourceDocument").addEventListener("change", event => {if (event.target.value) selectDocument(event.target.value); else clearSource();});

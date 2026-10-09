@@ -42,7 +42,7 @@
         <div class="development-tabs" role="tablist" aria-label="개발·모델 관리">
           <button class="btn active" role="tab" id="developmentTabGoals" aria-selected="true" aria-controls="developmentGoals" data-development-tab="goals">개발 현황</button>
           <button class="btn" role="tab" id="developmentTabDocuments" aria-selected="false" aria-controls="developmentDocuments" data-development-tab="documents" disabled>논문·자료</button>
-          <button class="btn" role="tab" id="developmentTabLearning" aria-selected="false" aria-controls="developmentLearning" data-development-tab="learning" disabled>학습 사례 작성</button>
+          <button class="btn" role="tab" id="developmentTabLearning" aria-selected="false" aria-controls="developmentLearning" data-development-tab="learning" disabled>학습 사례 작성·검토</button>
         </div>
         <div id="developmentError" class="notice amber" role="alert" hidden></div>
         <div id="developmentLoadState" class="notice blue" role="status">개발 현황을 불러오려면 이 탭을 여십시오.</div>
@@ -56,12 +56,31 @@
               <div class="field"><label for="developmentEdition">판본 / 발행 버전</label><input id="developmentEdition" name="edition" maxlength="160" placeholder="예: 2026-09 출판본"></div>
               <div class="field"><label for="developmentPurpose">자료 용도</label><select id="developmentPurpose" name="usage_purpose"><option value="OPERATIONAL_EVIDENCE">RAG 검색 자료</option><option value="TRAINING">학습 준비 전용 (RAG 제외)</option><option value="EVALUATION_GOLD">평가 전용 (RAG·학습 제외)</option></select></div>
               <details class="full"><summary>RAG 검토 범위 설정</summary><div class="field"><label for="developmentApplicability">현재 검토에 적용 가능성</label><select id="developmentApplicability" name="applicability_status"><option value="UNCONFIRMED">미확인</option><option value="APPLICABLE">적용 가능 확인</option><option value="NOT_APPLICABLE">적용 불가</option></select></div><label class="checkline"><input name="adopted" type="checkbox"><span>이 프로젝트가 검토 근거로 채택한 자료입니다.</span></label></details>
-              <div class="full"><button class="btn primary" type="submit" disabled>문서 저장 · 텍스트 파싱</button><p id="developmentUploadPermission" class="smalltext muted"></p><p class="smalltext muted">최대 20 MiB. PDF 텍스트층·UTF-8 텍스트·Markdown·JSON·CSV를 지원합니다. OCR·표·그림 의미 해석은 포함하지 않습니다. 파싱 완료는 내용·적용성 승인과 다릅니다. RAG 검색에는 권리·판본·채택·적용성 검사를 통과한 검색 자료만 사용합니다.</p></div>
+              <div class="full"><button class="btn primary" type="submit" disabled>문서 저장 · 텍스트 파싱</button><p id="developmentUploadPermission" class="smalltext muted"></p><p class="smalltext muted">최대 20 MiB. PDF 텍스트층·UTF-8 텍스트·Markdown·JSON·CSV를 지원합니다. OCR·표·그림 의미 해석은 포함하지 않습니다. 파싱 완료는 내용·적용성 승인과 다릅니다. RAG 검색에는 권리·판본·채택·적용성 검사를 통과한 검색 자료만 사용합니다.</p><p class="smalltext muted">100문항 세트는 ‘학습 사례 작성·검토’ 탭에서 파일 하나로 자동 분리·등록할 수 있습니다. 이미 저장한 학습용 Markdown은 아래 등록부에서 문항별 검토 목록에 등록하십시오.</p></div>
             </form><div id="developmentUploadState" class="notice blue" hidden role="status"></div>
           </div></section><div class="space"></div><div id="developmentDocumentList"></div>
         </div>
         <div id="developmentLearning" role="tabpanel" aria-labelledby="developmentTabLearning" hidden>
-          <div class="notice blue">① 원문 위치 선택 → ② 입력·응답 작성 → ③ 초안 저장 → ④ 검토 책임자·승인권자가 사례 검토 또는 기각. 로컬 자료 준비에 대한 기록입니다. Local LLM 호출·데이터 내보내기·모델 학습은 실행하지 않습니다.</div><div class="space"></div>
+          <div class="notice blue">문항 세트를 올리면 파일에 적힌 유형·출처 묶음·학습/평가 구분으로 자동 분리합니다. 검토 책임자·승인권자가 질문·정답·오답을 확인하고 한 문항씩 승인하거나 기각합니다. Local LLM 호출·데이터 내보내기·모델 학습은 실행하지 않습니다.</div><div class="space"></div>
+          <section class="card"><div class="cardhead"><div><h3>질문·정답·오답 세트 등록</h3><p>문항을 다시 입력하지 않고 원본 파일과 문항별 검토 기록을 서버에 보존합니다.</p></div></div><div class="cardbody">
+            <form id="learningSetUploadForm" class="formgrid">
+              <div class="field full"><label for="learningSetFile">100문항 통합검토 Markdown 파일</label><input id="learningSetFile" name="file" type="file" accept=".md" required><small>DoriLab 100Q 핸드오프 v1 형식 · UTF-8 · 최대 20 MiB. 다른 형식은 오류를 표시하고 임의 분리하지 않습니다.</small></div>
+              <details class="full"><summary>파일 권리·판본 정보 (선택)</summary><div class="formgrid"><div class="field"><label for="learningSetRights">업로드 파일 사용 권리</label><select id="learningSetRights" name="rights_status"><option value="UNCONFIRMED">미확인</option><option value="PUBLIC">공개 자료</option><option value="GRANTED">사용 권리 확보</option><option value="RESTRICTED">제한 자료</option></select></div><div class="field"><label for="learningSetEdition">파일 판본</label><input id="learningSetEdition" name="edition" maxlength="160" placeholder="예: 핸드오프 v1.0"></div></div></details>
+              <div class="full"><button class="btn primary" type="submit" disabled>자동 분리 · 검토 목록에 저장</button><p id="learningSetPermission" class="smalltext muted"></p><p class="smalltext muted">모든 문항은 미검토로 시작합니다. 원 답안·오답·검토 메모와 승인 시 수정한 답안을 따로 보존합니다. 평가 문항과 오답은 정답 학습 대상으로 사용하지 않습니다.</p></div>
+            </form>
+            <div id="learningSetMessage" class="notice blue" hidden role="status"></div>
+          </div></section><div class="space"></div>
+          <section class="card"><div class="cardhead"><div><h3>문항별 검토 목록</h3><p>파일의 원문 확인 범위와 사람의 문항 승인을 구분합니다. 논문 원문·사용 권리 검증과 GPU 학습은 별도 단계입니다.</p></div></div><div class="cardbody">
+            <div class="field"><label for="learningSetSelect">등록한 세트</label><select id="learningSetSelect" disabled><option value="">등록한 문항 세트가 없습니다.</option></select></div>
+            <div id="learningSetSummary" class="learning-set-summary"></div>
+            <div id="learningSetFilters" class="learning-set-filters" hidden>
+              <div class="field"><label for="learningSetStatus">검토 상태</label><select id="learningSetStatus"><option value="DRAFT">미검토</option><option value="ALL">전체</option><option value="APPROVED">승인</option><option value="REJECTED">기각</option></select></div>
+              <div class="field"><label for="learningSetSplit">문항 용도</label><select id="learningSetSplit"><option value="ALL">학습용·평가용 전체</option><option value="TRAIN">학습용</option><option value="EVALUATION">평가 전용</option></select></div>
+              <div class="field"><label for="learningSetCategory">문항 유형</label><select id="learningSetCategory"><option value="ALL">모든 유형</option></select></div>
+              <div class="field"><label for="learningSetSearch">문항·출처 검색</label><input id="learningSetSearch" type="search" placeholder="Q001, 출처 ID, 질문"></div>
+            </div>
+            <div class="learning-set-workspace"><div id="learningSetList" class="learning-set-list" aria-label="분류된 문항 목록"></div><div id="learningSetDetail" class="learning-set-detail"><div class="notice empty">파일을 등록하면 여기에서 한 문항씩 검토할 수 있습니다.</div></div></div>
+          </div></section><div class="space"></div>
           <section class="card"><div class="cardhead"><div><h3>원문에 연결된 학습 사례 작성</h3><p>직접 작성한 입력·응답에 원문 위치·판본·작성 계정·시각을 함께 보존합니다.</p></div></div><div class="cardbody"><form id="learningExampleForm" class="formgrid">
             <div class="field"><label for="learningSourceDocument">파싱된 원문</label><select id="learningSourceDocument" required><option value="">자료를 먼저 등록하십시오.</option></select></div>
             <div class="field"><label for="learningSourceChunk">원문 위치</label><select id="learningSourceChunk" name="source_chunk_id" required disabled><option value="">문서를 선택하십시오.</option></select></div>
@@ -232,6 +251,7 @@
 <div class="feedback" id="toast" role="status" aria-live="polite"></div>
 <script src="/assets/setup-demo.js" defer></script>
 <script src="/assets/app.js" defer></script>
+<script src="/assets/learning-sets.js" defer></script>
 <script src="/assets/development.js" defer></script>
 </body>
 </html>

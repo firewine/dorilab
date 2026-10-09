@@ -1,5 +1,7 @@
 # DoriLab 구현 상태
 
+2026-10-10 학습 세트 검토: **100Q 파일 하나 자동 분리 → 문항별 수정·승인·기각 → 서버 이력 보존**을 로컬 앱에 반영했다. 전달된 실제 파일은 학습용 87·평가용 13, 전체 100문항 모두 미검토로 등록했다. 전체 격리 회귀 252 passed, 최종 이미지 관련 회귀 50 passed와 실제 브라우저 등록/합성 결정/재열기/새로고침을 확인했다. 원 논문 검증·데이터 내보내기·GPU 학습과 문항 승인은 구분하며, 새 기능의 공개 Site·Render·Neon 배포는 아직 하지 않았다. 상세: [100문항 세트 검토](LEARNING_SET_REVIEW_20261010.md).
+
 2026-10-09 실행환경 승인 후 최신 상태는 **LIVE / READY**다. `tokenizers 0.23.2 → 0.23.3` 차이를 공개 합성 LIVE 3건으로 검증한 뒤 사용자가 명시적으로 승인했다. 승인된 새 receipt `7e8f301c…4f0a`만 로컬 profile에 등록하고 API/worker를 재빌드했다. 실제 `/readyz`·인증 `/version` 200, exact receipt 일치와 브라우저의 LIVE 시연 버튼 활성화를 확인했다. 전체 격리 회귀 235 passed, 최종 승인 profile 관련 회귀 21 passed, 기존 첨부 28/28 hash 일치와 업무 건수 보존을 확인했다. 원격 설치·모델 변경·Site 배포는 없으며, 적용 후 전체 자동 시연을 다시 실행한 것은 아니다. 상세: [실행환경 승인·적용 결과](RUNPOD_RUNTIME_ALIGNMENT_RESULT_20261009.md).
 
 2026-10-09 로컬 연결 수정: **저장 · LIVE 연결**은 검증된 설정을 Mac의 프로젝트 전용 관리 프로그램에 요청하고, 기존 키로 SSH 인증·기존 토큰의 로컬 동기화·Docker tunnel·LIVE 모드를 적용한다. API/worker에는 개인키나 Docker socket을 주지 않는다. 팝업 닫기·재열기·새로고침과 동일 설정 재저장을 확인했다. 최근 인증 연결이 정상인 동일 설정은 재시작하지 않으며, 같은 주소의 인증 실패·원격 단절 때는 명시적 복구를 허용한다. 진행 중인 검토가 있으면 교체를 막고 중단된 적용은 자동 재실행하지 않는다.
@@ -12,7 +14,7 @@
 
 이전 단계 기록: `Docs/DEVELOPMENT_MODEL_MANAGEMENT_STEP1.md`, `Docs/DEVELOPMENT_MODEL_MANAGEMENT_STEP2.md`, `Docs/DEVELOPMENT_MODEL_MANAGEMENT_STEP3.md`. 아래에는 당시 검증 결과와 후속 검증을 함께 보존한다.
 
-- 갱신: 2026-10-09
+- 갱신: 2026-10-10
 - 현재 실행: **LOCAL_MVP_FUNCTIONAL / LIVE_READY / SYNTHETIC_CONFORMANCE_PASS**. 전체 개발 목표는 부분 달성이다.
 - 과거 판정 보존: LOCAL_COMPLETE / UI_PAGE_8_COMPLETE / QUICK_DEMO_LIVE_VALID / DETAILED_SETUP_QWEN_LIVE_VALID / CURRENT_NATIVE_BLACKBOARD_E2E_VALID. 아래 기존 LIVE receipt는 과거 시험 결과이며 현재 READY를 뜻하지 않는다.
 - 실행 환경: macOS 27.0.1 (arm64), Docker Engine 29.8.0 / Compose 5.5.1, Docker Desktop `desktop-linux`, Linux container aarch64, local API 1.0.0

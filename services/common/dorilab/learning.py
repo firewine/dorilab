@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from .auth import actor, csrf
 from .contracts import digest
 from .db import connection
+from .learning_imports import create_import_router, is_import_source, list_imports, read_handoff
 from .rag import CHUNKER_VERSION, PARSER_VERSION
 from .storage import resolved_path, write_bytes
 
@@ -63,6 +64,11 @@ class DatasetCreate(BaseModel):
     name: str = Field(pattern=r'^[A-Za-z0-9][A-Za-z0-9_.-]{0,79}$')
     split: Literal['TRAIN', 'EVALUATION']
     example_ids: list[UUID] = Field(min_length=1, max_length=100)
+
+
+class HandoffPreviewRequest(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    artifact_id: UUID
 
 
 def _key(value):
@@ -117,7 +123,10 @@ def _source_reasons(source, snapshot=None):
 
 
 def _example_projection(cur, example):
-    reasons = _source_reasons(_source(cur, example['source_chunk_id']), example['source_snapshot'])
+    source = _source(cur, example['source_chunk_id'])
+    reasons = _source_reasons(source, example['source_snapshot'])
+    if source and is_import_source(cur, example['project_id'], source['sha256']):
+        reasons.append('HANDOFF_REVIEW_SET_NOT_ORIGINAL_SOURCE')
     return {**example, 'freshness': 'STALE' if reasons else 'CURRENT', 'source_issues': reasons,
             'approval_scope': 'LOCAL_DATASET_PREPARATION_ONLY', 'authoring_scope': 'LOCAL_DRAFT_ONLY',
             'semantic_correctness': 'HUMAN_REVIEW_ONLY' if example['status'] == 'APPROVED' else 'NOT_VERIFIED'}
@@ -145,6 +154,7 @@ def _dataset_projection(cur, dataset):
 
 def create_router(membership, audit):
     router = APIRouter(tags=['Local development and learning preparation'])
+    router.include_router(create_import_router(membership, audit))
 
     def require_preparation():
         if not PREPARATION_ENABLED:
@@ -210,6 +220,7 @@ def create_router(membership, audit):
             if PREPARATION_ENABLED:
                 cur.execute('SELECT * FROM learning_datasets WHERE project_id=%s ORDER BY created_at DESC', (project_id,))
                 datasets = [_dataset_projection(cur, d) for d in cur.fetchall()]
+            imports = list_imports(cur, project_id)
         blockers = ['TRAINING_RECIPE_UNVERIFIED', 'REMOTE_TRAINING_RUNNER_NOT_IMPLEMENTED']
         for split in ('TRAIN', 'EVALUATION'):
             if not any(d['split'] == split and d['freshness'] == 'CURRENT' for d in datasets):
@@ -217,11 +228,30 @@ def create_router(membership, audit):
         return {'project_id': project_id, 'role': member['role'], 'preparation_enabled': PREPARATION_ENABLED,
                 'example_authoring_enabled': EXAMPLES_ENABLED or PREPARATION_ENABLED,
                 'example_review_enabled': EXAMPLE_REVIEW_ENABLED or PREPARATION_ENABLED,
-                'documents': documents, 'examples': examples,
+                'documents': documents, 'examples': examples, 'imports': imports,
+                'import_review_enabled': True,
                 'datasets': datasets, 'training': {'state': 'BLOCKED', 'blockers': blockers,
                 'remote_checked': False, 'job_id': None, 'remote_execution_enabled': False,
                 'scope': 'LOCAL_PREPARATION_ONLY', 'format': 'PROMPT_COMPLETION_JSONL_PREPARATION_V1',
                 'recipe_mapping_verified': False}}
+
+    @router.post('/api/v1/projects/{project_id}/learning/import-preview', dependencies=[Depends(csrf)])
+    def preview_100q_handoff(project_id: UUID, body: HandoffPreviewRequest,
+                              user_id: str = Depends(actor)):
+        """Parse an uploaded 100Q handoff into a review-only preview; never enqueue training."""
+        with connection() as conn, conn.cursor() as cur:
+            membership(cur, project_id, user_id, {'engineer', 'reviewer', 'approver'})
+            artifact, preview = read_handoff(cur, project_id, body.artifact_id)
+        return {
+            **preview,
+            'artifact_id': str(artifact['id']),
+            'source_sha256': artifact['sha256'],
+            'source_filename': artifact['filename'],
+            'rights_status': artifact['rights_status'],
+            'edition': artifact['edition'],
+            'rights_confirmed': artifact['rights_status'] in {'PUBLIC', 'GRANTED'},
+            'approval_scope': 'REVIEW_PREVIEW_ONLY',
+        }
 
     @router.post('/api/v1/projects/{project_id}/learning/examples', status_code=201, dependencies=[Depends(csrf)])
     def create_example(project_id: UUID, body: ExampleCreate,
@@ -242,6 +272,8 @@ def create_router(membership, audit):
             source = _source(cur, body.source_chunk_id)
             if not source or source['project_id'] != project_id:
                 raise HTTPException(404, 'source chunk not found')
+            if is_import_source(cur, project_id, source['sha256']):
+                raise HTTPException(409, 'HANDOFF_REVIEW_SET_NOT_ORIGINAL_SOURCE')
             issues = _source_reasons(source)
             if issues:
                 raise HTTPException(409, 'SOURCE_NOT_CURRENT: ' + ','.join(issues))
@@ -284,7 +316,7 @@ def create_router(membership, audit):
                 raise HTTPException(409, 'EXAMPLE_VERSION_OR_STATUS_CONFLICT')
             source = _source(cur, example['source_chunk_id'])
             if body.decision == 'APPROVED':
-                issues = _source_reasons(source, example['source_snapshot'])
+                issues = _example_projection(cur, example)['source_issues']
                 if issues:
                     raise HTTPException(409, 'SOURCE_NOT_CURRENT: ' + ','.join(issues))
                 if (not body.data_use_confirmed or source['rights_status'] not in {'PUBLIC','GRANTED'}
