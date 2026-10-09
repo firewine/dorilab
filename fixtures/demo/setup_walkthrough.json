@@ -1,0 +1,120 @@
+{
+  "schema_id": "dorilab.setup-walkthrough.v1",
+  "scenario": "DETAIL_SETUP_LIVE",
+  "basis": "PUBLIC_SYNTHETIC",
+  "notice": "DoriLab 기능 시연용 합성 입력이다. 기관 표준 채택, 공학적 적합성, 시험 승인 또는 검증 종결을 뜻하지 않는다.",
+  "project": {
+    "path": "/api/v1/projects",
+    "body": {
+      "display_id": "DORI-SETUP-01",
+      "name": "DoriLab 상세 설정 합성 시연",
+      "framework": "KASA",
+      "framework_edition": null,
+      "data_policy": "EXTERNAL_SYNTHETIC_ALLOWED",
+      "mode": "DEMO"
+    }
+  },
+  "profile_document": {
+    "path_template": "/api/v1/projects/{project_id}/documents/KASA-SE-REQ",
+    "body": {
+      "profile": "KASA",
+      "title": "한국형 시스템엔지니어링 프로세스 및 요구조건",
+      "revision": "1.0 / 2025-06-30",
+      "product_level": "열제어 장비",
+      "clause_locator": "원문 연결 대기",
+      "adoption_note": "실제 채택 전 등록 정보"
+    },
+    "expected_status": "UNCONFIRMED"
+  },
+  "claim": {
+    "path_template": "/api/v1/projects/{project_id}/claims",
+    "body": {
+      "display_id": "THM-041",
+      "question": "TVAC-03 열모델 상관 검토에 필요한 근거가 충분한가?",
+      "review_target": "BM1",
+      "review_purpose": "INPUT_READINESS",
+      "scope": {
+        "unit": "DORI-01",
+        "configuration": "TVAC-03",
+        "run": "RUN-DEMO-01"
+      }
+    }
+  },
+  "requirement": {
+    "path_template": "/api/v1/projects/{project_id}/requirements",
+    "body": {
+      "display_id": "THM-041",
+      "level": "EQUIPMENT",
+      "parent_ref": "SYS-THERM",
+      "statement": "상관해석 입력에 부품별 소산전력과 열원 위치를 연결한다.",
+      "review_purpose": "INPUT_READINESS",
+      "verification_method": "자료 검토",
+      "owner": "열설계 담당",
+      "claim_id": null,
+      "claim_label": "CLM-TH-INPUT",
+      "source_chapter": 19,
+      "sort_order": 2
+    },
+    "runtime_bindings": {
+      "claim_id": "claim.id"
+    }
+  },
+  "document": {
+    "path_template": "/api/v1/projects/{project_id}/artifacts",
+    "fixture_path": "fixtures/demo/setup_walkthrough.md",
+    "filename": "setup_walkthrough.md",
+    "content_type": "text/markdown",
+    "form": {
+      "rights_status": "PUBLIC",
+      "edition": "DEMO-SETUP-1",
+      "adopted": true,
+      "applicability_status": "APPLICABLE",
+      "usage_purpose": "OPERATIONAL_EVIDENCE"
+    }
+  },
+  "parse": {
+    "path_template": "/api/v1/artifacts/{artifact_id}/parse",
+    "chunk_detail_path_template": "/api/v1/artifacts/{artifact_id}/chunks"
+  },
+  "retrieval": {
+    "path_template": "/api/v1/projects/{project_id}/retrievals",
+    "idempotency_key_prefix": "setup-walkthrough-retrieval",
+    "body": {
+      "claim_id": null,
+      "query": "component dissipation power map",
+      "artifact_ids": [],
+      "top_k": 4
+    },
+    "runtime_bindings": {
+      "claim_id": "claim.id",
+      "artifact_ids": [
+        "document.id"
+      ]
+    }
+  },
+  "live_review": {
+    "path_template": "/api/v1/projects/{project_id}/reviews",
+    "idempotency_key_prefix": "setup-walkthrough-live",
+    "body": {
+      "claim_id": null,
+      "evidence_ids": [],
+      "retrieval_run_id": null,
+      "mode": "LIVE_MODEL_RUN"
+    },
+    "runtime_bindings": {
+      "claim_id": "claim.id",
+      "retrieval_run_id": "retrieval.run.id"
+    },
+    "renderer": "services.common.dorilab.contracts.render_live",
+    "profile_id": "dorilab-source-review-v15-rc3",
+    "contract_id": "7240db117d7c66d5bb162ce72290fee4b87bfaefa97771246d392be07c0b0114",
+    "contract_route": "v15_rc1_cf1"
+  },
+  "boundaries": {
+    "automatic_replay_fallback": false,
+    "automatic_human_decision": false,
+    "automatic_gate_approval": false,
+    "automatic_verification_closure": false,
+    "raw_model_output_preserved": true
+  }
+}

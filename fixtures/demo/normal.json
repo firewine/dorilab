@@ -1,0 +1,8 @@
+{
+  "scenario": "normal",
+  "basis": "SYNTHETIC",
+  "mode": "REPLAY",
+  "claim_question": "현재 근거로 BM1 검토가 가능한가?",
+  "expected_action": "NO_ACTION_REQUIRED",
+  "note": "Contract/UI regression fixture only; not model accuracy evidence."
+}

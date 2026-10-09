@@ -1,0 +1,7 @@
+services:
+  llm-tunnel:
+    volumes:
+      - type: bind
+        source: ${DORILAB_SSH_KEY_PATH:-/dev/null}
+        target: /run/ssh/id_ed25519
+        read_only: true

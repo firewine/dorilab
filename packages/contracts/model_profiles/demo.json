@@ -1,0 +1,7 @@
+{
+  "profile_id": "dorilab-bm1-demo-v1",
+  "deployment_status": "DEMO_ONLY",
+  "contract_id": "dorilab-bm1-demo-contract-v1",
+  "basis": "SYNTHETIC",
+  "allowed_modes": ["SIMULATED", "REPLAY"]
+}

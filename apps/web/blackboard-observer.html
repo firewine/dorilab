@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DoriLab · Blackboard 관찰 창</title>
+  <link rel="stylesheet" href="/assets/blackboard-observer.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">READ-ONLY SHARED STATE</p>
+      <h1>Blackboard 관찰 창</h1>
+      <p class="subtitle">자동 시연과 같은 실행의 저장 상태만 읽습니다. 이 창은 모델이나 작업을 실행하지 않습니다.</p>
+    </div>
+    <div class="top-badges">
+      <span id="modeBadge" class="badge neutral">시작 전</span>
+      <span id="signalBadge" class="badge waiting">연결 대기</span>
+      <span id="apiBadge" class="badge neutral">API 대기</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="session-card" aria-live="polite">
+      <div class="session-copy">
+        <p class="eyebrow">CURRENT DEMO RUN</p>
+        <h2 id="stepTitle">자동 시연 시작 전</h2>
+        <p id="sessionSummary">기존 화면에서 관찰 창을 연 뒤 REPLAY 또는 LIVE 시연을 시작하십시오.</p>
+      </div>
+      <div class="session-meta">
+        <div><span>단계</span><strong id="stepCount">0 / 9</strong></div>
+        <div><span>실행 상태</span><strong id="executionStatus">IDLE</strong></div>
+        <div><span>Job</span><strong id="jobId">아직 없음</strong></div>
+        <div><span>마지막 동기화</span><strong id="lastSync">대기</strong></div>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="stepProgress"></span></div>
+      <p id="observerStatus" class="status-line state-empty">EMPTY · 현재 실행의 Job을 기다리고 있습니다.</p>
+    </section>
+
+    <section class="flow-band" aria-label="실제 저장 흐름">
+      <div><span>1</span><b>모델 제안</b><small>Contribution</small></div>
+      <i>→</i>
+      <div><span>2</span><b>검증된 연결</b><small>Dependency</small></div>
+      <i>→</i>
+      <div><span>3</span><b>다음 작업</b><small>WorkItem / 담당 역할</small></div>
+      <i>→</i>
+      <div><span>4</span><b>사람 대기</b><small>고정 Router 경계</small></div>
+    </section>
+
+    <div class="board-grid">
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">WHAT WAS WRITTEN</p><h2>검토 제안</h2></div><span id="contributionCount" class="counter">0</span></div>
+        <div id="contributionList" class="card-list"><div class="empty-card">현재 실행에서 기록된 Contribution이 없습니다.</div></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">WHAT COMES NEXT</p><h2>공용 작업 큐</h2></div><span id="workItemCount" class="counter">0</span></div>
+        <div id="workItemList" class="card-list"><div class="empty-card">현재 실행에서 생성된 WorkItem이 없습니다.</div></div>
+      </section>
+    </div>
+
+    <section class="panel wide-panel">
+      <div class="panel-head"><div><p class="eyebrow">ACTUAL STORED LINKS</p><h2>근거와 결과의 연결</h2><p>저장된 dependency와 배정 역할만 표시합니다. 실제 읽기 이벤트는 현재 수집하지 않습니다.</p></div><span id="dependencyCount" class="counter">0</span></div>
+      <div id="dependencyList" class="link-list"><div class="empty-card">현재 실행의 연결 기록을 기다리고 있습니다.</div></div>
+    </section>
+
+    <div class="board-grid lower-grid">
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">FIXED SERVER GRAPH</p><h2>조율 진행 상태</h2></div><span id="orchestrationBadge" class="badge neutral">대기</span></div>
+        <div id="orchestrationList" class="timeline-list"><div class="empty-card">Job이 정해지면 실제 graph checkpoint를 표시합니다.</div></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">PERSISTED EVENTS</p><h2>Blackboard 갱신 기록</h2></div><span id="eventCount" class="counter">0</span></div>
+        <div id="eventList" class="timeline-list"><div class="empty-card">현재 실행과 연결된 BoardEvent가 없습니다.</div></div>
+      </section>
+    </div>
+
+    <details class="raw-panel">
+      <summary>현재 실행의 원본 JSON 펼쳐 보기</summary>
+      <p>현재 Job으로 필터한 Blackboard projection과 Job 응답입니다. 인증정보는 포함하지 않습니다.</p>
+      <pre id="rawJson">{}</pre>
+    </details>
+
+    <p class="boundary">모델 제안과 공용 작업은 확정 승인과 다릅니다. 이 화면은 관찰 전용이며 사람 결정, Gate 승인, 공식 검증 종결을 만들지 않습니다.</p>
+  </main>
+
+  <script src="/assets/blackboard-observer.js" defer></script>
+</body>
+</html>

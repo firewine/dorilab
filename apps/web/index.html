@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DoriLab Systems Engineering Workbench</title>
+  <link rel="stylesheet" href="/mockup.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar" aria-label="주요 업무 탐색">
+    <div class="brand"><div class="brandmark">d.</div><div><div class="brandname">DoriLab</div><small>SYSTEMS WORKSPACE</small></div></div>
+    <div class="nav-label">PROJECT WORKSPACE</div><nav id="nav"></nav>
+    <div class="sidebar-foot"><span class="pill"><span class="dot"></span> LOCAL MVP</span><p>요구사항에서 검증 종결까지<br>같은 근거와 기준점으로 연결</p><p id="saveState" aria-live="polite">PostgreSQL에 저장됨</p></div>
+  </aside>
+
+  <div class="mainwrap">
+    <div class="menu-overlay" id="menuOverlay" data-action="mobileMenu"></div>
+    <header class="topbar">
+      <div class="buttons"><button class="btn icononly mobilemenu" data-action="mobileMenu" aria-label="메뉴 열기"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><div class="breadcrumbs" id="crumb"></div></div>
+      <div class="top-actions">
+        <button class="btn small top-label" id="runpodSettingsBtn" type="button">RunPod 연결</button>
+        <button class="btn small top-label" id="profileBadge" data-page="profile">KASA</button>
+        <button class="btn small top-label" id="baselineBtn" data-page="changes">BL-003 / Rev.C</button>
+        <label class="tiny muted top-label" for="role">역할 시연</label>
+        <select id="role" aria-label="시연 역할"><option value="engineer@demo">엔지니어</option><option value="reviewer@demo">검토 책임자</option><option value="approver@demo">승인권자</option></select>
+        <div class="avatar top-label">DL</div>
+      </div>
+    </header>
+    <div class="demo-strip"><span><b id="modeLabel">DEMO</b> &nbsp; 예시 프로젝트 데이터 / LLM은 명시된 실행 모드로만 호출 <span id="remoteChip" class="remote-chip">LOCAL_ONLY</span></span><button data-page="overview">설계 근거 보기</button></div>
+
+    <main class="content" id="content">
+      <div id="banner" class="notice banner" hidden></div>
+
+      <section class="page" data-page="quickdemo" hidden>
+        <div id="quickDemoContent"></div>
+      </section>
+
+      <section class="page" data-page="development" hidden>
+        <div class="pagehead"><div><div class="eyebrow">DEVELOPMENT &amp; MODEL MANAGEMENT</div><h1>개발·모델 관리</h1><p class="subtitle">개발 목표와 남은 일, 논문과 학습 준비 자료를 한곳에서 확인합니다.</p></div><button class="btn" id="developmentRefresh" type="button">현재 상태 새로고침</button></div>
+        <div class="development-tabs" role="tablist" aria-label="개발·모델 관리">
+          <button class="btn active" role="tab" id="developmentTabGoals" aria-selected="true" aria-controls="developmentGoals" data-development-tab="goals">개발 현황</button>
+          <button class="btn" role="tab" id="developmentTabDocuments" aria-selected="false" aria-controls="developmentDocuments" data-development-tab="documents" disabled>논문·자료</button>
+          <button class="btn" role="tab" id="developmentTabLearning" aria-selected="false" aria-controls="developmentLearning" data-development-tab="learning" disabled>학습 사례 작성</button>
+        </div>
+        <div id="developmentError" class="notice amber" role="alert" hidden></div>
+        <div id="developmentLoadState" class="notice blue" role="status">개발 현황을 불러오려면 이 탭을 여십시오.</div>
+        <div id="developmentGoals" role="tabpanel" aria-labelledby="developmentTabGoals"></div>
+        <div id="developmentDocuments" role="tabpanel" aria-labelledby="developmentTabDocuments" hidden>
+          <div class="notice blue">① 파일 선택 → ② 용도·권리·판본 입력 → ③ 저장·파싱 → ④ 등록부에서 원문 위치 확인. 사례 작성은 ‘학습 사례 작성’ 탭에서 진행합니다. 자료는 맥에 보존되며 RunPod 학습은 이후 단계입니다.</div><div class="space"></div>
+          <section class="card"><div class="cardhead"><div><h3>논문·자료 등록</h3><p>맥의 파일을 로컬 서버에 저장하고 텍스트를 추출합니다.</p></div></div><div class="cardbody">
+            <form id="developmentUploadForm" class="formgrid">
+              <div class="field full"><label for="developmentFile">문서 파일</label><input id="developmentFile" name="file" type="file" accept=".pdf,.txt,.md,.json,.csv" required></div>
+              <div class="field"><label for="developmentRights">자료 사용 권리</label><select id="developmentRights" name="rights_status"><option value="UNCONFIRMED">미확인</option><option value="PUBLIC">공개 자료</option><option value="GRANTED">사용 권리 확보</option><option value="RESTRICTED">제한 자료</option></select></div>
+              <div class="field"><label for="developmentEdition">판본 / 발행 버전</label><input id="developmentEdition" name="edition" maxlength="160" placeholder="예: 2026-09 출판본"></div>
+              <div class="field"><label for="developmentPurpose">자료 용도</label><select id="developmentPurpose" name="usage_purpose"><option value="OPERATIONAL_EVIDENCE">RAG 검색 자료</option><option value="TRAINING">학습 준비 전용 (RAG 제외)</option><option value="EVALUATION_GOLD">평가 전용 (RAG·학습 제외)</option></select></div>
+              <details class="full"><summary>RAG 검토 범위 설정</summary><div class="field"><label for="developmentApplicability">현재 검토에 적용 가능성</label><select id="developmentApplicability" name="applicability_status"><option value="UNCONFIRMED">미확인</option><option value="APPLICABLE">적용 가능 확인</option><option value="NOT_APPLICABLE">적용 불가</option></select></div><label class="checkline"><input name="adopted" type="checkbox"><span>이 프로젝트가 검토 근거로 채택한 자료입니다.</span></label></details>
+              <div class="full"><button class="btn primary" type="submit" disabled>문서 저장 · 텍스트 파싱</button><p id="developmentUploadPermission" class="smalltext muted"></p><p class="smalltext muted">최대 20 MiB. PDF 텍스트층·UTF-8 텍스트·Markdown·JSON·CSV를 지원합니다. OCR·표·그림 의미 해석은 포함하지 않습니다. 파싱 완료는 내용·적용성 승인과 다릅니다. RAG 검색에는 권리·판본·채택·적용성 검사를 통과한 검색 자료만 사용합니다.</p></div>
+            </form><div id="developmentUploadState" class="notice blue" hidden role="status"></div>
+          </div></section><div class="space"></div><div id="developmentDocumentList"></div>
+        </div>
+        <div id="developmentLearning" role="tabpanel" aria-labelledby="developmentTabLearning" hidden>
+          <div class="notice blue">① 원문 위치 선택 → ② 입력·응답 작성 → ③ 초안 저장 → ④ 검토 책임자·승인권자가 사례 검토 또는 기각. 로컬 자료 준비에 대한 기록입니다. Local LLM 호출·데이터 내보내기·모델 학습은 실행하지 않습니다.</div><div class="space"></div>
+          <section class="card"><div class="cardhead"><div><h3>원문에 연결된 학습 사례 작성</h3><p>직접 작성한 입력·응답에 원문 위치·판본·작성 계정·시각을 함께 보존합니다.</p></div></div><div class="cardbody"><form id="learningExampleForm" class="formgrid">
+            <div class="field"><label for="learningSourceDocument">파싱된 원문</label><select id="learningSourceDocument" required><option value="">자료를 먼저 등록하십시오.</option></select></div>
+            <div class="field"><label for="learningSourceChunk">원문 위치</label><select id="learningSourceChunk" name="source_chunk_id" required disabled><option value="">문서를 선택하십시오.</option></select></div>
+            <p id="learningSourceState" class="full smalltext muted" role="status">파싱이 완료된 자료만 선택할 수 있습니다.</p>
+            <details class="full"><summary>선택한 원문 텍스트 보기</summary><pre id="learningSourcePreview">원문 위치를 선택하십시오.</pre></details>
+            <div class="field"><label for="learningTitle">사례 제목</label><input id="learningTitle" name="title" required maxlength="160"></div>
+            <div class="field"><label for="learningFamily">문서 묶음 ID</label><input id="learningFamily" name="family_key" required maxlength="80" pattern="[A-Za-z0-9][A-Za-z0-9_.-]{0,79}" placeholder="예: thermal-input-paper"><small>영문·숫자·점·밑줄·하이픈을 사용합니다. 같은 논문·개정판에는 같은 ID를 지정하십시오. 내용상 같은 계열인지는 사용자가 확인합니다.</small></div>
+            <div class="field"><label for="learningSplit">사례 용도</label><select id="learningSplit" name="split"><option value="TRAIN">학습용</option><option value="EVALUATION">평가용 (학습 제외)</option></select></div>
+            <div class="field"><label for="learningOrigin">사례 작성 구분</label><select id="learningOrigin" name="origin"><option value="HUMAN_AUTHORED">직접 작성</option><option value="SYNTHETIC_HUMAN_AUTHORED">합성 사례</option></select></div>
+            <div class="field full"><label for="learningPrompt">모델에 줄 입력 / 질문</label><textarea id="learningPrompt" name="prompt" maxlength="8192" required placeholder="실제 사용하려는 검토 질문과 입력을 작성하십시오."></textarea></div>
+            <div class="field full"><label for="learningCompletion">검토할 응답 / 기대 결과</label><textarea id="learningCompletion" name="completion" maxlength="8192" required placeholder="사람이 검토할 응답입니다. 논문 업로드만으로 정답을 생성하지 않습니다."></textarea></div>
+            <div class="full"><button class="btn primary" type="submit" disabled>미검토 초안으로 저장</button><p id="learningAuthoringPermission" class="smalltext muted"></p><p class="smalltext muted">원문과 입력·응답은 따로 보존됩니다. 저장이 정답·사용 권리·업무 승인을 뜻하지 않습니다. 수정은 새 사례로 등록해 이전 기록을 보존합니다.</p></div>
+          </form></div></section><div class="space"></div><div id="learningExamples"></div>
+          <div class="space"></div><div id="learningNextStep" class="notice amber">사례 검토 완료는 공학 승인이나 외부 전송 승인이 아닙니다. 학습/평가 데이터 버전 고정과 RunPod 학습은 후속 단계입니다.</div>
+          <div id="learningDatasetSection" hidden><div class="space"></div><section class="card"><div class="cardhead"><div><h3>검토된 사례를 데이터 버전으로 고정</h3><p>학습용·평가용 JSONL을 따로 저장합니다. RC3 학습 레시피와의 연결은 아직 미검증입니다.</p></div></div><div class="cardbody"><form id="learningDatasetForm"><div class="formgrid"><div class="field"><label for="learningDatasetName">데이터 이름</label><input id="learningDatasetName" name="name" required maxlength="80" pattern="[A-Za-z0-9][A-Za-z0-9_.-]{0,79}" placeholder="예: bm1-input-review"></div><div class="field"><label for="learningDatasetSplit">버전 용도</label><select id="learningDatasetSplit" name="split"><option value="TRAIN">학습용</option><option value="EVALUATION">평가용</option></select></div></div><div id="learningDatasetChoices" class="learning-choices"></div><button class="btn primary" type="submit">선택한 사례로 새 버전 저장</button></form></div></section><div class="space"></div><div id="learningDatasets"></div></div>
+        </div>
+      </section>
+
+      <section class="page" data-page="overview">
+        <div id="tour" class="tour" hidden><div><div class="tour-num">GUIDED WALKTHROUGH 1 / 8</div><p>자료 검토를 실행하세요.</p></div><div class="buttons"><button class="btn small" data-page="workspace">해당 화면으로 이동 →</button><button class="btn small" id="closeTour">닫기</button></div></div>
+        <div class="pagehead"><div><div class="eyebrow">PROJECT OVERVIEW</div><h1 id="projectName">DORI-01 관측위성</h1><p class="subtitle">요구사항에서 설계, 시험과 인계까지 연결된 프로젝트의 상태를 확인합니다.</p></div><div class="buttons"><button class="btn" id="openTour"><svg class="icon" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg>시연 길잡이</button><button class="btn primary" id="autoDemoStart"><svg class="icon" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></svg>자동 시연</button><button class="btn" id="newProject"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>새 프로젝트</button></div></div>
+
+        <section class="hero"><div><div class="eyebrow"><span id="heroProfile">KASA</span> PROFILE / BL-003</div><h2>사업 단계 5 — 통합과 검증</h2><p>열진공 시험 TVAC-03의 상관 검토를 진행합니다.<br>검토 대상과 근거, 다음 결정이 같은 요구사항에 연결됩니다.</p></div><div class="hero-side"><span class="pill" id="nextReview">다음 검토: TRB</span><div class="space"></div><button class="btn primary" data-page="workspace">시험 작업 열기 <svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button></div></section>
+
+        <div class="stats">
+          <div class="stat"><div><label>연결 요구사항</label><strong id="connectedRequirements">—</strong><span class="sub">현재 프로젝트 Claim</span></div><div class="iconbox"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 14h6v6h-6zM7 10v4h10"/></svg></div></div>
+          <div class="stat"><div><label>검토할 공백</label><strong id="reviewGaps">—</strong><span class="sub">열린 자료 요청</span></div><div class="iconbox"><svg class="icon" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Zm0 6v5m0 3v1"/></svg></div></div>
+          <div class="stat"><div><label>근거 적용범위</label><strong id="evidenceScope">—</strong><span class="sub">서버 등록 근거</span></div><div class="iconbox"><svg class="icon" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/></svg></div></div>
+          <div class="stat"><div><label>종결 Claim</label><strong id="closedClaims">—</strong><span class="sub">이번 BM1 검토 범위</span></div><div class="iconbox"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div></div>
+        </div>
+
+        <section class="card"><div class="cardhead"><div><h3>시스템 개발 생애주기</h3><p>KASA 단계와 프로젝트 검토회의</p></div><button class="btn link" data-page="profile">프로파일 보기</button></div>
+          <div class="phase-rail" id="phaseRail">
+            <button class="phase done" data-phase="0"><div class="phase-code">사업 단계 1</div><h4>임무 정의</h4><small>임무 목적과 운용개념</small></button>
+            <button class="phase done" data-phase="1"><div class="phase-code">사업 단계 2</div><h4>개념과 실현 가능성</h4><small>실현 가능성과 기술 접근</small></button>
+            <button class="phase done" data-phase="2"><div class="phase-code">사업 단계 3</div><h4>예비 설계</h4><small>요구사항과 예비 설계</small></button>
+            <button class="phase done" data-phase="3"><div class="phase-code">사업 단계 4</div><h4>상세 설계</h4><small>상세 설계와 기준점</small></button>
+            <button class="phase active" data-phase="4"><div class="phase-code">사업 단계 5</div><h4>통합과 검증</h4><small>현재 프로젝트</small></button>
+            <button class="phase" data-phase="5"><div class="phase-code">사업 단계 6</div><h4>운용</h4><small>운용과 유지</small></button>
+            <button class="phase" data-phase="6"><div class="phase-code">사업 단계 7</div><h4>사업 종결</h4><small>임무 종료와 자료 보존</small></button>
+          </div>
+          <div class="phase-detail"><div><svg class="icon" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Zm-9 10 9 5 9-5M3 17l9 5 9-5"/></svg></div><div><b id="phaseTitle">통합과 수준별 검증</b><br><span id="phaseDescription">AIT, 시험, 결과 수용, 제품 인계</span><div class="phase-gates" id="phaseGates"><button class="btn small">S-IRR</button><button class="btn small">TRR</button><button class="btn small">TRB</button><button class="btn small">제품 인수 검토</button></div></div></div>
+          <div class="cardbody" style="padding-top:0"><div class="notice blue">사업계획에서 발사와 초기 운용의 단계 및 승인 관계를 지정한다.</div></div>
+        </section><div class="space"></div>
+
+        <div class="grid2">
+          <section class="card"><div class="cardhead"><div><h3>지금 확인할 업무</h3><p>현재 입력과 결정 기록에서 계산한 다음 작업</p></div><button class="btn link small" data-page="overview">문서 근거</button></div><div class="cardbody">
+            <div class="task"><span class="task-index">01</span><div class="grow"><h4 id="primaryTask">열모델 입력 완전성 검토</h4><p id="primaryTaskDetail">부품별 소산전력과 열원 위치 자료를 확인하세요.</p></div><button class="btn small" data-page="workspace">열기</button></div>
+            <div class="task"><span class="task-index">02</span><div class="grow"><h4>TRB 준비</h4><p>입력 검토, 상관 계산과 계측 품질 기록을 묶습니다.</p></div><button class="btn small" data-page="gates">조건 확인</button></div>
+            <div class="task"><span class="task-index">03</span><div class="grow"><h4>검증 종결과 제품 인수</h4><p>요구조건 만족표와 검증 종결 기록에 이번 범위의 결과를 연결합니다.</p></div><button class="btn small" data-page="closure">열기</button></div>
+          </div></section>
+          <section class="card"><div class="cardhead"><div><h3>요구사항과 근거의 연결</h3><p>같은 범위를 따라 양방향으로 조회</p></div></div><div class="cardbody"><div class="chain"><div class="chain-node"><b>임무 / 열환경에서 관측 기능 유지</b><small>ConOps-01 / 운용 적합성 확인</small></div><div class="chain-node"><b>SYS-THERM / 열설계 검증</b><small>시스템 요구와 장비 할당</small></div><div class="chain-node"><b>THM-041 / THM-042</b><small>상관 입력과 온도 잔차</small></div><div class="chain-node"><b>TVAC-03 / Rev.C</b><small>원자료와 분석, 검토와 승인</small></div></div><div class="space"></div><button class="btn link" data-page="requirements">V 모델과 추적 관계 보기 →</button></div></section>
+        </div>
+      </section>
+
+      <section class="page" data-page="profile" hidden><div id="profileContent"></div></section>
+
+      <section class="page" data-page="requirements" hidden><div id="requirementsContent"></div></section>
+
+      <section class="page" data-page="gates" hidden><div id="gatesContent"></div></section>
+
+      <section class="page" data-page="workspace" hidden><div id="workspaceContent"></div></section>
+
+      <section class="page" data-page="closure" hidden><div id="closureContent"></div></section>
+      <section class="page" data-page="changes" hidden><div id="changesContent"></div></section>
+      <section class="page" data-page="audit" hidden><div id="auditContent"></div></section>
+
+      <div class="footer-note"><span>기준 문서: DoriLab 최종 목표와 구현 구조 / KASA, ECSS, NASA 반영본</span><span>서버 저장 MVP | 원격 상태 분리</span></div>
+    </main>
+  </div>
+</div>
+
+<dialog id="projectDialog" class="dialog"><div class="dialog-head"><h2>새 프로젝트</h2><button class="btn icononly" id="closeProjectDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="projectForm"><div class="formgrid"><div class="field"><label>프로젝트 ID</label><input name="display_id" value="DORI-02" required pattern="[A-Za-z0-9_-]{2,40}"></div><div class="field"><label>이름</label><input name="name" value="새 관측위성 프로젝트" required></div><div class="field"><label>개발 체계</label><select name="framework"><option>KASA</option><option>ECSS</option><option>NASA</option></select></div><div class="field"><label>데이터 정책</label><select name="data_policy"><option>LOCAL_ONLY</option><option>EXTERNAL_SYNTHETIC_ALLOWED</option></select></div></div></form></div><div class="dialog-foot"><button class="btn" id="cancelProject">취소</button><button class="btn primary" type="submit" form="projectForm">프로젝트 생성</button></div></dialog>
+<dialog id="autoDemoModeDialog" class="dialog wide autodemo-mode-dialog">
+  <div class="dialog-head"><div><div class="eyebrow">GUIDED AUTOPLAY</div><h2>자동 시연 실행 모드</h2></div><button class="btn icononly" data-close-dialog="autoDemoModeDialog" aria-label="닫기">×</button></div>
+  <div class="dialog-body">
+    <div id="autoDemoModeState" class="notice blue">실행 상태를 확인하는 중입니다.</div>
+    <section class="autodemo-plan" aria-labelledby="autoDemoPlanTitle">
+      <div class="autodemo-plan-head"><div><span class="eyebrow">WALKTHROUGH</span><h3 id="autoDemoPlanTitle">보여줄 동선과 속도</h3></div><span class="pill info">상세 동선 예상 약 8분</span></div>
+      <div class="autodemo-plan-controls">
+        <label class="field"><span>시연 동선</span><select id="autoDemoWalkthrough"><option value="SETUP" selected>상세 설정부터 — 새 프로젝트와 자료 저장</option><option value="SUMMARY">기존 요약 — 9장면 핵심 흐름</option></select></label>
+        <label class="field"><span>장면 속도</span><select id="autoDemoPace"><option value="12000" selected>표준 · 장면당 12초</option><option value="20000">촬영 · 장면당 20초</option><option value="8000">빠르게 · 장면당 8초</option></select></label>
+      </div>
+      <p>상세 동선은 새 합성 DEMO 프로젝트를 로컬에 실제 저장하고, 기준 등록 → Claim → 문서 원문 → 파싱·청크 → 검색 → Local LLM 또는 REPLAY → Blackboard 순서로 진행합니다. 기존 프로젝트와 자료는 보존됩니다. 약 8분은 표준 속도와 처리 대기를 포함한 예상 시간입니다.</p>
+    </section>
+    <div class="equal2"><section class="card autodemo-mode-card"><div class="cardhead"><div><h3>안전 시연 / REPLAY</h3><p>GPU 없이 검증된 fixture와 저장 흐름을 재현</p></div><span class="pill info">REPLAY</span></div><div class="cardbody"><p class="smalltext muted">같은 입력에는 같은 DEMO Job을 재사용합니다. Local LLM을 호출하지 않으며 발표 리허설에 적합합니다.</p><div class="space"></div><div id="autoDemoReplayHint" class="notice blue smalltext"></div><div class="space"></div><button class="btn" id="autoDemoReplayStart" type="button">REPLAY 자동 시연 시작</button></div></section><section class="card autodemo-mode-card"><div class="cardhead"><div><h3>Local LLM LIVE 자동 시연</h3><p>RunPod에서 실행되는 전용 모델이 현재 합성 BM1 입력에 새 응답을 생성</p></div><span class="pill ok">Local LLM LIVE</span></div><div class="cardbody"><p class="smalltext muted">인증된 준비 상태와 승인된 모델 실행 증빙을 확인하고 새 응답 한 건을 생성합니다. Local LLM은 팀이 관리하는 모델 서비스의 표시 이름입니다. 실패를 REPLAY로 대체하지 않으며 사람 결정 앞에서 멈춥니다.</p><div class="space"></div><div id="autoDemoLiveHint" class="notice amber smalltext"></div><div class="space"></div><button class="btn primary" id="autoDemoLiveStart" type="button">Local LLM LIVE 자동 시연 시작</button></div></section></div>
+    <div class="notice amber autodemo-consent"><b>시작 버튼의 실행 범위</b><br>선택한 모드를 실행하며, 상세 동선에서는 새 합성 DEMO 프로젝트·기준·Claim·문서 원문과 처리 기록을 로컬 DB와 Artifact Store에 저장합니다. 기존 프로젝트를 덮어쓰지 않습니다. LIVE는 공개·합성 입력만 전송하고 사람 승인, Gate 결정과 공식 종결을 자동 생성하지 않습니다.</div>
+  </div>
+  <div class="dialog-foot"><button class="btn" id="autoDemoStatusRefresh" type="button">상태 다시 확인</button><button class="btn" id="blackboardObserverOpen" type="button">Blackboard 관찰 창 열기</button><button class="btn" data-close-dialog="autoDemoModeDialog">취소</button></div>
+</dialog>
+<dialog id="setupDemoDialog" class="dialog wide setup-demo-dialog">
+  <div class="dialog-head"><div><div class="eyebrow">DETAILED SETUP · ACTUAL LOCAL SAVE</div><h2 id="setupDemoTitle">상세 시연 단계를 준비합니다</h2></div><button class="btn icononly" type="button" data-close-dialog="setupDemoDialog" aria-label="상세 시연 창 닫기">×</button></div>
+  <div class="dialog-body setup-demo-dialog-body">
+    <div id="setupDemoExplanation" class="notice blue">이 단계에서 입력할 합성 자료와 저장 결과를 확인합니다.</div>
+    <div id="setupDemoBody" class="setup-demo-body"></div>
+    <div id="setupDemoReceipt" class="setup-demo-receipt" aria-live="polite">아직 저장된 항목이 없습니다.</div>
+  </div>
+  <div class="dialog-foot"><span class="tiny muted">기존 프로젝트와 자료는 보존됩니다.</span><button class="btn" type="button" data-close-dialog="setupDemoDialog">창 닫기</button><button class="btn primary" id="setupDemoSave" type="button">이 단계 저장</button></div>
+</dialog>
+<dialog id="qwenTraceDialog" class="dialog qwen-trace-dialog">
+  <div class="dialog-head"><div><div class="eyebrow">LIVE MODEL OBSERVABILITY</div><h2>Local LLM · Blackboard 판단 추적</h2></div><button class="btn icononly" data-close-dialog="qwenTraceDialog" aria-label="닫기">×</button></div>
+  <div class="dialog-body qwen-trace-body">
+    <div id="qwenTraceStatus" class="notice blue">새 LIVE Job을 준비하는 중입니다.</div>
+    <div class="qwen-stagebar" aria-label="Local LLM LIVE 처리 단계">
+      <div class="qwen-stage pending" data-qwen-stage="input"><span>1</span><b>입력 고정</b><small>대기</small></div>
+      <div class="qwen-stage pending" data-qwen-stage="transport"><span>2</span><b>SSH 터널</b><small>대기</small></div>
+      <div class="qwen-stage pending" data-qwen-stage="model"><span>3</span><b>Local LLM (RunPod)</b><small>대기</small></div>
+      <div class="qwen-stage pending" data-qwen-stage="validator"><span>4</span><b>Validator</b><small>대기</small></div>
+      <div class="qwen-stage pending" data-qwen-stage="blackboard"><span>5</span><b>Blackboard</b><small>대기</small></div>
+    </div>
+    <div class="qwen-io-grid">
+      <section class="qwen-pane"><div class="qwen-pane-head"><div><span class="eyebrow">INPUT</span><h3>Local LLM에 보낸 합성 입력</h3></div><span class="pill info">USER JSON</span></div><p>ContextSnapshot에 고정된 실제 user 입력입니다. 시스템 계약은 RunPod의 승인된 contract ID로 선택됩니다.</p><pre id="qwenTraceInput">ContextSnapshot을 준비하는 중입니다.</pre></section>
+      <section class="qwen-pane"><div class="qwen-pane-head"><div><span class="eyebrow">RAW OUTPUT</span><h3>Local LLM 원출력</h3></div><span class="pill ok">PRESERVED</span></div><p>서버 Artifact Store에 저장한 bytes를 그대로 읽습니다. 화면에서 JSON을 교정하지 않습니다.</p><pre id="qwenTraceOutput">Local LLM 응답을 기다리는 중입니다.</pre></section>
+    </div>
+    <div class="qwen-result-grid">
+      <section class="card qwen-decision-card"><div class="cardhead"><div><h3>Local LLM 판단</h3><p>모델 출력의 action과 근거</p></div><span id="qwenTraceDecisionBadge" class="pill info">판단 대기</span></div><div class="cardbody"><dl id="qwenTraceDecision" class="kv"><dt>판단</dt><dd>대기</dd></dl></div></section>
+      <section class="card"><div class="cardhead"><div><h3>실행 증빙</h3><p>모델·계약·token 추적</p></div></div><div class="cardbody"><dl id="qwenTraceReceipt" class="kv"><dt>상태</dt><dd>응답 대기</dd></dl></div></section>
+      <section class="card"><div class="cardhead"><div><h3>Blackboard 반영</h3><p>검증된 제안과 다음 작업</p></div></div><div class="cardbody"><div id="qwenTraceBlackboard" class="notice">Validator 통과 뒤 서버 공용 상태에 기록합니다.</div></div></section>
+    </div>
+    <div class="notice amber qwen-boundary">Local LLM 판단은 검토 제안입니다. 사람 결정, Gate 승인과 공식 검증 종결은 이 자동 시연이 만들지 않습니다.</div>
+  </div>
+  <div class="dialog-foot"><span class="tiny muted">실패 시 REPLAY로 자동 대체하지 않습니다.</span><button class="btn" data-close-dialog="qwenTraceDialog">팝업 닫기</button><button class="btn primary" id="qwenTraceContinue" type="button" disabled>Blackboard 반영 보기</button></div>
+</dialog>
+<dialog id="runpodDialog" class="dialog">
+  <div class="dialog-head"><div><div class="eyebrow">LOCAL CONNECTION</div><h2>RunPod SSH 연결</h2></div><button class="btn icononly" data-close-dialog="runpodDialog" aria-label="닫기">×</button></div>
+  <div class="dialog-body">
+    <div class="notice blue">RunPod Connect의 <b>SSH over exposed TCP</b>에 표시된 HostName과 외부 포트만 입력합니다. 저장 후 로컬 터널과 LIVE 모드를 적용하며, 원격 모델 설치나 생성은 실행하지 않습니다.</div><div class="space"></div>
+    <form id="runpodConnectionForm"><div class="formgrid"><div class="field"><label>HostName / IP 주소</label><input name="host" autocomplete="off" placeholder="205.196.144.74" required maxlength="253" pattern="([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9.-]*[A-Za-z0-9])"></div><div class="field"><label>외부 SSH 포트</label><input name="port" type="number" min="1" max="65535" placeholder="11532" required></div></div></form><div class="space"></div>
+    <div id="runpodRuntimeState" class="notice amber" role="status" aria-live="polite">현재 연결 상태를 확인하고 있습니다.</div><div class="space"></div>
+    <details><summary>SSH 별칭과 호스트 키 확인</summary><div class="space"></div><div class="field"><label>로컬 SSH 별칭 미리보기</label><pre id="runpodSshPreview" class="ssh-config"></pre></div></details><div class="space"></div>
+    <div id="runpodConnectionState" class="notice">연결 정보를 불러오는 중입니다.</div><div id="runpodFingerprints" class="fingerprint-list" hidden></div>
+  </div>
+  <div class="dialog-foot"><button class="btn" data-close-dialog="runpodDialog">닫기</button><button class="btn" id="runpodTrustButton" type="button" hidden>지문 확인 후 신뢰 · 연결 (yes)</button><button class="btn primary" id="runpodSaveButton" type="submit" form="runpodConnectionForm">저장 · LIVE 연결</button></div>
+</dialog>
+<dialog id="documentDialog" class="dialog"><div class="dialog-head"><h2>채택 문서 등록 정보</h2><button class="btn icononly" data-close-dialog="documentDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="documentForm"><input name="document_code" type="hidden"><input name="profile" type="hidden"><div class="notice blue">문서명과 판본은 제공된 설계문서의 참조 정보입니다. 원문 조항과 적용 의무는 프로젝트가 보유한 채택 문서에서 연결합니다.</div><div class="space"></div><div class="formgrid"><div class="field"><label>문서명</label><input name="title" readonly></div><div class="field"><label>참조 판본</label><input name="revision" required></div><div class="field"><label>제품 수준</label><input name="product_level" value="열제어 장비" required></div><div class="field"><label>관련 조항</label><input name="clause_locator" value="원문 연결 대기" required></div><div class="field full"><label>프로젝트 채택 메모</label><textarea name="adoption_note" required></textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="documentDialog">취소</button><button class="btn primary" type="submit" form="documentForm">등록 정보 저장</button></div></dialog>
+<dialog id="tailoringDialog" class="dialog"><div class="dialog-head"><h2>테일러링 결정 등록</h2><button class="btn icononly" data-close-dialog="tailoringDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="tailoringForm"><input name="profile" type="hidden"><div class="notice blue">조정 사유와 적용 조항을 기록합니다. 등록은 검토 후보이며 승인권자의 결정과 분리됩니다.</div><div class="space"></div><div class="formgrid"><div class="field"><label>결정 제목</label><input name="title" value="프로젝트 시험 검토 테일러링" required></div><div class="field"><label>적용 조항</label><input name="clause_locator" value="원문 연결 대기" required></div><div class="field"><label>담당자</label><input name="owner" value="시스템 엔지니어" required></div><div class="field full"><label>조정 사유</label><textarea name="reason" required>프로젝트 범위와 제품 수준에 따른 조정 후보입니다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="tailoringDialog">취소</button><button class="btn primary" type="submit" form="tailoringForm">검토 후보 등록</button></div></dialog>
+<dialog id="sourceDialog" class="dialog wide"><div class="dialog-head"><h2 id="sourceDialogTitle">설계문서</h2><button class="btn icononly" data-close-dialog="sourceDialog" aria-label="닫기">×</button></div><div class="dialog-body"><div id="sourceDialogMeta" class="notice blue"></div><div class="space"></div><div id="sourceDialogContent" class="docread"></div></div><div class="dialog-foot"><a class="btn" href="/api/v1/reference/final-goal/download" download>원문 Markdown 저장</a><button class="btn primary" data-close-dialog="sourceDialog">닫기</button></div></dialog>
+<dialog id="requirementDialog" class="dialog wide"><div class="dialog-head"><h2 id="requirementDialogTitle">요구사항 추적</h2><button class="btn icononly" data-close-dialog="requirementDialog" aria-label="닫기">×</button></div><div id="requirementDialogBody" class="dialog-body"></div><div class="dialog-foot"><button class="btn" data-close-dialog="requirementDialog">닫기</button><button class="btn primary" data-page="workspace">시험 작업 열기</button></div></dialog>
+<dialog id="gateDialog" class="dialog wide"><div class="dialog-head"><h2 id="gateDialogTitle">기술검토회의</h2><button class="btn icononly" data-close-dialog="gateDialog" aria-label="닫기">×</button></div><div id="gateDialogBody" class="dialog-body"></div><div class="dialog-foot"><button class="btn" data-close-dialog="gateDialog">닫기</button><button id="recordGateButton" class="btn primary" data-record-gate-id="" disabled>검토 결과 기록</button></div></dialog>
+<dialog id="gateDecisionDialog" class="dialog"><div class="dialog-head"><h2 id="gateDecisionDialogTitle">기술검토 결과 기록</h2><button class="btn icononly" data-close-dialog="gateDecisionDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="gateDecisionForm"><input name="gate_id" type="hidden"><input name="expected_gate_version" type="hidden"><input name="expected_project_version" type="hidden"><div class="notice blue">현재 기준점과 준비·성공조건에 대한 기술검토 결과를 기록합니다. 단계 진입 결정은 별도입니다.</div><div class="space"></div><div class="formgrid"><div class="field"><label>검토자</label><input id="gateDecisionActor" readonly></div><div class="field"><label>상태</label><input value="APPROVED / 조건 충족" readonly></div><div class="field full"><label>검토 의견</label><textarea name="note" required>현재 기준점과 등록된 진입조건, 성공조건의 충족 상태를 확인했다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="gateDecisionDialog">취소</button><button class="btn primary" type="submit" form="gateDecisionForm">결과 저장</button></div></dialog>
+<dialog id="transitionDialog" class="dialog"><div class="dialog-head"><h2 id="transitionDialogTitle">사업 단계 진입 검토</h2><button class="btn icononly" data-close-dialog="transitionDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="transitionForm"><input name="expected_project_version" type="hidden"><div id="transitionNotice" class="notice blue"></div><div class="space"></div><div id="transitionChecklist"></div><div class="space"></div><div class="formgrid"><div class="field"><label>결정권자</label><input id="transitionActor" readonly></div><div class="field"><label>처분</label><select name="disposition"><option value="HOLD">대기 / 추가 근거 요청</option><option value="GO">다음 단계 진입 승인</option></select></div><div class="field full"><label>결정과 남은 조건</label><textarea name="note" required>제품 인수 및 운용 준비 기준의 충족 상태를 검토하고, 남은 조건의 담당자와 기한을 지정한다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="transitionDialog">취소</button><button class="btn primary" type="submit" form="transitionForm">결정 기록</button></div></dialog>
+<dialog id="artifactDialog" class="dialog wide"><div class="dialog-head"><h2>검토 근거 등록</h2><button class="btn icononly" data-close-dialog="artifactDialog" aria-label="닫기">×</button></div><div class="dialog-body"><div class="equal2"><form id="uploadForm"><h3>1. 원문 업로드와 RAG 색인</h3><p class="tiny muted">원본 bytes와 SHA256을 보존한 뒤 PDF/text/Markdown/JSON/CSV를 파싱하고 위치가 있는 청크를 만듭니다.</p><input name="usage_purpose" type="hidden" value="OPERATIONAL_EVIDENCE"><div class="space"></div><div class="formgrid"><div class="field full"><label>원문 파일</label><input name="file" type="file" accept=".pdf,.txt,.md,.json,.csv" required></div><div class="field"><label>Rights</label><select name="rights_status"><option>PUBLIC</option><option>GRANTED</option><option>UNCONFIRMED</option><option>RESTRICTED</option></select></div><div class="field"><label>Edition</label><input name="edition" value="DEMO-1"></div><label class="checkline full"><input name="adopted" type="checkbox" checked><span>프로젝트 채택 기록</span></label></div><div class="space"></div><button class="btn primary" type="submit">업로드 · 파싱 · 색인</button><div id="ragParseState" class="notice blue" hidden></div></form><form id="evidenceForm" hidden><h3>2. Evidence 연결 (선택)</h3><p class="tiny muted">제출 인용은 그대로 보존합니다. PDF 텍스트층의 전체 청크·물리 페이지·추출 줄·판본을 대조하며 의미·적용성은 별도 검토합니다. 다른 형식과 부분 인용은 확인 대기입니다.</p><input name="artifact_id" type="hidden"><div class="field"><label for="citationChunk">대조할 PDF 원문 청크</label><select id="citationChunk"><option value="">청크 선택 전 / 원문 대조 대기</option></select></div><div class="space"></div><div class="formgrid"><div class="field"><label>인용 판본</label><input name="cited_edition" maxlength="160"></div><div class="field"><label>PDF 물리 페이지 (시작 / 끝)</label><div class="buttons"><input name="page_start" type="number" min="1" aria-label="시작 페이지"><input name="page_end" type="number" min="1" aria-label="끝 페이지"></div></div><div class="field full"><label>페이지 내부 추출 줄 (시작 / 끝)</label><div class="buttons"><input name="line_start" type="number" min="1" aria-label="시작 줄"><input name="line_end" type="number" min="1" aria-label="끝 줄"></div></div></div><p class="tiny muted">인쇄된 p.번호나 §조항 제목이 아닙니다. 공백·줄바꿈만 정규화하며 부분·유사 문구는 통과하지 않습니다. 실패한 등록을 교정할 때는 새 표시 ID로 등록해 이전 기록을 보존합니다.</p><div class="space"></div><div class="formgrid"><div class="field"><label>표시 ID</label><input name="display_id" value="EVID-DEMO" required></div><div class="field"><label>종류</label><select name="kind"><option>REFERENCE</option><option>OBSERVATION</option></select></div><div class="field"><label>원문 위치</label><input name="locator" placeholder="PDF 청크 선택 후 서버 원문 위치 표시"></div><div class="field"><label>Unit</label><input name="scope_unit"></div><div class="field"><label>Configuration</label><input name="scope_configuration"></div><div class="field"><label>Run</label><input name="scope_run"></div><div class="field full"><label>제출 인용문 (전체 청크)</label><textarea name="quote"></textarea></div></div><div class="space"></div><button class="btn primary" type="submit">Evidence 생성</button></form></div></div><div class="dialog-foot"><button class="btn" data-close-dialog="artifactDialog">닫기</button></div></dialog>
+<dialog id="evidenceDialog" class="dialog"><div class="dialog-head"><h2 id="evidenceDialogTitle">근거 상세</h2><button class="btn icononly" data-close-dialog="evidenceDialog" aria-label="닫기">×</button></div><div id="evidenceDialogBody" class="dialog-body"></div><div class="dialog-foot"><a id="evidenceDownload" class="btn" href="#">원문 다운로드</a><button class="btn primary" data-close-dialog="evidenceDialog">닫기</button></div></dialog>
+<dialog id="reviewDecisionDialog" class="dialog"><div class="dialog-head"><h2>AI 검토 초안 결정</h2><button class="btn icononly" data-close-dialog="reviewDecisionDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="reviewDecisionForm"><input name="job_id" type="hidden"><input name="expected_job_version" type="hidden"><div class="notice blue">모델 원출력과 사람 결정은 별도 레코드로 보존됩니다. 초안 수락은 공식 시험 승인이나 Claim 종결이 아닙니다.</div><div class="space"></div><div class="formgrid"><div class="field"><label>검토자</label><input id="reviewDecisionActor" readonly></div><div class="field"><label>결정</label><select name="disposition"><option value="ACCEPTED">초안 수락</option><option value="REVISION_REQUESTED">수정 요청</option><option value="REJECTED">기각</option></select></div><div class="field full"><label>수정 초안 JSON (선택)</label><textarea name="edited_draft" placeholder='{"reviewer_text":"사람이 수정한 초안"}'></textarea></div><div class="field full"><label>검토 의견</label><textarea name="note">현재 범위와 근거에 한정해 검토했습니다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="reviewDecisionDialog">취소</button><button class="btn primary" type="submit" form="reviewDecisionForm">결정 저장</button></div></dialog>
+<dialog id="blackboardDialog" class="dialog wide"><div class="dialog-head"><div><div class="eyebrow">GOVERNED SHARED STATE</div><h2>SE Blackboard</h2></div><button class="btn icononly" data-close-dialog="blackboardDialog" aria-label="닫기">×</button></div><div class="dialog-body"><div id="blackboardSummary" class="notice blue">서버 Blackboard를 불러오는 중입니다.</div><div class="space"></div><div class="equal2"><section class="card"><div class="cardhead"><div><h3>검토 제안과 이견</h3><p>모델·사람의 제안과 처분을 분리</p></div></div><div id="contributionList" class="cardbody stack compact"></div></section><section class="card"><div class="cardhead"><div><h3>공용 작업 큐</h3><p>자료·분석·검토 작업과 현재 담당</p></div></div><div id="workItemList" class="cardbody stack compact"></div></section></div><div class="space"></div><details><summary>서버 Blackboard projection JSON</summary><pre id="blackboardJson" class="blackboard-json"></pre></details><div class="space"></div><div class="equal2"><section class="card"><div class="cardhead"><div><h3>저장된 검토</h3><p>이전 Job 재조회와 보고서</p></div></div><div id="jobList" class="cardbody stack compact"></div></section><section class="card"><div class="cardhead"><div><h3>자료 요청</h3><p>제출과 수용 상태 분리</p></div></div><div id="requestList" class="cardbody stack compact"></div></section></div></div><div class="dialog-foot"><button class="btn primary" data-close-dialog="blackboardDialog">닫기</button></div></dialog>
+<dialog id="routerDialog" class="dialog"><div class="dialog-head"><h2>모델 실행 경로</h2><button class="btn icononly" data-close-dialog="routerDialog" aria-label="닫기">×</button></div><div id="routerDialogBody" class="dialog-body"></div><div class="dialog-foot"><button class="btn primary" data-close-dialog="routerDialog">닫기</button></div></dialog>
+<dialog id="qualityAssessmentDialog" class="dialog"><div class="dialog-head"><h2>데이터 품질 검토</h2><button class="btn icononly" data-close-dialog="qualityAssessmentDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="qualityAssessmentForm"><input name="claim_id" type="hidden"><input name="expected_claim_version" type="hidden"><input name="expected_project_version" type="hidden"><div class="notice blue">출력 계약 검증과 데이터 사용 가능성은 별도 판단입니다. 현재 Claim revision과 scope에 한정한 품질 평가를 저장합니다.</div><div class="space"></div><div class="formgrid"><div class="field"><label>검토자</label><input id="qualityAssessmentActor" readonly></div><div class="field"><label>품질 상태</label><select name="quality_status"><option value="VALID">VALID / 현재 범위에서 사용 가능</option><option value="LIMITED">LIMITED / 제한 조건 필요</option><option value="INVALID">INVALID / 사용 불가</option><option value="UNRESOLVED">UNRESOLVED / 추가 확인</option></select></div><div class="field full"><label>판단 근거와 제한</label><textarea name="note" required>현재 Snapshot에 포함된 자료의 추적성, 범위와 사용 가능성을 확인했다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="qualityAssessmentDialog">취소</button><button class="btn primary" type="submit" form="qualityAssessmentForm">품질 기록 저장</button></div></dialog>
+<dialog id="closureDecisionDialog" class="dialog"><div class="dialog-head"><h2>권한자 입력준비 검토 종결 결정</h2><button class="btn icononly" data-close-dialog="closureDecisionDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="closureDecisionForm"><input name="claim_id" type="hidden"><input name="expected_claim_version" type="hidden"><input name="expected_project_version" type="hidden"><div class="notice amber">AI 초안 수락과 TRB 검토는 공식 Claim 종결을 대신하지 않습니다. 서버가 현재 version, 근거, 품질, 판정, 미해결 요청과 권한을 다시 검사합니다.</div><div class="space"></div><div id="closureDecisionChecks"></div><div class="space"></div><div class="formgrid"><div class="field"><label>결정권자</label><input id="closureDecisionActor" readonly></div><div class="field"><label>Claim 결과</label><select name="result"><option value="SATISFIED">SATISFIED / 입력준비 Claim 충족</option></select></div><div class="field"><label>종결 근거</label><select name="closure_basis"><option value="COMPLIANCE">COMPLIANCE / 근거와 검토 수용</option></select></div><div class="field full"><label>종결 범위와 의견</label><textarea name="note" required>현재 입력준비 Claim revision, 기준점과 Snapshot scope에 한정해 검토 종결을 기록한다. 제품 성능 요구 충족은 판단하지 않는다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="closureDecisionDialog">취소</button><button class="btn primary" type="submit" form="closureDecisionForm">종결 결정 저장</button></div></dialog>
+<dialog id="changeRequestDialog" class="dialog"><div class="dialog-head"><h2>형상 변경 요청</h2><button class="btn icononly" data-close-dialog="changeRequestDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="changeRequestForm"><input name="expected_project_version" type="hidden"><div class="notice blue" id="changeRequestCurrent"></div><div class="space"></div><div class="formgrid"><div class="field"><label>새 형상 기준점</label><input name="to_baseline" required maxlength="80"></div><div class="field"><label>새 제품 형상</label><input name="to_configuration" required maxlength="160"></div><div class="field full"><label>새 시험 run</label><input name="to_test_run" required maxlength="160"></div><div class="field full"><label>변경 사유</label><textarea name="reason" required>변경된 제품 형상과 계측 조건을 다음 시험 기준점에 반영한다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="changeRequestDialog">취소</button><button class="btn primary" type="submit" form="changeRequestForm">변경 요청 저장</button></div></dialog>
+<dialog id="changeDecisionDialog" class="dialog"><div class="dialog-head"><h2>변경 영향과 CCB 처리</h2><button class="btn icononly" data-close-dialog="changeDecisionDialog" aria-label="닫기">×</button></div><div class="dialog-body"><form id="changeDecisionForm"><input name="change_id" type="hidden"><input name="expected_change_version" type="hidden"><input name="expected_project_version" type="hidden"><div class="notice amber">적용하면 프로젝트 version이 증가하고 현재 검토 결과는 STALE이 됩니다. 기존 원출력과 결정 기록은 당시 기준점 이력으로 보존됩니다.</div><div class="space"></div><div id="changeDecisionImpact"></div><div class="space"></div><div class="formgrid"><div class="field"><label>결정권자</label><input id="changeDecisionActor" readonly></div><div class="field"><label>CCB 처분</label><select name="disposition"><option value="APPLIED">APPLIED / 새 기준점 적용</option><option value="REJECTED">REJECTED / 요청 기각</option></select></div><div class="field full"><label>결정 의견</label><textarea name="note" required>변경 사유와 종속 검토의 현행성 영향을 확인했다.</textarea></div></div></form></div><div class="dialog-foot"><button class="btn" data-close-dialog="changeDecisionDialog">취소</button><button class="btn primary" type="submit" form="changeDecisionForm">CCB 결정 저장</button></div></dialog>
+<div id="autoDemoCursor" class="autodemo-cursor" popover="manual" hidden aria-hidden="true">
+  <svg class="autodemo-cursor-pointer" viewBox="0 0 34 42" aria-hidden="true"><path d="M4 3.5 29 25l-12.2 1.7 6.7 10.1-6.1 3.7-6.3-10.3-7.1 9.1V3.5Z"/></svg>
+  <span id="autoDemoCursorLabel" class="autodemo-cursor-label"></span>
+</div>
+<div id="autoDemoAction" class="autodemo-action" popover="manual" hidden role="status" aria-live="polite"></div>
+<aside id="autoDemoPanel" class="autodemo-panel" hidden aria-live="polite" aria-label="DoriLab 자동 시연 제어판">
+  <div class="autodemo-head"><div><span class="pill info">AUTOPLAY</span><span class="pill wait" id="autoDemoBoundary">DEMO REPLAY</span></div><button class="btn icononly small" id="autoDemoStop" type="button" aria-label="자동 시연 닫기">×</button></div>
+  <div class="autodemo-progress"><div id="autoDemoProgress"></div></div>
+  <div class="autodemo-count" id="autoDemoCount">1 / 9</div>
+  <div class="autodemo-chapter" id="autoDemoChapter">CHAPTER 1 · 프로젝트 준비</div>
+  <h3 id="autoDemoTitle">프로젝트와 기준점</h3>
+  <p id="autoDemoNarration">현재 프로젝트의 범위와 다음 검토를 확인합니다.</p>
+  <p class="autodemo-evidence" id="autoDemoEvidence">서버에 저장된 상태를 읽는 중입니다.</p>
+  <div class="autodemo-operation" id="autoDemoOperation">다음 실제 저장 작업을 준비하고 있습니다.</div>
+  <div class="autodemo-observer-row"><button class="btn small" id="autoDemoObserverOpen" type="button">↗ Blackboard 관찰 창</button><span>읽기 전용 · 같은 실행</span></div>
+  <div class="autodemo-controls"><button class="btn small" id="autoDemoPrev" type="button">이전</button><button class="btn primary small" id="autoDemoToggle" type="button">일시정지</button><button class="btn small" id="autoDemoNext" type="button">다음</button></div>
+</aside>
+<div class="feedback" id="toast" role="status" aria-live="polite"></div>
+<script src="/assets/setup-demo.js" defer></script>
+<script src="/assets/app.js" defer></script>
+<script src="/assets/development.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+name: dorilab-test
+
+services:
+  db-test:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: dorilab_test
+      POSTGRES_USER: dorilab_test
+      POSTGRES_PASSWORD: dorilab-test-only
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dorilab_test -d dorilab_test"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
+
+  tests:
+    build:
+      context: .
+      dockerfile: services/api/Dockerfile
+    command: ["sh", "-c", "python -m dorilab.migrate && pytest -q"]
+    environment:
+      DORILAB_DB_HOST: db-test
+      DORILAB_DB_NAME: dorilab_test
+      DORILAB_DB_USER: dorilab_test
+      DORILAB_DB_PASSWORD: dorilab-test-only
+      DORILAB_ARTIFACT_ROOT: /tmp/dorilab-test-artifacts
+      DORILAB_EXPORT_ROOT: /tmp/dorilab-test-exports
+      DORILAB_SESSION_SECRET: dorilab-test-session-secret
+      DORILAB_INFERENCE_TOKEN: dorilab-test-inference-token
+      DORILAB_CONNECTION_CONFIG_PATH: /tmp/dorilab-test-connection/runpod.env
+      DORILAB_KNOWN_HOSTS_PATH: /tmp/dorilab-test-ssh/known_hosts
+      DORILAB_MODE: DEMO
+      PYTHONPATH: /app
+    depends_on:
+      db-test:
+        condition: service_healthy
+    volumes:
+      - ./tests:/app/tests:ro
+      - ./fixtures:/app/fixtures:ro
+      - ./scripts:/app/scripts:ro
+      - ./services/llm-tunnel:/app/services/llm-tunnel:ro
+      - ./drafts/learning-preparation/migrations/014_learning_preparation.sql:/app/migrations/014_learning_preparation.sql:ro

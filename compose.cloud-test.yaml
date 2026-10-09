@@ -1,0 +1,36 @@
+name: dorilab-cloud-test
+services:
+  backend:
+    image: dorilab-cloud:stage1
+    user: '${DORILAB_CLOUD_TEST_UID:?use scripts/cloud-backend.sh}:${DORILAB_CLOUD_TEST_GID:?use scripts/cloud-backend.sh}'
+    environment:
+      PORT: '8000'
+      DORILAB_MODE: DEMO
+      DORILAB_DB_CONNECTION_FILE: /run/secrets/cloud-runtime-db.json
+      DORILAB_SESSION_SECRET_FILE: /run/secrets/app_session_key
+      DORILAB_SITES_TOKEN_FILE: /run/secrets/sites_gateway_token
+      DORILAB_SITES_IDENTITIES_FILE: /run/secrets/sites_identities.json
+    ports: ['127.0.0.1:18002:8000']
+    secrets:
+      - source: cloud_db
+        target: cloud-runtime-db.json
+      - source: session_key
+        target: app_session_key
+      - source: site_token
+        target: sites_gateway_token
+      - source: identities
+        target: sites_identities.json
+    healthcheck:
+      test: ['CMD','python','-c','import urllib.request; urllib.request.urlopen("http://127.0.0.1:8000/healthz",timeout=2).read()']
+      interval: 5s
+      timeout: 3s
+      retries: 12
+secrets:
+  cloud_db:
+    file: .secrets/cloud-runtime-db.json
+  session_key:
+    file: .secrets/app_session_key
+  site_token:
+    file: .secrets/sites_gateway_token
+  identities:
+    file: .secrets/cloud-sites-identities.json

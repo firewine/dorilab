@@ -1,0 +1,34 @@
+# Additive ingress only. Existing API, worker, DB and named volume stay unchanged.
+services:
+  sites-gateway:
+    build:
+      context: .
+      dockerfile: services/api/Dockerfile
+    command: [uvicorn, dorilab.sites_gateway:app, --host, 0.0.0.0, --port, '8010', --workers, '1', --no-access-log]
+    environment:
+      DORILAB_SESSION_SECRET_FILE: /run/secrets/app_session_key
+      DORILAB_SITES_TOKEN_FILE: /run/secrets/sites_gateway_token
+      DORILAB_SITES_IDENTITIES_FILE: /run/secrets/sites_identities
+    secrets: [app_session_key, sites_gateway_token, sites_identities]
+    networks: [app, sites-egress]
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8010/healthz', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  sites-tunnel:
+    image: cloudflare/cloudflared:2026.3.0
+    command: [tunnel, --no-autoupdate, --url, 'http://sites-gateway:8010']
+    depends_on:
+      sites-gateway:
+        condition: service_healthy
+    networks: [sites-egress]
+    restart: unless-stopped
+networks:
+  sites-egress:
+secrets:
+  sites_gateway_token:
+    file: ./.secrets/sites_gateway_token
+  sites_identities:
+    file: ./.secrets/sites_identities.json

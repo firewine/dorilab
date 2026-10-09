@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dorilab-bm1-output-v1",
+  "type": "object",
+  "required": ["actions"],
+  "additionalProperties": false,
+  "properties": {
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["action", "reason_code", "reason", "evidence_refs", "requested_items"],
+        "additionalProperties": false,
+        "properties": {
+          "action": {"enum": ["NO_ACTION_REQUIRED", "REQUEST_EVIDENCE", "CONTRADICT"]},
+          "reason_code": {"enum": ["EVIDENCE_SUFFICIENT", "EVIDENCE_MISSING", "EVIDENCE_CONFLICT"]},
+          "reason": {"type": "string", "minLength": 1},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "requested_items": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        }
+      }
+    }
+  }
+}

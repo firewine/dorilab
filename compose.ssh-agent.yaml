@@ -1,0 +1,9 @@
+services:
+  llm-tunnel:
+    environment:
+      SSH_AUTH_SOCK: /run/ssh-agent.sock
+      DORILAB_SSH_USE_AGENT: "1"
+    volumes:
+      - type: bind
+        source: /run/host-services/ssh-auth.sock
+        target: /run/ssh-agent.sock

@@ -1,0 +1,138 @@
+name: dorilab
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dorilab
+      POSTGRES_USER: dorilab
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+    volumes:
+      - dorilab-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dorilab -d dorilab"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    networks: [app]
+
+  migrate:
+    build:
+      context: .
+      dockerfile: services/api/Dockerfile
+    command: ["python", "-m", "dorilab.migrate"]
+    environment: &app_environment
+      DORILAB_DB_HOST: db
+      DORILAB_DB_NAME: dorilab
+      DORILAB_DB_USER: dorilab
+      DORILAB_DB_PASSWORD_FILE: /run/secrets/db_password
+      DORILAB_ARTIFACT_ROOT: /var/lib/dorilab/artifacts
+      DORILAB_EXPORT_ROOT: /var/lib/dorilab/exports
+      DORILAB_MODE: ${DORILAB_MODE:-LIVE}
+      DORILAB_MODEL_PROFILE: ${DORILAB_MODEL_PROFILE:-dorilab-source-review-v15-rc3}
+    secrets:
+      - db_password
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [app]
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: services/api/Dockerfile
+    command: ["uvicorn", "dorilab.api:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+    environment:
+      <<: *app_environment
+      DORILAB_SESSION_SECRET_FILE: /run/secrets/app_session_key
+      DORILAB_CONNECTION_CONFIG_PATH: /var/lib/dorilab/connection/runpod.env
+      DORILAB_LOCAL_CONNECTION_CONTROL: "1"
+      DORILAB_KNOWN_HOSTS_PATH: /var/lib/dorilab/ssh/known_hosts
+    secrets:
+      - db_password
+      - app_session_key
+    volumes:
+      - ./var/artifacts:/var/lib/dorilab/artifacts
+      - ./var/exports:/var/lib/dorilab/exports
+      - ./var/connection:/var/lib/dorilab/connection
+      - ./.secrets/known_hosts:/var/lib/dorilab/ssh/known_hosts
+    ports:
+      - "127.0.0.1:${DORILAB_APP_PORT:-8000}:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks: [app]
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: services/worker/Dockerfile
+    command: ["python", "-m", "dorilab.worker"]
+    environment:
+      <<: *app_environment
+      DORILAB_INFERENCE_URL: http://llm-tunnel:18080
+      DORILAB_INFERENCE_TOKEN_FILE: /run/secrets/inference_token
+      DORILAB_WORKER_POLL_SECONDS: "0.5"
+      DORILAB_REMOTE_CHECK_SECONDS: "10"
+      DORILAB_CONNECTION_CONFIG_PATH: /var/lib/dorilab/connection/runpod.env
+      DORILAB_LOCAL_CONNECTION_CONTROL: "1"
+    secrets:
+      - db_password
+      - inference_token
+    volumes:
+      - ./var/artifacts:/var/lib/dorilab/artifacts
+      - ./var/run-records:/var/lib/dorilab/run-records
+      - ./var/connection:/var/lib/dorilab/connection:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    networks: [app, tunnel]
+    restart: unless-stopped
+
+  llm-tunnel:
+    build:
+      context: .
+      dockerfile: services/llm-tunnel/Dockerfile
+    profiles: ["live"]
+    environment:
+      RUNPOD_HOST: ${RUNPOD_HOST:-}
+      RUNPOD_SSH_PORT: ${RUNPOD_SSH_PORT:-}
+      DORILAB_SSH_USER: ${DORILAB_SSH_USER:-root}
+      DORILAB_REMOTE_INFERENCE_PORT: ${DORILAB_REMOTE_INFERENCE_PORT:-8080}
+    volumes:
+      - type: bind
+        source: ${DORILAB_KNOWN_HOSTS_PATH:-/dev/null}
+        target: /run/ssh/known_hosts
+        read_only: true
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 18080"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+    networks: [tunnel]
+    restart: unless-stopped
+
+volumes:
+  dorilab-postgres:
+
+networks:
+  app:
+  tunnel:
+
+secrets:
+  db_password:
+    file: ./.secrets/db_password
+  app_session_key:
+    file: ./.secrets/app_session_key
+  inference_token:
+    file: ./.secrets/inference_token

@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: dorilab-api-worker
+    runtime: docker
+    plan: free
+    region: ohio
+    dockerfilePath: ./services/cloud/Dockerfile
+    healthCheckPath: /healthz
+    autoDeployTrigger: 'off'
+    envVars:
+      - key: DORILAB_MODE
+        value: DEMO
+      - key: DORILAB_DB_CONNECTION_FILE
+        value: /etc/secrets/cloud-runtime-db.json
+      - key: DORILAB_SESSION_SECRET_FILE
+        value: /etc/secrets/app_session_key
+      - key: DORILAB_SITES_TOKEN_FILE
+        value: /etc/secrets/sites_gateway_token
+      - key: DORILAB_SITES_IDENTITIES_FILE
+        value: /etc/secrets/sites_identities.json
+    # Secret file contents must be configured privately in the dashboard;
+    # never commit credentials, historical artifacts, backups, or uploaded data.

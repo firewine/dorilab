@@ -1,0 +1,11 @@
+# Explicit LIVE activation wins over an old DEMO environment value.
+services:
+  migrate:
+    environment:
+      DORILAB_MODE: LIVE
+  api:
+    environment:
+      DORILAB_MODE: LIVE
+  worker:
+    environment:
+      DORILAB_MODE: LIVE

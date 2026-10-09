@@ -1,0 +1,8 @@
+{
+  "scenario": "contradiction",
+  "basis": "SYNTHETIC",
+  "mode": "REPLAY",
+  "claim_question": "근거 충돌에 대한 반박 검토가 필요한가?",
+  "expected_action": "CONTRADICT",
+  "note": "Contract/UI regression fixture only; not model accuracy evidence."
+}

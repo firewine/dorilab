@@ -1,0 +1,10 @@
+services:
+  migrate:
+    environment:
+      DORILAB_MODE: DEMO
+  api:
+    environment:
+      DORILAB_MODE: DEMO
+  worker:
+    environment:
+      DORILAB_MODE: DEMO

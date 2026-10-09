@@ -1,0 +1,8 @@
+{
+  "scenario": "request_evidence",
+  "basis": "SYNTHETIC",
+  "mode": "REPLAY",
+  "claim_question": "자료 요청: 현재 형상과 run의 근거가 있는가?",
+  "expected_action": "REQUEST_EVIDENCE",
+  "note": "Contract/UI regression fixture only; not model accuracy evidence."
+}

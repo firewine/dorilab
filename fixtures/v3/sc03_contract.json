@@ -1,0 +1,93 @@
+{
+  "schema_id": "dorilab.v3.case-contract.v1",
+  "case_id": "SC-03",
+  "title": "As-run 시간 미달: V3 대표 합성 사례",
+  "data_class": "SYNTHETIC",
+  "provenance": {
+    "archive_path": "/Users/june/Documents/dori/mockup/0.6/DoriLab_V3_Process_Validation_Workbench_v3.zip",
+    "archive_sha256": "52087a202a3ca8313e45a56eb1dea54f3a5b456cf54434266784484544361e46",
+    "extraction_root": "reference/v3-process-validation/DoriLab_V3_Process_Validation_Workbench",
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "bba68d377cd84263ee9cfeec3edc196ff768506160fd56ca1b00819cef4ed57b",
+        "lines": [21, 47],
+        "supports": "Only SC-03 Option A is implemented; other scenario/rule calculations are not implemented."
+      },
+      {
+        "path": "docs/DORILAB_V3_PROCESS_VALIDATION_HANDOFF_2026-08-30.md",
+        "sha256": "7e5b7288d1af1918ad125e75cd1e42a26b0607416f4673e53bb958a3bad19279",
+        "lines": [743, 790],
+        "supports": "SC-03 input, expected findings, human decision and retest episode."
+      },
+      {
+        "path": "index.html",
+        "sha256": "dbd504c3aa68054ebf94022ed3a25cde7e1c94ddd42a6218cc32865339d8fe0b",
+        "lines": [226, 235],
+        "supports": "freshState exact synthetic input and original version labels."
+      }
+    ]
+  },
+  "original_version_labels": {
+    "scenarioVersion": "1.0.0",
+    "processVersion": "BM1-0.1",
+    "ruleVersion": "ECSS-0.1.3",
+    "uiVersion": "V3-GUI-0.1",
+    "meaning": "Labels recorded by the original mockup; not an executed backend process version or verified ECSS rule pack."
+  },
+  "original_input": {
+    "object": "Payload Camera",
+    "model": "FM Acceptance",
+    "testType": "Random Vibration",
+    "purpose": "기존 시험결과의 검증 근거 완전성 평가",
+    "configuration": "FM-01 / HW B-07",
+    "requirement": "RV-ACC-001",
+    "tspe": 60,
+    "tproRevision": "Rev.3",
+    "tpro": 45,
+    "run": {"X": 60, "Y": 60, "Z": 58},
+    "calibration": "VALID",
+    "rawData": "AVAILABLE",
+    "ncr": "OPEN",
+    "ncrBasis": "MISSING"
+  },
+  "original_expected": {
+    "findings": [
+      {"id": "F-01", "type": "PROCEDURE_MISMATCH", "title": "TSPE–TPRO 불일치", "evidence_status": "CONFLICTING"},
+      {"id": "F-02", "type": "CONDITION_SHORTFALL", "title": "Z축 수행시간 미달", "axes": ["Z"], "evidence_status": "INVALID"},
+      {"id": "F-03", "type": "OPEN_NCR", "title": "NCR 처분근거 부족", "evidence_status": "MISSING"}
+    ],
+    "finding_source": {"path": "index.html", "lines": [281, 300]},
+    "human_decision": {"preserve_axes": ["X", "Y"], "retest_axes": ["Z"], "option": "A", "automatically_approved": false},
+    "human_decision_source": {"path": "docs/DORILAB_V3_PROCESS_VALIDATION_HANDOFF_2026-08-30.md", "lines": [771, 776]},
+    "blockers": ["F-01: TPRO/TRR", "F-02: Z-axis evidence and retest scope", "F-03: TRB/VCD"],
+    "blocker_source": {"path": "index.html", "lines": [526, 535]},
+    "forbidden_transitions": [
+      "Child before human decision",
+      "Run before human TRR GO",
+      "Data QC acceptance when retest duration is below TSPE",
+      "TRB before TRPT and NCR disposition basis",
+      "Evidence Acceptance before TRB ACCEPT",
+      "VCD before Evidence Acceptance"
+    ],
+    "transition_sources": [
+      {"path": "index.html", "lines": [326, 340]},
+      {"path": "index.html", "lines": [786, 820]}
+    ],
+    "source_engine_kind": "DETERMINISTIC_HTML_MOCKUP",
+    "engineering_standard_validity": "NOT_VALIDATED_BY_THIS_FIXTURE"
+  },
+  "current_mvp_adapter": {
+    "scope": {"unit": "Payload Camera", "configuration": "FM-01 / HW B-07", "run": "SYNTHETIC-SC03"},
+    "scope_note": "unit/configuration preserve original labels; run is a new local adapter identity, not a Run ID in V3.",
+    "artifact_media_type": "application/json",
+    "mode": "SIMULATED",
+    "model_call_expected": false,
+    "performance_review_expected": "PERFORMANCE_ASSESSMENT_UNSUPPORTED",
+    "input_readiness_expected_action": "NO_ACTION_REQUIRED",
+    "input_readiness_action_origin": "Current simulated_output local branch with included evidence; not a V3 finding or model answer.",
+    "product_performance_status": "NOT_EVALUATED",
+    "original_case_coverage_expected": "NOT_IMPLEMENTED",
+    "notes": "Only original_input enters artifact bytes and evidence quote. Expected findings and source-contract metadata do not enter the model packet. A passing boundary regression does not satisfy the original V3 scenario."
+  }
+}
