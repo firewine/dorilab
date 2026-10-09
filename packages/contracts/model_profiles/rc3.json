@@ -1,0 +1,29 @@
+{
+  "profile_id": "dorilab-source-review-v15-rc3",
+  "deployment_status": "REMOTE_SERVICE_READY",
+  "base_model": "Qwen/Qwen3.8-27B",
+  "base_revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+  "transformers_commit": "002e1edf5b5198488297f401dd853056b6521d02",
+  "adapter_model_sha256": "d90dee59f00f7c987c1b61ae334f928464bfb412ddb26110d692b92b9a46a689",
+  "adapter_config_sha256": "d037e965c05ec56ed6069581635ada7f704a6c6331b56831075f127f52f61628",
+  "model_receipt_id": "7e8f301cdbe9511d4e6b108a3b8bc8ae7330b59a59b7d3dfcb69296c66bb4f0a",
+  "contract_id": "7240db117d7c66d5bb162ce72290fee4b87bfaefa97771246d392be07c0b0114",
+  "contract_route": "v15_rc1_cf1",
+  "parent_contract_id": "4fe243c2300a5084f54833e7b6fd8aa45f55592c9dfcf6aaa53cc07692e0282f",
+  "system_allowlist_source_sha256": "483c95abbd8324919774bd3a21cf747601d14f04aae6f0c9cfa227d5317b2485",
+  "template_sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041",
+  "generation": {
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "do_sample": false,
+    "enable_thinking": false,
+    "max_total_tokens": 4096,
+    "max_new_tokens": 384,
+    "truncation": false,
+    "max_concurrent_generations": 1
+  },
+  "serving_modes": {
+    "rc3": "adapter_enabled",
+    "memory_planner": "adapter_disabled"
+  }
+}

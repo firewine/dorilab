@@ -1,0 +1,57 @@
+{
+  "schema": "dorilab.runtime-conformance.v1",
+  "passed": true,
+  "execution_mode": "LIVE_SYNTHETIC_ONLY",
+  "prior_model_receipt_id": "b96e72897a27c3a6a0eee4db7c04d55efba10bbd373efe0a83f56221d8a2a847",
+  "model_receipt_id": "7e8f301cdbe9511d4e6b108a3b8bc8ae7330b59a59b7d3dfcb69296c66bb4f0a",
+  "boot_id": "e8b499c1-766f-4589-b487-144fbb9116d8",
+  "contract_id": "7240db117d7c66d5bb162ce72290fee4b87bfaefa97771246d392be07c0b0114",
+  "changed_fields": [
+    "runtime.tokenizers"
+  ],
+  "cases": [
+    {
+      "case": "missing",
+      "action": "REQUEST_EVIDENCE",
+      "passed": true,
+      "request_id": "runtime-alignment-missing-3c38a72e327e45ff9435f278b5b422d2",
+      "boot_id": "e8b499c1-766f-4589-b487-144fbb9116d8",
+      "output_sha256": "7873c3996f4483944b8ce7298264ed6932785bc66546e4e9a9db84a2b0aecf51",
+      "input_tokens": 948,
+      "generated_tokens": 48,
+      "finish_reason": "eos",
+      "native_tokenization_unchanged": true
+    },
+    {
+      "case": "sufficient",
+      "action": "NO_ACTION_REQUIRED",
+      "passed": true,
+      "request_id": "runtime-alignment-sufficient-56d67070244947118f5b2cc5af506c27",
+      "boot_id": "e8b499c1-766f-4589-b487-144fbb9116d8",
+      "output_sha256": "4631c933f6d3badfa9226527325e5b81302a9b0484fbf45aa3b587698c4a341f",
+      "input_tokens": 1055,
+      "generated_tokens": 34,
+      "finish_reason": "eos",
+      "native_tokenization_unchanged": true
+    },
+    {
+      "case": "contradiction",
+      "action": "CHALLENGE",
+      "passed": true,
+      "request_id": "runtime-alignment-contradiction-d4993fae1ea4402e81fff33cb2e6532a",
+      "boot_id": "e8b499c1-766f-4589-b487-144fbb9116d8",
+      "output_sha256": "47788e5e5ea10e62e6cd221a4b232d8e5bb9c287a190548159fc1e8b878b6a87",
+      "input_tokens": 1060,
+      "generated_tokens": 46,
+      "finish_reason": "eos",
+      "native_tokenization_unchanged": true
+    }
+  ],
+  "generation_calls": 3,
+  "validator_relaxed": false,
+  "raw_output_repaired": false,
+  "db_writes": 0,
+  "remote_configuration_changes": 0,
+  "customer_data_sent": false,
+  "receipt_sha256": "a788fe5bc7ad0b1c06444cf03a1618ffd63266041abd92251adaa8297e650660"
+}

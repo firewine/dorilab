@@ -1,0 +1,49 @@
+{
+  "schema": "dorilab.model-release-promotion.v1",
+  "approved_at": "2026-10-09T14:14:59.087Z",
+  "approval_basis": "Explicit user approval: 검증된 0.23.3 실행환경 승인",
+  "prior_model_receipt_id": "b96e72897a27c3a6a0eee4db7c04d55efba10bbd373efe0a83f56221d8a2a847",
+  "model_receipt_id": "7e8f301cdbe9511d4e6b108a3b8bc8ae7330b59a59b7d3dfcb69296c66bb4f0a",
+  "boot_id": "e8b499c1-766f-4589-b487-144fbb9116d8",
+  "contract_id": "7240db117d7c66d5bb162ce72290fee4b87bfaefa97771246d392be07c0b0114",
+  "contract_route": "v15_rc1_cf1",
+  "comparison": {
+    "receipt_changed_fields": [
+      "runtime.tokenizers"
+    ],
+    "base_model_changed": false,
+    "base_revision_changed": false,
+    "base_shards_changed": false,
+    "adapter_changed": false,
+    "tokenizer_assets_changed": false,
+    "active_rc3_contract_changed": false,
+    "generation_policy_changed": false,
+    "runtime_tokenizers": {
+      "previous": "0.23.2",
+      "current": "0.23.3"
+    }
+  },
+  "conformance": {
+    "passed": true,
+    "cases": 3,
+    "native_tokenization_unchanged": true,
+    "receipt_sha256": "a788fe5bc7ad0b1c06444cf03a1618ffd63266041abd92251adaa8297e650660"
+  },
+  "files": {
+    "model_receipt.json": "e6a38e48be4a2ef9587b08360361027c38b39a9148baaf9518e39115d3744157",
+    "version.json": "19a19fb1d75ddc07897009407eb619899b96e5503f66f3bb9d272b98d015bd15",
+    "CONFORMANCE_RECEIPT.json": "a05e1bbdce39db0a9acc970f3d165bfcb2572f1ba0830700293eccfb681e427c",
+    "remote_inspection.json": "9d849cfeaf57bc5208942c8364ebba347c1622aa21c57eabb7901905f0221837",
+    "missing.json": "08567e885b2965a09c802fe97c333830d65102bcb2e38fd0ab8deb86ef931dc1",
+    "sufficient.json": "a6360d2b7ebb37350d02a81c54a27884320eb0206e96727cfee5c3e72b430780",
+    "contradiction.json": "70eea2a51305fb2e63fd8ac680c1ed1fe8df93685bb1aeb4557b6468b4baaec0"
+  },
+  "profile_before_sha256": "3d02d62063941a15a1eaa8bf858a47a01267a762ebe0cb0646967276a7b7ac66",
+  "profile_after_sha256": "ade2f9c3199909b3c13d6c6c1adfff3fae7224d9106285f7fb949795172e67bd",
+  "remote_configuration_changes": 0,
+  "remote_generation_count": 3,
+  "customer_data_sent": false,
+  "validator_relaxed": false,
+  "output_repaired": false,
+  "prior_receipts_preserved": true
+}
